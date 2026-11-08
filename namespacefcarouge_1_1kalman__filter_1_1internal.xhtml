@@ -439,9 +439,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a24b9ad2e00f06bd9ed20c224ae8a1484" id="r_a24b9ad2e00f06bd9ed20c224ae8a1484"><td class="memTemplParams" colspan="2">template&lt;typename Policies &gt; </td></tr>
 <tr class="memitem:a24b9ad2e00f06bd9ed20c224ae8a1484"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a24b9ad2e00f06bd9ed20c224ae8a1484">configure</a> (const auto &amp;...arguments) -&gt; Policies</td></tr>
 <tr class="separator:a24b9ad2e00f06bd9ed20c224ae8a1484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1327142ae58484767c8438b74e83aeff" id="r_a1327142ae58484767c8438b74e83aeff"><td class="memTemplParams" colspan="2">template&lt;typename State , typename... Deviations&gt; </td></tr>
-<tr class="memitem:a1327142ae58484767c8438b74e83aeff"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1327142ae58484767c8438b74e83aeff">state_of</a> (const Deviations &amp;...deviations) -&gt; State</td></tr>
-<tr class="separator:a1327142ae58484767c8438b74e83aeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d550af30c88bd2d91902933ab6362c8" id="r_a0d550af30c88bd2d91902933ab6362c8"><td class="memTemplParams" colspan="2">template&lt;typename State , typename... Deviations&gt; </td></tr>
+<tr class="memitem:a0d550af30c88bd2d91902933ab6362c8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0d550af30c88bd2d91902933ab6362c8">state_of</a> (const Deviations &amp;...deviations)</td></tr>
+<tr class="separator:a0d550af30c88bd2d91902933ab6362c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae70c62d53ff30063a661af218f635bf2" id="r_ae70c62d53ff30063a661af218f635bf2"><td class="memTemplParams" colspan="2">template&lt;typename State , typename... Deviations&gt; </td></tr>
 <tr class="memitem:ae70c62d53ff30063a661af218f635bf2"><td class="memTemplItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ae70c62d53ff30063a661af218f635bf2">check_floors</a> (std::type_identity&lt; std::tuple&lt; Deviations... &gt; &gt;)</td></tr>
 <tr class="separator:ae70c62d53ff30063a661af218f635bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -756,7 +756,7 @@ template&lt;typename... Arguments&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01188">1188</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01189">1189</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -1240,19 +1240,19 @@ template&lt;typename State , typename... Policies&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01100">1100</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1100</span>                                                                     {</div>
-<div class="line"><span class="lineno"> 1101</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(Policies) &gt; 0) {</div>
-<div class="line"><span class="lineno"> 1102</span>    <span class="keyword">using </span>last =</div>
-<div class="line"><span class="lineno"> 1103</span>        std::tuple_element_t&lt;<span class="keyword">sizeof</span>...(Policies) - 1, std::tuple&lt;Policies...&gt;&gt;;</div>
-<div class="line"><span class="lineno"> 1104</span> </div>
-<div class="line"><span class="lineno"> 1105</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (floors_policy&lt;last&gt;) {</div>
-<div class="line"><span class="lineno"> 1106</span>      check_floors&lt;State&gt;(std::type_identity&lt;<span class="keyword">decltype</span>(last::value)&gt;{});</div>
-<div class="line"><span class="lineno"> 1107</span>    }</div>
-<div class="line"><span class="lineno"> 1108</span>  }</div>
-<div class="line"><span class="lineno"> 1109</span>}</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01101">1101</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1101</span>                                                                     {</div>
+<div class="line"><span class="lineno"> 1102</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(Policies) &gt; 0) {</div>
+<div class="line"><span class="lineno"> 1103</span>    <span class="keyword">using </span>last =</div>
+<div class="line"><span class="lineno"> 1104</span>        std::tuple_element_t&lt;<span class="keyword">sizeof</span>...(Policies) - 1, std::tuple&lt;Policies...&gt;&gt;;</div>
+<div class="line"><span class="lineno"> 1105</span> </div>
+<div class="line"><span class="lineno"> 1106</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (floors_policy&lt;last&gt;) {</div>
+<div class="line"><span class="lineno"> 1107</span>      check_floors&lt;State&gt;(std::type_identity&lt;<span class="keyword">decltype</span>(last::value)&gt;{});</div>
+<div class="line"><span class="lineno"> 1108</span>    }</div>
+<div class="line"><span class="lineno"> 1109</span>  }</div>
+<div class="line"><span class="lineno"> 1110</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="factory_8hpp_source.xhtml#l01090">check_floors()</a>.</p>
+<p class="reference">References <a class="el" href="factory_8hpp_source.xhtml#l01091">check_floors()</a>.</p>
 <div id="dynsection-1" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -1288,19 +1288,20 @@ template&lt;typename State , typename... Deviations&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01090">1090</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1090</span>                                                                       {</div>
-<div class="line"><span class="lineno"> 1091</span>  <span class="keyword">static_assert</span>(list_initializes&lt;State, deviation_t&lt;Deviations&gt;...&gt;,</div>
-<div class="line"><span class="lineno"> 1092</span>                <span class="stringliteral">&quot;Declare one floor standard deviation per state, in the units &quot;</span></div>
-<div class="line"><span class="lineno"> 1093</span>                <span class="stringliteral">&quot;of the state.&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1094</span> </div>
-<div class="line"><span class="lineno"> 1095</span>  [[maybe_unused]] <span class="keyword">constexpr</span> <span class="keyword">auto</span> *instantiation{</div>
-<div class="line"><span class="lineno"> 1096</span>      &amp;state_of&lt;State, deviation_t&lt;Deviations&gt;...&gt;};</div>
-<div class="line"><span class="lineno"> 1097</span>}</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01091">1091</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1091</span>                                                                       {</div>
+<div class="line"><span class="lineno"> 1092</span>  <span class="keyword">static_assert</span>(list_initializes&lt;State, deviation_t&lt;Deviations&gt;...&gt;,</div>
+<div class="line"><span class="lineno"> 1093</span>                <span class="stringliteral">&quot;Declare one floor standard deviation per state, in the units &quot;</span></div>
+<div class="line"><span class="lineno"> 1094</span>                <span class="stringliteral">&quot;of the state.&quot;</span>);</div>
+<div class="line"><span class="lineno"> 1095</span> </div>
+<div class="line"><span class="lineno"> 1096</span>  <span class="keyword">using </span>instantiation [[maybe_unused]] = <span class="keyword">decltype</span>(state_of&lt;State&gt;(</div>
+<div class="line"><span class="lineno"> 1097</span>      std::declval&lt;<span class="keyword">const</span> <a class="code hl_typedef" href="#a718f6b9e0b7b69f49f852ef68a10f004">deviation_t&lt;Deviations&gt;</a> &amp;&gt;()...));</div>
+<div class="line"><span class="lineno"> 1098</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a718f6b9e0b7b69f49f852ef68a10f004"><div class="ttname"><a href="#a718f6b9e0b7b69f49f852ef68a10f004">fcarouge::kalman_filter::internal::deviation_t</a></div><div class="ttdeci">deviation&lt; Type &gt;::type deviation_t</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00088">policy.hpp:88</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="factory_8hpp_source.xhtml#l01083">state_of()</a>.</p>
+<p class="reference">References <a class="el" href="factory_8hpp_source.xhtml#l01085">state_of()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="factory_8hpp_source.xhtml#l01100">check_floors()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="factory_8hpp_source.xhtml#l01101">check_floors()</a>.</p>
 <div id="dynsection-2" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -2329,8 +2330,8 @@ template&lt;typename... Types&gt; </div>
 
 </div>
 </div>
-<a id="a1327142ae58484767c8438b74e83aeff" name="a1327142ae58484767c8438b74e83aeff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1327142ae58484767c8438b74e83aeff">&#9670;&#160;</a></span>state_of()</h2>
+<a id="a0d550af30c88bd2d91902933ab6362c8" name="a0d550af30c88bd2d91902933ab6362c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d550af30c88bd2d91902933ab6362c8">&#9670;&#160;</a></span>state_of()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2344,7 +2345,7 @@ template&lt;typename State , typename... Deviations&gt; </div>
           <td class="memname">auto fcarouge::kalman_filter::internal::state_of </td>
           <td>(</td>
           <td class="paramtype">const Deviations &amp;...</td>          <td class="paramname"><span class="paramname"><em>deviations</em></span></td><td>)</td>
-          <td> -&gt; State </td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -2354,18 +2355,18 @@ template&lt;typename State , typename... Deviations&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01083">1083</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1084</span>             {</div>
-<div class="line"><span class="lineno"> 1085</span>  <span class="keywordflow">return</span> State{deviations...};</div>
-<div class="line"><span class="lineno"> 1086</span>}</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01085">1085</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1085</span>                                                                       {</div>
+<div class="line"><span class="lineno"> 1086</span>  <span class="keywordflow">return</span> State{deviations...};</div>
+<div class="line"><span class="lineno"> 1087</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="factory_8hpp_source.xhtml#l01090">check_floors()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="factory_8hpp_source.xhtml#l01091">check_floors()</a>.</p>
 <div id="dynsection-17" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1kalman__filter_1_1internal_a1327142ae58484767c8438b74e83aeff_icgraph.svg" width="558" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacefcarouge_1_1kalman__filter_1_1internal_a0d550af30c88bd2d91902933ab6362c8_icgraph.svg" width="558" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -2729,8 +2730,8 @@ template&lt;typename Filter , typename Policies , typename Characteristics &gt; 
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01112">1112</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1112</span>{<span class="keyword">false</span>};</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01113">1113</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1113</span>{<span class="keyword">false</span>};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2936,8 +2937,8 @@ template&lt;typename Filter &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01162">1162</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1162</span>{};</div>
+<p class="definition">Definition at line <a class="el" href="factory_8hpp_source.xhtml#l01163">1163</a> of file <a class="el" href="factory_8hpp_source.xhtml">factory.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1163</span>{};</div>
 </div><!-- fragment -->
 </div>
 </div>

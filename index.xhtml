@@ -472,17 +472,66 @@ Definitions</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Term   </th><th class="markdownTableHeadNone">Definition    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">EKF   </td><td class="markdownTableBodyNone">The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance.    </td></tr>
+<td class="markdownTableBodyNone">CKF   </td><td class="markdownTableBodyNone">The Cubature Kalman Filter is a sampled nonlinear version of the Kalman filter. Useful for high-dimension nonlinear dynamics systems. This filter propagates 2n equally weighted cubature points, selected by a third-degree spherical-radial cubature rule, without tuning parameters.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">EKF   </td><td class="markdownTableBodyNone">The Extended Kalman Filter is the nonlinear version of the Kalman filter. Useful for nonlinear dynamics systems. This filter linearizes the model about an estimate working point of the current mean and covariance.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">EKF-IMM   </td><td class="markdownTableBodyNone">The Interacting Multiple Model Extended Kalman Filter runs a bank of EKFs, one per dynamics model, mixed by Markov chain model transition probabilities. Useful for maneuvering systems switching between dynamics, such as target tracking. This filter estimates the state and the probability of each model.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">EnKF   </td><td class="markdownTableBodyNone">The Ensemble Kalman Filter is the Monte Carlo version of the Kalman filter. Useful for very high-dimension nonlinear systems, such as weather forecasting. This filter propagates an ensemble of state samples and estimates the covariance from the ensemble sample covariance.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">ESKF   </td><td class="markdownTableBodyNone">The Error State Kalman Filter is the error estimation version of the Kalman filter. Useful for linear error state dynamics systems. This filter estimates the errors rather than the states.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Euler-KF   </td><td class="markdownTableBodyNone">The Euler angles Kalman Filter estimates an attitude parameterized by roll, pitch, and yaw angles. Useful for attitude estimation away from the gimbal lock. This filter has a minimal three-parameter attitude state, singular at a pitch of ±90°.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Fading-Memory   </td><td class="markdownTableBodyNone">The Fading-Memory Kalman Filter scales the predicted estimate uncertainty by a fading factor greater than one. Useful for systems with model mismatch or unmodeled dynamics. This filter exponentially discounts older measurements in favor of recent ones.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Finite/Fixed-Memory   </td><td class="markdownTableBodyNone">The Finite or Fixed-Memory Kalman Filter estimates the state from a sliding window of the most recent measurements only. Useful for systems with model mismatch or temporary disturbances. This filter has a finite impulse response, bounding the influence of any measurement in time.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">FKF   </td><td class="markdownTableBodyNone">The Fast Kalman Filter exploits the block structure of a large linear system whose states partition into local states and global parameters. Useful for very large systems, such as calibrating many sensors against common parameters. This filter solves the partitioned equations block by block rather than inverting the full matrices, at a cost growing linearly rather than cubically in the number of blocks.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">FKF   </td><td class="markdownTableBodyNone">The Federated Kalman Filter is the decentralized version of the Kalman filter. Useful for fault-tolerant multi-sensor fusion. This filter fuses the estimates of local filters, one per sensor, in a master filter sharing information back to the local filters.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Forward-Backward   </td><td class="markdownTableBodyNone">The Forward-Backward Kalman Filter, or two-filter smoother, combines a forward filter with a backward-in-time filter. Useful for offline post-processing. This filter estimates each state from all past and future measurements.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">IEKF   </td><td class="markdownTableBodyNone">The Iterated Extended Kalman Filter iterates the update of the Extended Kalman Filter. Useful for strongly nonlinear output models. This filter relinearizes the output model about each new estimate, a Gauss-Newton iteration, until convergence.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Joseph   </td><td class="markdownTableBodyNone">The Joseph form updates the estimate uncertainty as <em>P = (I - KH)P(I - KH)ᵀ + KRKᵀ</em>. Useful for numerical robustness. This form is valid for any gain and preserves the symmetry and positive semi-definiteness of the estimate uncertainty.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">KF   </td><td class="markdownTableBodyNone">The Kalman Filter is the optimal linear estimator, in the minimum mean square error sense, of a linear system with Gaussian noises. Useful for linear dynamics systems. This filter recursively predicts the state and its uncertainty, then updates them with a measurement.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Linearized   </td><td class="markdownTableBodyNone">The Linearized Kalman Filter linearizes the model about a nominal trajectory known in advance rather than about the current estimate. Useful for systems following a planned trajectory. This filter may precompute its gains, but diverges when the state departs from the nominal trajectory.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">MEKF   </td><td class="markdownTableBodyNone">The Multiplicative Extended Kalman Filter estimates a unit quaternion attitude through a three-component attitude error multiplicatively composed with a reference quaternion. Useful for attitude estimation. This filter preserves the quaternion unit norm with a minimal error state.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">MRP-EKF   </td><td class="markdownTableBodyNone">The Modified Rodrigues Parameters Extended Kalman Filter estimates an attitude parameterized by modified Rodrigues parameters. Useful for attitude estimation. This filter has a minimal three-parameter attitude state, switching to the shadow set to avoid its singularity at a rotation of 360°.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">MRP-UKF   </td><td class="markdownTableBodyNone">The Modified Rodrigues Parameters Unscented Kalman Filter is the unscented version of the MRP-EKF. Useful for highly nonlinear attitude estimation. This filter samples sigma points of the modified Rodrigues parameters attitude.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">MSCKF   </td><td class="markdownTableBodyNone">The Multi-State Constraint Kalman Filter is an EKF-based approach that leverages constraints between multiple and varied measurements to improve pose estimation accuracy and robustness.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">QSR-UKF   </td><td class="markdownTableBodyNone">The Quaternion Square-Root Unscented Kalman Filter is the square-root unscented version of the MEKF. Useful for highly nonlinear attitude estimation. This filter propagates the Cholesky factor of the covariance of quaternion attitude sigma points.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">SKF   </td><td class="markdownTableBodyNone">The Schmidt Kalman Filter, or consider filter, accounts for the uncertainty of nuisance parameters without estimating them. Useful for systems with uncertain biases or parameters not worth estimating. This filter keeps the consider parameters and their covariances but does not update them.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SKF   </td><td class="markdownTableBodyNone">The Switching Kalman Filter estimates a system switching between linear dynamics models, a discrete Markov chain regime. Useful for systems with abrupt changes of behavior, such as fault detection or maneuvering targets. This filter runs a bank of Kalman filters, one per regime, and merges their estimates and the regime probabilities, through generalized pseudo-Bayesian or interacting multiple model approximations.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Smoother   </td><td class="markdownTableBodyNone">The Kalman smoother estimates past states from measurements up to a later time. Useful for offline post-processing and delayed decisions. This smoother runs a fixed-interval (Rauch-Tung-Striebel), fixed-lag, or fixed-point backward pass over the filter estimates.    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">SR-UKF   </td><td class="markdownTableBodyNone">The Square-Root Unscented Kalman Filter handles non-linearity with covariance factorization of the unscented transformations (sigma points) to maintain numerical stability.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">UKF   </td><td class="markdownTableBodyNone">The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples unscented transformations (sigma points) about an estimate working point of the current mean using an Unscented Transformation technique.   </td></tr>
+<td class="markdownTableBodyNone">UDU   </td><td class="markdownTableBodyNone">The UDU, or Bierman-Thornton, Kalman Filter factorizes the estimate uncertainty as <em>P = UDUᵀ</em>, with a unit upper triangular <em>U</em> and a diagonal <em>D</em>. Useful for numerical stability on limited precision hardware. This filter guarantees a positive semi-definite estimate uncertainty without square roots.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">UKF   </td><td class="markdownTableBodyNone">The Unscented Kalman Filter is the sampled version of the Extended Kalman Filter. Useful for highly nonlinear dynamics systems. This filter samples unscented transformations (sigma points) about an estimate working point of the current mean using an Unscented Transformation technique.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">UKF-GSF   </td><td class="markdownTableBodyNone">The Gaussian Sum Filter of Unscented Kalman Filters approximates a non-Gaussian distribution by a weighted sum of Gaussians, one UKF each. Useful for multimodal distributions, such as an unknown initial heading. This filter weights each UKF by the likelihood of its measurement residuals.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">UKF-IMM   </td><td class="markdownTableBodyNone">The Interacting Multiple Model Unscented Kalman Filter is the unscented version of the EKF-IMM. Useful for maneuvering highly nonlinear systems. This filter mixes a bank of UKFs, one per dynamics model.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">USQUE   </td><td class="markdownTableBodyNone">The UnScented QUaternion Estimator is an unscented attitude filter. Useful for attitude estimation with large initial errors. This filter samples sigma points of a generalized Rodrigues parameters attitude error, composed with a reference unit quaternion.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">UT   </td><td class="markdownTableBodyNone">The Unscented Transformation propagates a mean and covariance through a nonlinear function from a deterministic set of weighted sigma points. Useful for the sampled nonlinear filters, such as the UKF. This transformation captures the mean and covariance to the second order without derivatives.   </td></tr>
 </table>
-<p>Further terms should be defined and demonstrated for completeness: CKF, EKF-IMM, EnKF, Euler-KF, Fading-Memory, Finite/Fixed-Memory, Forward-Backward, FKF, IEKF, Joseph, KF, Linearized, MEKF, MRP-EKF, MRP-UKF, QSR-UKF, SKF, Smoother, UKF-GSF, UKF-IMM, USQUE, UDU, and UT.</p>
 <h2><a class="anchor" id="projects"></a>
 Projects</h2>
 <p>The library is used in projects:</p>

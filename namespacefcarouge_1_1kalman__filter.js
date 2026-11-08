@@ -55,7 +55,7 @@ var namespacefcarouge_1_1kalman__filter =
       [ "read", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#af191c9432f237e4cfb0fedc92bd0eb5a", null ],
       [ "state", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a37536dd9550790894dd0aaf5ce4f7a42", null ],
       [ "state", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d3017d60ba8bae573f39eb4765b6814", null ],
-      [ "state_of", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a1327142ae58484767c8438b74e83aeff", null ],
+      [ "state_of", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d550af30c88bd2d91902933ab6362c8", null ],
       [ "state_transition", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a0d3c952306d887b3d3d54f42b09952b4", null ],
       [ "state_transition", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a19478b612027f688fd2d3ed290827afb", null ],
       [ "symmetrize_estimate", "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a63eb6239e78d5f06fd3f6c1c1b0a4e3f", null ],

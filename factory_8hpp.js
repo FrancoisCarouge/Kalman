@@ -7,7 +7,7 @@ var factory_8hpp =
     [ "convert", "factory_8hpp.xhtml#ac399b3f6f82574402664f0dc5683f3c7", null ],
     [ "convert", "factory_8hpp.xhtml#ae693b4cd2c7defc575ff59765977810d", null ],
     [ "pick", "factory_8hpp.xhtml#ac7b81e85d8a6511dc61da8505dce008b", null ],
-    [ "state_of", "factory_8hpp.xhtml#a1327142ae58484767c8438b74e83aeff", null ],
+    [ "state_of", "factory_8hpp.xhtml#a0d550af30c88bd2d91902933ab6362c8", null ],
     [ "buildable", "factory_8hpp.xhtml#a0d2359a75154abf0f047c1e6c0b3d0c8", null ],
     [ "deducer", "factory_8hpp.xhtml#a614975b5427a01c25a3b4a2a1a40ff55", null ]
 ];
