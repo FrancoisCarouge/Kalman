@@ -54,6 +54,8 @@ public:
 
   [[nodiscard]] static auto zero() -> value;
 
+  [[nodiscard]] constexpr auto transpose() const -> value { return *this; }
+
   [[nodiscard]] constexpr auto operator==(const value &) const
       -> bool = default;
 

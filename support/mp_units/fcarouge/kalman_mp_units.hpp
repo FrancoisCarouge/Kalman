@@ -61,6 +61,25 @@ struct multiplies<mp_units::quantity_point<Reference1>,
       -> mp_units::quantity<Reference1 * Reference2>;
 };
 
+//! @brief The transpose of a quantity is that quantity.
+template <auto Reference, typename Representation>
+struct transposes<mp_units::quantity<Reference, Representation>> {
+  [[nodiscard]] static constexpr auto
+  operator()(const mp_units::quantity<Reference, Representation> &value) {
+    return value;
+  }
+};
+
+//! @brief The transpose of a quantity point is that quantity point.
+template <auto Reference, auto Origin, typename Representation>
+struct transposes<mp_units::quantity_point<Reference, Origin, Representation>> {
+  [[nodiscard]] static constexpr auto
+  operator()(const mp_units::quantity_point<Reference, Origin, Representation>
+                 &value) {
+    return value;
+  }
+};
+
 template <typename Representation, auto Reference>
 inline constexpr mp_units::quantity<Reference, Representation>
     one<mp_units::quantity<Reference, Representation>>{1., Reference};

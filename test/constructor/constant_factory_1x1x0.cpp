@@ -47,6 +47,8 @@ public:
 
   constexpr explicit value(double initial) : datum{initial} {}
 
+  [[nodiscard]] constexpr auto transpose() const -> value { return *this; }
+
   [[nodiscard]] constexpr auto operator==(const value &) const
       -> bool = default;
 
