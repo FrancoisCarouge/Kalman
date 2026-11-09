@@ -459,9 +459,25 @@ template <typename Type> struct evaluates {
 //! @brief Evaluator helper type.
 template <typename Type> using evaluate = std::invoke_result_t<evaluates<Type>>;
 
+template <typename Type> struct not_implemented;
+
 //! @brief Linear algebra transposes specialization point.
+//!
+//! @details A type without a transposes specialization or a `transpose()`
+//! member is rejected at compile time rather than returned unchanged: the
+//! identity is the transpose of a scalar only, and silently applied to a
+//! matrix, it computes wrong results for a square matrix. A linear algebra
+//! backend spelling the operation otherwise specializes this template.
 template <typename Type> struct transposes {
-  [[nodiscard]] static constexpr auto operator()(const Type &value) {
+  [[nodiscard]] static constexpr auto operator()(const Type &) {
+    return not_implemented<Type>{
+        "Implement the linear algebra transposes for this type."};
+  }
+};
+
+//! @brief The transpose of an arithmetic value is that value.
+template <arithmetic Arithmetic> struct transposes<Arithmetic> {
+  [[nodiscard]] static constexpr auto operator()(const Arithmetic &value) {
     return value;
   }
 };
