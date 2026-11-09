@@ -1,5 +1,11 @@
 var NAVTREEINDEX4 =
 {
+"member__type_21x1x1_8cpp.xhtml#a355c2785e17fddefed2e5f291d7512c0":[16,0,5,11,1,0],
+"member__type_21x1x1_8cpp_source.xhtml":[16,0,5,11,1],
+"member__type_25x4x3_8cpp.xhtml":[16,0,5,11,3],
+"member__type_25x4x3_8cpp.xhtml#a2d7e19f9b2e103bcda8fb6d455c344d1":[16,0,5,11,3,0],
+"member__type_25x4x3_8cpp_source.xhtml":[16,0,5,11,3],
+"member__type_2absent__1x1x0__fail_8cpp.xhtml":[16,0,5,11,4],
 "member__type_2absent__1x1x0__fail_8cpp.xhtml#a45ef2ab286b9cbd69653bfe19a185092":[16,0,5,11,4,0],
 "member__type_2absent__1x1x0__fail_8cpp_source.xhtml":[16,0,5,11,4],
 "member__type_2arguments_8cpp.xhtml":[16,0,5,11,5],
@@ -243,11 +249,5 @@ var NAVTREEINDEX4 =
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ab41961e84c5a7485fbeed7419871069b":[13,0,0,2,4,13],
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ab6b0489164544f714fbdadfd6e105acd":[13,0,0,2,4,11],
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ac0aac4c8b971c38693b88c6f1fd94ca0":[13,0,0,2,4,33],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ac9ed4e02683ff186fd725ec88489118b":[13,0,0,2,4,26],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#acb67187c79a553e397c6d4ad4c01c174":[13,0,0,2,4,28],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ad6d9342decc6920714f2011382bb5809":[13,0,0,2,4,8],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ae4f53ad6321ab0cccc6bbaa97295ae36":[13,0,0,2,4,9],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ae74e82f618a67f8ce945735d78731999":[13,0,0,2,4,16],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#aed2f2da8fd276b4fe71743f10c464049":[13,0,0,2,4,31],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#aef38e602229f7c7132c108e3535e4120":[13,0,0,2,4,21]
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#ac9ed4e02683ff186fd725ec88489118b":[13,0,0,2,4,26]
 };

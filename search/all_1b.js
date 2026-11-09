@@ -3,7 +3,7 @@ var searchData=
   ['u_0',['u',['../classfcarouge_1_1kalman.xhtml#aaf9b508e28bde48917b97dc9531d14ce',1,'fcarouge::kalman']]],
   ['u_5f1x1x1_2ecpp_1',['u_1x1x1.cpp',['../predict_2u__1x1x1_8cpp.xhtml',1,'(Global Namespace)'],['../update_2u__1x1x1_8cpp.xhtml',1,'(Global Namespace)']]],
   ['uncertainties_5f1x1x0_2ecpp_2',['uncertainties_1x1x0.cpp',['../uncertainties__1x1x0_8cpp.xhtml',1,'']]],
-  ['unimplemented_5ffail_2ecpp_3',['unimplemented_fail.cpp',['../one_2unimplemented__fail_8cpp.xhtml',1,'(Global Namespace)'],['../zero_2unimplemented__fail_8cpp.xhtml',1,'(Global Namespace)']]],
+  ['unimplemented_5ffail_2ecpp_3',['unimplemented_fail.cpp',['../one_2unimplemented__fail_8cpp.xhtml',1,'(Global Namespace)'],['../transpose_2unimplemented__fail_8cpp.xhtml',1,'(Global Namespace)'],['../zero_2unimplemented__fail_8cpp.xhtml',1,'(Global Namespace)']]],
   ['unit_20test_20code_20coverage_4',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
   ['unknown_5',['unknown',['../structfcarouge_1_1test_1_1anonymous__namespace_02unimplemented__fail_8cpp_03_1_1unknown.xhtml',1,'fcarouge::test::anonymous_namespace{unimplemented_fail.cpp}']]],
   ['unrelated_6',['unrelated',['../structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml',1,'fcarouge::test::anonymous_namespace{unrelated.cpp}']]],

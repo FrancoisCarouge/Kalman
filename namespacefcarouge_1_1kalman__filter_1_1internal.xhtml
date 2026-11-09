@@ -274,6 +274,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transposes</b></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear algebra transposes specialization point. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transposes&lt; Arithmetic &gt;</b></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The transpose of an arithmetic value is that value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>transposes&lt; Type &gt;</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>tupler</b></td></tr>
@@ -718,7 +721,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 
 <p>The evaluated type of the ABᵀ expression. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00511">511</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00527">527</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -796,7 +799,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 </div><!-- fragment -->
 <p>Helper type to deduce the result type of the minus, subtraction. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00506">506</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00522">522</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -857,7 +860,7 @@ template&lt;typename... Types&gt; </div>
 <p>Unpack the first type of the type template parameter pack. </p>
 <p>Shorthand for <code>std::tuple_element_t&lt;0, std::tuple&lt;Types...&gt;&gt;</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00468">468</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00484">484</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -1014,7 +1017,7 @@ template&lt;typename Lhs , typename Rhs &gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_1x1x0_building_height_unit_8cpp-example.xhtml#a2">kf_1x1x0_building_height_unit.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00495">495</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00511">511</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -1054,7 +1057,7 @@ template&lt;typename Pack &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00724">724</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00740">740</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -1094,7 +1097,7 @@ template&lt;typename Type &gt; </div>
 
 <p>Transposer helper type. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00455">455</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00471">471</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -1114,7 +1117,7 @@ template&lt;typename Type , std::size_t Size&gt; </div>
 
 <p>An alias for making a tuple of the same type. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00485">485</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00501">501</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
 
 </div>
 </div>
@@ -1151,20 +1154,20 @@ template&lt;typename Callable &gt; </div>
 <p>Assigns a callable characteristic from its copied initializers. </p>
 <p>The closure type of a lambda expression with captures has a deleted copy assignment operator: such a callable is replaced in place instead. The replacement is constructed before the destruction of the assigned callable, and its non-throwing move construction never leaves the characteristic destroyed. Neither form allocates. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00679">679</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  679</span>                                                                 {</div>
-<div class="line"><span class="lineno">  680</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_move_assignable_v&lt;Callable&gt;) {</div>
-<div class="line"><span class="lineno">  681</span>    callable = Callable{values...};</div>
-<div class="line"><span class="lineno">  682</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  683</span>    <span class="keyword">static_assert</span>(std::is_nothrow_move_constructible_v&lt;Callable&gt;,</div>
-<div class="line"><span class="lineno">  684</span>                  <span class="stringliteral">&quot;The callable characteristic must be move assignable or &quot;</span></div>
-<div class="line"><span class="lineno">  685</span>                  <span class="stringliteral">&quot;non-throwing move constructible to be replaced.&quot;</span>);</div>
-<div class="line"><span class="lineno">  686</span> </div>
-<div class="line"><span class="lineno">  687</span>    Callable replacement{values...};</div>
-<div class="line"><span class="lineno">  688</span>    std::destroy_at(&amp;callable);</div>
-<div class="line"><span class="lineno">  689</span>    std::construct_at(&amp;callable, std::move(replacement));</div>
-<div class="line"><span class="lineno">  690</span>  }</div>
-<div class="line"><span class="lineno">  691</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00695">695</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  695</span>                                                                 {</div>
+<div class="line"><span class="lineno">  696</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_move_assignable_v&lt;Callable&gt;) {</div>
+<div class="line"><span class="lineno">  697</span>    callable = Callable{values...};</div>
+<div class="line"><span class="lineno">  698</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  699</span>    <span class="keyword">static_assert</span>(std::is_nothrow_move_constructible_v&lt;Callable&gt;,</div>
+<div class="line"><span class="lineno">  700</span>                  <span class="stringliteral">&quot;The callable characteristic must be move assignable or &quot;</span></div>
+<div class="line"><span class="lineno">  701</span>                  <span class="stringliteral">&quot;non-throwing move constructible to be replaced.&quot;</span>);</div>
+<div class="line"><span class="lineno">  702</span> </div>
+<div class="line"><span class="lineno">  703</span>    Callable replacement{values...};</div>
+<div class="line"><span class="lineno">  704</span>    std::destroy_at(&amp;callable);</div>
+<div class="line"><span class="lineno">  705</span>    std::construct_at(&amp;callable, std::move(replacement));</div>
+<div class="line"><span class="lineno">  706</span>  }</div>
+<div class="line"><span class="lineno">  707</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1723,18 +1726,18 @@ template&lt;std::size_t Begin, std::size_t End, std::size_t Increment, typename 
 <p>Compile-time for loop. </p>
 <p>Help compilers with non-type template parameters on members. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00663">663</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  663</span>                                                  {</div>
-<div class="line"><span class="lineno">  664</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
-<div class="line"><span class="lineno">  665</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;{});</div>
-<div class="line"><span class="lineno">  666</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
-<div class="line"><span class="lineno">  667</span>        std::forward&lt;Function&gt;(function));</div>
-<div class="line"><span class="lineno">  668</span>  }</div>
-<div class="line"><span class="lineno">  669</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00679">679</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  679</span>                                                  {</div>
+<div class="line"><span class="lineno">  680</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (Begin &lt; End) {</div>
+<div class="line"><span class="lineno">  681</span>    function(std::integral_constant&lt;std::size_t, Begin&gt;{});</div>
+<div class="line"><span class="lineno">  682</span>    for_constexpr&lt;Begin + Increment, End, Increment&gt;(</div>
+<div class="line"><span class="lineno">  683</span>        std::forward&lt;Function&gt;(function));</div>
+<div class="line"><span class="lineno">  684</span>  }</div>
+<div class="line"><span class="lineno">  685</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00663">for_constexpr()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00679">for_constexpr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00663">for_constexpr()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00679">for_constexpr()</a>.</p>
 <div id="dynsection-9" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -1823,18 +1826,18 @@ template&lt;typename Type &gt; </div>
 <p>The one matrix built at the point of use. </p>
 <p>A reference to the constant one matrix when it is a constant expression, so that a filter is constant-initializable and an update binds it without a copy on the stack, otherwise the value built by its backend. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00825">825</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  825</span>                                                                           {</div>
-<div class="line"><span class="lineno">  826</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (constant_evaluable&lt;ones&lt;Type&gt;&gt;) {</div>
-<div class="line"><span class="lineno">  827</span>    <span class="comment">// A cast: GCC deduces a value from a parenthesized variable template.</span></div>
-<div class="line"><span class="lineno">  828</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>decltype(constant_one&lt;Type&gt;) &amp;<span class="keyword">&gt;</span>(</div>
-<div class="line"><span class="lineno">  829</span>        constant_one&lt;Type&gt;);</div>
-<div class="line"><span class="lineno">  830</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  831</span>    <span class="keywordflow">return</span> ones&lt;Type&gt;{}();</div>
-<div class="line"><span class="lineno">  832</span>  }</div>
-<div class="line"><span class="lineno">  833</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00841">841</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  841</span>                                                                           {</div>
+<div class="line"><span class="lineno">  842</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (constant_evaluable&lt;ones&lt;Type&gt;&gt;) {</div>
+<div class="line"><span class="lineno">  843</span>    <span class="comment">// A cast: GCC deduces a value from a parenthesized variable template.</span></div>
+<div class="line"><span class="lineno">  844</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>decltype(constant_one&lt;Type&gt;) &amp;<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  845</span>        constant_one&lt;Type&gt;);</div>
+<div class="line"><span class="lineno">  846</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  847</span>    <span class="keywordflow">return</span> ones&lt;Type&gt;{}();</div>
+<div class="line"><span class="lineno">  848</span>  }</div>
+<div class="line"><span class="lineno">  849</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00818">constant_one</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00834">constant_one</a>.</p>
 
 </div>
 </div>
@@ -1868,18 +1871,18 @@ template&lt;typename Type &gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="kf_8x4x0_2d_bounding_box_8cpp-example.xhtml#a1">kf_8x4x0_2d_bounding_box.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00897">897</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  897</span>                                                                            {</div>
-<div class="line"><span class="lineno">  898</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (constant_evaluable&lt;zeros&lt;Type&gt;&gt;) {</div>
-<div class="line"><span class="lineno">  899</span>    <span class="comment">// A cast: GCC deduces a value from a parenthesized variable template.</span></div>
-<div class="line"><span class="lineno">  900</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>decltype(constant_zero&lt;Type&gt;) &amp;<span class="keyword">&gt;</span>(</div>
-<div class="line"><span class="lineno">  901</span>        constant_zero&lt;Type&gt;);</div>
-<div class="line"><span class="lineno">  902</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  903</span>    <span class="keywordflow">return</span> zeros&lt;Type&gt;{}();</div>
-<div class="line"><span class="lineno">  904</span>  }</div>
-<div class="line"><span class="lineno">  905</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00913">913</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  913</span>                                                                            {</div>
+<div class="line"><span class="lineno">  914</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (constant_evaluable&lt;zeros&lt;Type&gt;&gt;) {</div>
+<div class="line"><span class="lineno">  915</span>    <span class="comment">// A cast: GCC deduces a value from a parenthesized variable template.</span></div>
+<div class="line"><span class="lineno">  916</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>decltype(constant_zero&lt;Type&gt;) &amp;<span class="keyword">&gt;</span>(</div>
+<div class="line"><span class="lineno">  917</span>        constant_zero&lt;Type&gt;);</div>
+<div class="line"><span class="lineno">  918</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  919</span>    <span class="keywordflow">return</span> zeros&lt;Type&gt;{}();</div>
+<div class="line"><span class="lineno">  920</span>  }</div>
+<div class="line"><span class="lineno">  921</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00890">constant_zero</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00906">constant_zero</a>.</p>
 
 </div>
 </div>
@@ -2281,14 +2284,14 @@ template&lt;typename Object , typename Characteristic &gt; </div>
 <p>Reads a characteristic of the object. </p>
 <p>A constant reference for an lvalue object: reading does not copy the characteristic, and writing goes through the constrained setters. The moved value for an rvalue object: a reference into the object would dangle past the full-expression. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00700">700</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  700</span>                                                              {</div>
-<div class="line"><span class="lineno">  701</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_lvalue_reference_v&lt;Object&gt;) {</div>
-<div class="line"><span class="lineno">  702</span>    <span class="keywordflow">return</span> std::as_const(characteristic);</div>
-<div class="line"><span class="lineno">  703</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  704</span>    <span class="keywordflow">return</span> std::remove_const_t&lt;Characteristic&gt;{std::move(characteristic)};</div>
-<div class="line"><span class="lineno">  705</span>  }</div>
-<div class="line"><span class="lineno">  706</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00716">716</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  716</span>                                                              {</div>
+<div class="line"><span class="lineno">  717</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_lvalue_reference_v&lt;Object&gt;) {</div>
+<div class="line"><span class="lineno">  718</span>    <span class="keywordflow">return</span> std::as_const(characteristic);</div>
+<div class="line"><span class="lineno">  719</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  720</span>    <span class="keywordflow">return</span> std::remove_const_t&lt;Characteristic&gt;{std::move(characteristic)};</div>
+<div class="line"><span class="lineno">  721</span>  }</div>
+<div class="line"><span class="lineno">  722</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2451,9 +2454,9 @@ template&lt;typename Type &gt; </div>
 <div class="line"><span class="lineno">  201</span>    }</div>
 <div class="line"><span class="lineno">  202</span>  }</div>
 <div class="line"><span class="lineno">  203</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a9f313ffb99383f4cdc23963798b101f8"><div class="ttname"><a href="#a9f313ffb99383f4cdc23963798b101f8">fcarouge::kalman_filter::internal::t</a></div><div class="ttdeci">constexpr auto t(const Type &amp;value)</div><div class="ttdoc">Transpose helper function.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00460">utility.hpp:460</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a9f313ffb99383f4cdc23963798b101f8"><div class="ttname"><a href="#a9f313ffb99383f4cdc23963798b101f8">fcarouge::kalman_filter::internal::t</a></div><div class="ttdeci">constexpr auto t(const Type &amp;value)</div><div class="ttdoc">Transpose helper function.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00476">utility.hpp:476</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00460">t()</a>.</p>
+<p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00476">t()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>.</p>
 <div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -2501,10 +2504,10 @@ template&lt;typename Type &gt; </div>
 <p>Transpose helper function. </p>
 <p>Enable readable linear algebra notation. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00460">460</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  460</span>                                                             {</div>
-<div class="line"><span class="lineno">  461</span>  <span class="keywordflow">return</span> transposes&lt;Type&gt;{}(value);</div>
-<div class="line"><span class="lineno">  462</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00476">476</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  476</span>                                                             {</div>
+<div class="line"><span class="lineno">  477</span>  <span class="keywordflow">return</span> transposes&lt;Type&gt;{}(value);</div>
+<div class="line"><span class="lineno">  478</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00193">symmetrize_estimate()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00277">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00308">update_estimate_uncertainty()</a>.</p>
 <div id="dynsection-20" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -2618,7 +2621,7 @@ template&lt;typename... Policies&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a5a8e6f0e735b9a2538262fbe471d59ef"><div class="ttname"><a href="#a5a8e6f0e735b9a2538262fbe471d59ef">fcarouge::kalman_filter::internal::condition</a></div><div class="ttdeci">constexpr void condition(const policies&lt; Policies... &gt; &amp;configuration, auto &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00252">policy.hpp:252</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a67e72364f755af0934a50f5fce6dd778"><div class="ttname"><a href="#a67e72364f755af0934a50f5fce6dd778">fcarouge::kalman_filter::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00460">t()</a>.</p>
+<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00476">t()</a>.</p>
 <div id="dynsection-21" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
@@ -2696,7 +2699,7 @@ template&lt;typename... Policies&gt; </div>
 <div class="line"><span class="lineno">  324</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
 <div class="line"><span class="lineno">  325</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00460">t()</a>.</p>
+<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00476">t()</a>.</p>
 <div id="dynsection-22" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-22-summary" class="dynsummary" style="display:block;">
@@ -2760,10 +2763,10 @@ template&lt;typename Type &gt; </div>
 <p>The constant one matrix of a constant-evaluable factory. </p>
 <p>Constant-initialized from the <code>ones</code> factory, whichever of its specializations applies, including a user-defined one for a type without a <code>one</code> specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00818">818</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  818</span>{ones&lt;Type&gt;{}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00834">834</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  834</span>{ones&lt;Type&gt;{}()};</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00825">make_one()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00841">make_one()</a>.</p>
 
 </div>
 </div>
@@ -2792,10 +2795,10 @@ template&lt;typename Type &gt; </div>
 <p>The constant zero matrix of a constant-evaluable factory. </p>
 <p>Constant-initialized from the <code>zeros</code> factory, whichever of its specializations applies, including a user-defined one for a type without a <code>zero</code> specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00890">890</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  890</span>{zeros&lt;Type&gt;{}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00906">906</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  906</span>{zeros&lt;Type&gt;{}()};</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00897">make_zero()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00913">make_zero()</a>.</p>
 
 </div>
 </div>
@@ -2966,8 +2969,8 @@ template&lt;auto... Values&gt; </div>
 
 <p>Unpack the first value of the non-type template parameter pack. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00738">738</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  738</span>{first_value&lt;<a class="code hl_variable" href="#a769bb512fd918dc04f97236caf382287">Values</a>...&gt;::value};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00754">754</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  754</span>{first_value&lt;<a class="code hl_variable" href="#a769bb512fd918dc04f97236caf382287">Values</a>...&gt;::value};</div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a769bb512fd918dc04f97236caf382287"><div class="ttname"><a href="#a769bb512fd918dc04f97236caf382287">fcarouge::kalman_filter::internal::Values</a></div><div class="ttdeci">concept Values</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00147">utility.hpp:147</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -3077,9 +3080,9 @@ template&lt;typename Type  = double&gt; </div>
 <p>User-defined matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This matrix is also known as the identity matrix for square matrices of non-quantity scalar types.</p>
 <dl class="section warning"><dt>Warning</dt><dd>A user-defined specialization must be a constant expression, declared <code>constexpr</code>. The dynamic initialization of a templated variable is unordered: a filter constructed during the dynamic initialization of another object of static storage duration would copy its zero-initialized storage. Specialize the <code>ones</code> factory instead for a value that is not a constant expression. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00774">774</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  774</span>                         {not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  775</span>    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00790">790</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  790</span>                         {not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  791</span>    <span class="stringliteral">&quot;Implement the linear algebra one-diagonal matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3107,8 +3110,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton one matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00778">778</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  778</span>{1};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00794">794</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  794</span>{1};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3137,8 +3140,8 @@ template&lt;typename Type &gt; </div>
 <p>The constant one matrix specialization. </p>
 <p>Defined only for a backend whose one matrix is a constant expression, which is then constant-initialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00809">809</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  809</span>{ones&lt;Type&gt;{}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00825">825</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  825</span>{ones&lt;Type&gt;{}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3275,8 +3278,8 @@ template&lt;typename Pack &gt; </div>
 <p>Size of tuple-like types. </p>
 <p>Convenient short form. In place of <code>std::tuple_size_v</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00730">730</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  730</span>{repacker&lt;Pack&gt;::size};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00746">746</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  746</span>{repacker&lt;Pack&gt;::size};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3403,9 +3406,9 @@ template&lt;typename Type  = double&gt; </div>
 <p>User-defined.</p>
 <dl class="section warning"><dt>Warning</dt><dd>A user-defined specialization must be a constant expression, declared <code>constexpr</code>. The dynamic initialization of a templated variable is unordered: a filter constructed during the dynamic initialization of another object of static storage duration would copy its zero-initialized storage. Specialize the <code>zeros</code> factory instead for a value that is not a constant expression. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00846">846</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  846</span>                          {kalman_filter::internal::not_implemented&lt;Type&gt;{</div>
-<div class="line"><span class="lineno">  847</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00862">862</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  862</span>                          {kalman_filter::internal::not_implemented&lt;Type&gt;{</div>
+<div class="line"><span class="lineno">  863</span>    <span class="stringliteral">&quot;Implement the linear algebra zero matrix for this type.&quot;</span>}};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3433,8 +3436,8 @@ template&lt;arithmetic Arithmetic&gt; </div>
 
 <p>The singleton zero matrix specialization. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00851">851</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  851</span>{0};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00867">867</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  867</span>{0};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3463,8 +3466,8 @@ template&lt;typename Type &gt; </div>
 <p>The constant zero matrix specialization. </p>
 <p>Defined only for a backend whose zero matrix is a constant expression, which is then constant-initialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00881">881</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  881</span>{zeros&lt;Type&gt;{}()};</div>
+<p class="definition">Definition at line <a class="el" href="utility_8hpp_source.xhtml#l00897">897</a> of file <a class="el" href="utility_8hpp_source.xhtml">utility.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  897</span>{zeros&lt;Type&gt;{}()};</div>
 </div><!-- fragment -->
 </div>
 </div>
