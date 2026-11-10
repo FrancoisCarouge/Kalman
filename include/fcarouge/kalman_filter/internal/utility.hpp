@@ -101,7 +101,9 @@ using element = decltype(deduce_element<Type, Position>())::type;
 //! type without narrowing, where the type of the element is deduced.
 template <typename Type, typename... Values, std::size_t... Positions>
 [[nodiscard]] consteval auto
-converts_elements(std::index_sequence<Positions...> /*positions*/) -> bool {
+converts_elements(std::index_sequence<Positions...> positions) -> bool {
+  static_cast<void>(positions);
+
   return ((std::same_as<element<Type, Positions>, void> ||
            converts_without_narrowing<Values, element<Type, Positions>>) &&
           ...);
