@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embedded Footprint</title>
+<style>
+:root { color-scheme: light dark; }
+body { font-family: sans-serif; margin: 0; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #8888; padding: 0.25em 0.5em; }
+td:nth-child(n+4) { text-align: right; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<p>The code, data, and stack sizes in bytes of one filter step: one prediction and one update, per filter configuration, update form policy, and optimization level, for version 0.5.4. Each step is linked alone, without any library, for a bare-metal Arm Cortex-M4 target with its single-precision floating-point unit, with GNU 14.2.1: <code>-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16</code>. The flash memory holds the <code>.text</code>, <code>.rodata</code>, and <code>.data</code> sections, the random-access memory the <code>.data</code> and <code>.bss</code> sections. The filter is statically allocated. The stack is the worst case of the step compiled as one function: a build that does not inline the library calls may use more or less. The configurations are in <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/footprint" target="_top">benchmark/footprint</a>.</p>
+<p>The simple form is the smallest but the least numerically robust: its estimate uncertainty may lose its symmetry and positive definiteness. The Joseph form preserves them, at a higher cost.</p>
+<table>
+<tr><th>Configuration</th><th>Policy</th><th>Optimization</th><th>.text</th><th>.rodata</th><th>.data</th><th>.bss</th><th>Flash</th><th>RAM</th><th>Stack</th></tr>
+<tr><td>ekf_1x2x0</td><td>information_form</td><td>-O2</td><td>932</td><td>0</td><td>84</td><td>0</td><td>1016</td><td>84</td><td>64</td></tr>
+<tr><td>ekf_1x2x0</td><td>information_form</td><td>-Os</td><td>976</td><td>0</td><td>84</td><td>0</td><td>1060</td><td>84</td><td>56</td></tr>
+<tr><td>ekf_1x2x0</td><td>joseph_form</td><td>-O2</td><td>676</td><td>0</td><td>84</td><td>0</td><td>760</td><td>84</td><td>64</td></tr>
+<tr><td>ekf_1x2x0</td><td>joseph_form</td><td>-Os</td><td>680</td><td>0</td><td>84</td><td>0</td><td>764</td><td>84</td><td>56</td></tr>
+<tr><td>ekf_1x2x0</td><td>simple_form</td><td>-O2</td><td>608</td><td>0</td><td>84</td><td>0</td><td>692</td><td>84</td><td>56</td></tr>
+<tr><td>ekf_1x2x0</td><td>simple_form</td><td>-Os</td><td>628</td><td>0</td><td>84</td><td>0</td><td>712</td><td>84</td><td>56</td></tr>
+<tr><td>ekf_3x1x0</td><td>information_form</td><td>-O2</td><td>2060</td><td>0</td><td>176</td><td>0</td><td>2236</td><td>176</td><td>288</td></tr>
+<tr><td>ekf_3x1x0</td><td>information_form</td><td>-Os</td><td>2040</td><td>0</td><td>176</td><td>0</td><td>2216</td><td>176</td><td>320</td></tr>
+<tr><td>ekf_3x1x0</td><td>joseph_form</td><td>-O2</td><td>1696</td><td>0</td><td>176</td><td>0</td><td>1872</td><td>176</td><td>384</td></tr>
+<tr><td>ekf_3x1x0</td><td>joseph_form</td><td>-Os</td><td>1724</td><td>0</td><td>176</td><td>0</td><td>1900</td><td>176</td><td>400</td></tr>
+<tr><td>ekf_3x1x0</td><td>simple_form</td><td>-O2</td><td>1188</td><td>0</td><td>176</td><td>0</td><td>1364</td><td>176</td><td>200</td></tr>
+<tr><td>ekf_3x1x0</td><td>simple_form</td><td>-Os</td><td>1200</td><td>0</td><td>176</td><td>0</td><td>1376</td><td>176</td><td>208</td></tr>
+<tr><td>ekf_4x1x0</td><td>information_form</td><td>-O2</td><td>2452</td><td>64</td><td>276</td><td>0</td><td>2792</td><td>276</td><td>544</td></tr>
+<tr><td>ekf_4x1x0</td><td>information_form</td><td>-Os</td><td>2444</td><td>64</td><td>276</td><td>0</td><td>2784</td><td>276</td><td>552</td></tr>
+<tr><td>ekf_4x1x0</td><td>joseph_form</td><td>-O2</td><td>2212</td><td>0</td><td>276</td><td>0</td><td>2488</td><td>276</td><td>696</td></tr>
+<tr><td>ekf_4x1x0</td><td>joseph_form</td><td>-Os</td><td>2220</td><td>0</td><td>276</td><td>0</td><td>2496</td><td>276</td><td>696</td></tr>
+<tr><td>ekf_4x1x0</td><td>simple_form</td><td>-O2</td><td>1424</td><td>0</td><td>276</td><td>0</td><td>1700</td><td>276</td><td>312</td></tr>
+<tr><td>ekf_4x1x0</td><td>simple_form</td><td>-Os</td><td>1424</td><td>0</td><td>276</td><td>0</td><td>1700</td><td>276</td><td>312</td></tr>
+<tr><td>ekf_9x4x0</td><td>information_form</td><td>-O2</td><td>7764</td><td>324</td><td>1464</td><td>0</td><td>9552</td><td>1464</td><td>2560</td></tr>
+<tr><td>ekf_9x4x0</td><td>information_form</td><td>-Os</td><td>7454</td><td>324</td><td>1464</td><td>0</td><td>9242</td><td>1464</td><td>2560</td></tr>
+<tr><td>ekf_9x4x0</td><td>joseph_form</td><td>-O2</td><td>8828</td><td>0</td><td>1464</td><td>0</td><td>10292</td><td>1464</td><td>3208</td></tr>
+<tr><td>ekf_9x4x0</td><td>joseph_form</td><td>-Os</td><td>9130</td><td>0</td><td>1464</td><td>0</td><td>10594</td><td>1464</td><td>3208</td></tr>
+<tr><td>ekf_9x4x0</td><td>simple_form</td><td>-O2</td><td>5404</td><td>0</td><td>1464</td><td>0</td><td>6868</td><td>1464</td><td>1504</td></tr>
+<tr><td>ekf_9x4x0</td><td>simple_form</td><td>-Os</td><td>5530</td><td>0</td><td>1464</td><td>0</td><td>6994</td><td>1464</td><td>1512</td></tr>
+<tr><td>kf_1x1x0</td><td>information_form</td><td>-O2</td><td>88</td><td>0</td><td>32</td><td>0</td><td>120</td><td>32</td><td>0</td></tr>
+<tr><td>kf_1x1x0</td><td>information_form</td><td>-Os</td><td>88</td><td>0</td><td>32</td><td>0</td><td>120</td><td>32</td><td>0</td></tr>
+<tr><td>kf_1x1x0</td><td>joseph_form</td><td>-O2</td><td>92</td><td>0</td><td>32</td><td>0</td><td>124</td><td>32</td><td>0</td></tr>
+<tr><td>kf_1x1x0</td><td>joseph_form</td><td>-Os</td><td>92</td><td>0</td><td>32</td><td>0</td><td>124</td><td>32</td><td>0</td></tr>
+<tr><td>kf_1x1x0</td><td>simple_form</td><td>-O2</td><td>80</td><td>0</td><td>32</td><td>0</td><td>112</td><td>32</td><td>0</td></tr>
+<tr><td>kf_1x1x0</td><td>simple_form</td><td>-Os</td><td>80</td><td>0</td><td>32</td><td>0</td><td>112</td><td>32</td><td>0</td></tr>
+<tr><td>kf_1x1x1</td><td>information_form</td><td>-O2</td><td>96</td><td>0</td><td>36</td><td>0</td><td>132</td><td>36</td><td>0</td></tr>
+<tr><td>kf_1x1x1</td><td>information_form</td><td>-Os</td><td>96</td><td>0</td><td>36</td><td>0</td><td>132</td><td>36</td><td>0</td></tr>
+<tr><td>kf_1x1x1</td><td>joseph_form</td><td>-O2</td><td>100</td><td>0</td><td>36</td><td>0</td><td>136</td><td>36</td><td>0</td></tr>
+<tr><td>kf_1x1x1</td><td>joseph_form</td><td>-Os</td><td>100</td><td>0</td><td>36</td><td>0</td><td>136</td><td>36</td><td>0</td></tr>
+<tr><td>kf_1x1x1</td><td>simple_form</td><td>-O2</td><td>88</td><td>0</td><td>36</td><td>0</td><td>124</td><td>36</td><td>0</td></tr>
+<tr><td>kf_1x1x1</td><td>simple_form</td><td>-Os</td><td>88</td><td>0</td><td>36</td><td>0</td><td>124</td><td>36</td><td>0</td></tr>
+<tr><td>kf_2x1x0</td><td>information_form</td><td>-O2</td><td>1236</td><td>0</td><td>88</td><td>0</td><td>1324</td><td>88</td><td>136</td></tr>
+<tr><td>kf_2x1x0</td><td>information_form</td><td>-Os</td><td>1300</td><td>0</td><td>88</td><td>0</td><td>1388</td><td>88</td><td>112</td></tr>
+<tr><td>kf_2x1x0</td><td>joseph_form</td><td>-O2</td><td>668</td><td>0</td><td>88</td><td>0</td><td>756</td><td>88</td><td>8</td></tr>
+<tr><td>kf_2x1x0</td><td>joseph_form</td><td>-Os</td><td>636</td><td>0</td><td>88</td><td>0</td><td>724</td><td>88</td><td>0</td></tr>
+<tr><td>kf_2x1x0</td><td>simple_form</td><td>-O2</td><td>596</td><td>0</td><td>88</td><td>0</td><td>684</td><td>88</td><td>48</td></tr>
+<tr><td>kf_2x1x0</td><td>simple_form</td><td>-Os</td><td>544</td><td>0</td><td>88</td><td>0</td><td>632</td><td>88</td><td>48</td></tr>
+<tr><td>kf_2x1x1</td><td>information_form</td><td>-O2</td><td>1260</td><td>0</td><td>100</td><td>0</td><td>1360</td><td>100</td><td>136</td></tr>
+<tr><td>kf_2x1x1</td><td>information_form</td><td>-Os</td><td>1320</td><td>0</td><td>100</td><td>0</td><td>1420</td><td>100</td><td>112</td></tr>
+<tr><td>kf_2x1x1</td><td>joseph_form</td><td>-O2</td><td>684</td><td>0</td><td>100</td><td>0</td><td>784</td><td>100</td><td>8</td></tr>
+<tr><td>kf_2x1x1</td><td>joseph_form</td><td>-Os</td><td>648</td><td>0</td><td>100</td><td>0</td><td>748</td><td>100</td><td>0</td></tr>
+<tr><td>kf_2x1x1</td><td>simple_form</td><td>-O2</td><td>596</td><td>0</td><td>100</td><td>0</td><td>696</td><td>100</td><td>48</td></tr>
+<tr><td>kf_2x1x1</td><td>simple_form</td><td>-Os</td><td>560</td><td>0</td><td>100</td><td>0</td><td>660</td><td>100</td><td>48</td></tr>
+<tr><td>kf_6x2x0</td><td>information_form</td><td>-O2</td><td>4476</td><td>144</td><td>600</td><td>0</td><td>5220</td><td>600</td><td>1112</td></tr>
+<tr><td>kf_6x2x0</td><td>information_form</td><td>-Os</td><td>4646</td><td>144</td><td>600</td><td>0</td><td>5390</td><td>600</td><td>1120</td></tr>
+<tr><td>kf_6x2x0</td><td>joseph_form</td><td>-O2</td><td>4792</td><td>0</td><td>600</td><td>0</td><td>5392</td><td>600</td><td>1408</td></tr>
+<tr><td>kf_6x2x0</td><td>joseph_form</td><td>-Os</td><td>4872</td><td>0</td><td>600</td><td>0</td><td>5472</td><td>600</td><td>1408</td></tr>
+<tr><td>kf_6x2x0</td><td>simple_form</td><td>-O2</td><td>2872</td><td>0</td><td>600</td><td>0</td><td>3472</td><td>600</td><td>648</td></tr>
+<tr><td>kf_6x2x0</td><td>simple_form</td><td>-Os</td><td>3006</td><td>0</td><td>600</td><td>0</td><td>3606</td><td>600</td><td>656</td></tr>
+<tr><td>kf_8x4x0</td><td>information_form</td><td>-O2</td><td>6944</td><td>256</td><td>1216</td><td>0</td><td>8416</td><td>1216</td><td>2064</td></tr>
+<tr><td>kf_8x4x0</td><td>information_form</td><td>-Os</td><td>6402</td><td>256</td><td>1216</td><td>0</td><td>7874</td><td>1216</td><td>2072</td></tr>
+<tr><td>kf_8x4x0</td><td>joseph_form</td><td>-O2</td><td>7776</td><td>0</td><td>1216</td><td>0</td><td>8992</td><td>1216</td><td>2576</td></tr>
+<tr><td>kf_8x4x0</td><td>joseph_form</td><td>-Os</td><td>7486</td><td>0</td><td>1216</td><td>0</td><td>8702</td><td>1216</td><td>2584</td></tr>
+<tr><td>kf_8x4x0</td><td>simple_form</td><td>-O2</td><td>4688</td><td>0</td><td>1216</td><td>0</td><td>5904</td><td>1216</td><td>1216</td></tr>
+<tr><td>kf_8x4x0</td><td>simple_form</td><td>-Os</td><td>4618</td><td>0</td><td>1216</td><td>0</td><td>5834</td><td>1216</td><td>1224</td></tr>
+</table>
+</body>
+</html>
