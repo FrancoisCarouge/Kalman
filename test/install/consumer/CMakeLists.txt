@@ -39,8 +39,10 @@ For more information, please refer to <https://unlicense.org> ]]
 cmake_minimum_required(VERSION "4.3")
 project(kalman_install_consumer LANGUAGES "CXX")
 
+# The headers spell identifiers in Unicode: MSVC reads them as UTF-8 only when
+# told to, otherwise in the system code page.
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  add_compile_options("/std:c++latest")
+  add_compile_options("/std:c++latest" "/utf-8")
 else()
   set(CMAKE_CXX_STANDARD 26)
 endif()
