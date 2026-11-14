@@ -370,6 +370,14 @@ var namespacefcarouge_1_1test =
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__3x2x0_8cpp_03.xhtml#a2fe95b75ec67cffd002ff95b2bacc503", null ],
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__3x2x0_8cpp_03.xhtml#ac3678677e0f4f9bf54761e2ba03e85dc", null ]
     ] ],
+    [ "anonymous_namespace{symmetrize_unit_2x2x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__unit__2x2x0_8cpp_03.xhtml", [
+      [ "covariance", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__unit__2x2x0_8cpp_03.xhtml#a468c54fd4f1ba5d7dac7358806b3c07e", null ],
+      [ "motion", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__unit__2x2x0_8cpp_03.xhtml#a4930c991e0cb18b34f9e943ffaf34533", null ],
+      [ "position", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__unit__2x2x0_8cpp_03.xhtml#a8592e5eb31f1c56fbaa9901b005ae01d", null ],
+      [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__unit__2x2x0_8cpp_03.xhtml#a06762370b508e6b2dbefb61623f06fc3", null ],
+      [ "velocity", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__unit__2x2x0_8cpp_03.xhtml#a3b43020743c7307dd9f92c98260149b7", null ],
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02symmetrize__unit__2x2x0_8cpp_03.xhtml#ae49ad524a808aa81a2d2b07b310deebb", null ]
+    ] ],
     [ "anonymous_namespace{traits_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml", [
       [ "filter", "namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325", null ]
     ] ],

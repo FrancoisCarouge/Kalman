@@ -54,5 +54,6 @@ var searchData=
   ['symmetrize_51',['symmetrize',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ace0b11626a1c7cec2d9b54f3726483ef',1,'fcarouge::kalman_filter::internal']]],
   ['symmetrize_5f1x1x0_5ffail_2ecpp_52',['symmetrize_1x1x0_fail.cpp',['../symmetrize__1x1x0__fail_8cpp.xhtml',1,'']]],
   ['symmetrize_5f3x2x0_2ecpp_53',['symmetrize_3x2x0.cpp',['../symmetrize__3x2x0_8cpp.xhtml',1,'']]],
-  ['symmetrize_5festimate_54',['symmetrize_estimate',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a63eb6239e78d5f06fd3f6c1c1b0a4e3f',1,'fcarouge::kalman_filter::internal']]]
+  ['symmetrize_5festimate_54',['symmetrize_estimate',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a63eb6239e78d5f06fd3f6c1c1b0a4e3f',1,'fcarouge::kalman_filter::internal']]],
+  ['symmetrize_5funit_5f2x2x0_2ecpp_55',['symmetrize_unit_2x2x0.cpp',['../symmetrize__unit__2x2x0_8cpp.xhtml',1,'']]]
 ];

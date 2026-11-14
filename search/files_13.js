@@ -15,5 +15,6 @@ var searchData=
   ['stored_5f2x2x1_2ecpp_12',['stored_2x2x1.cpp',['../stored__2x2x1_8cpp.xhtml',1,'']]],
   ['symmetric_5f1x1x0_2ecpp_13',['symmetric_1x1x0.cpp',['../symmetric__1x1x0_8cpp.xhtml',1,'']]],
   ['symmetrize_5f1x1x0_5ffail_2ecpp_14',['symmetrize_1x1x0_fail.cpp',['../symmetrize__1x1x0__fail_8cpp.xhtml',1,'']]],
-  ['symmetrize_5f3x2x0_2ecpp_15',['symmetrize_3x2x0.cpp',['../symmetrize__3x2x0_8cpp.xhtml',1,'']]]
+  ['symmetrize_5f3x2x0_2ecpp_15',['symmetrize_3x2x0.cpp',['../symmetrize__3x2x0_8cpp.xhtml',1,'']]],
+  ['symmetrize_5funit_5f2x2x0_2ecpp_16',['symmetrize_unit_2x2x0.cpp',['../symmetrize__unit__2x2x0_8cpp.xhtml',1,'']]]
 ];

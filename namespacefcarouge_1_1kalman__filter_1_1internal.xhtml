@@ -1207,7 +1207,7 @@ template&lt;std::size_t Row, std::size_t Column&gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00174">position</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00084">deduce_element()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00218">raise_variance_at()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="utility_8hpp_source.xhtml#l00084">deduce_element()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00214">raise_variance_at()</a>.</p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -1351,28 +1351,28 @@ template&lt;typename... Policies&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00252">252</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  252</span>                                                                              {</div>
-<div class="line"><span class="lineno">  253</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> ((std::same_as&lt;Policies, symmetrize_t&gt; || ...)) {</div>
-<div class="line"><span class="lineno">  254</span>    <a class="code hl_function" href="#a63eb6239e78d5f06fd3f6c1c1b0a4e3f">symmetrize_estimate</a>(p);</div>
-<div class="line"><span class="lineno">  255</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00248">248</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  248</span>                                                                              {</div>
+<div class="line"><span class="lineno">  249</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> ((std::same_as&lt;Policies, symmetrize_t&gt; || ...)) {</div>
+<div class="line"><span class="lineno">  250</span>    <a class="code hl_function" href="#a63eb6239e78d5f06fd3f6c1c1b0a4e3f">symmetrize_estimate</a>(p);</div>
+<div class="line"><span class="lineno">  251</span>  }</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(Policies) &gt; 0) {</div>
+<div class="line"><span class="lineno">  254</span>    <span class="keyword">using </span>last =</div>
+<div class="line"><span class="lineno">  255</span>        std::tuple_element_t&lt;<span class="keyword">sizeof</span>...(Policies) - 1, std::tuple&lt;Policies...&gt;&gt;;</div>
 <div class="line"><span class="lineno">  256</span> </div>
-<div class="line"><span class="lineno">  257</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">sizeof</span>...(Policies) &gt; 0) {</div>
-<div class="line"><span class="lineno">  258</span>    <span class="keyword">using </span>last =</div>
-<div class="line"><span class="lineno">  259</span>        std::tuple_element_t&lt;<span class="keyword">sizeof</span>...(Policies) - 1, std::tuple&lt;Policies...&gt;&gt;;</div>
-<div class="line"><span class="lineno">  260</span> </div>
-<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (stored_floors&lt;last&gt;) {</div>
-<div class="line"><span class="lineno">  262</span>      raise_variances(p, configuration.deviations);</div>
-<div class="line"><span class="lineno">  263</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (floors_policy&lt;last&gt;) {</div>
-<div class="line"><span class="lineno">  264</span>      raise_variances(p, <span class="keyword">decltype</span>(last::value){});</div>
-<div class="line"><span class="lineno">  265</span>    }</div>
-<div class="line"><span class="lineno">  266</span>  }</div>
-<div class="line"><span class="lineno">  267</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a63eb6239e78d5f06fd3f6c1c1b0a4e3f"><div class="ttname"><a href="#a63eb6239e78d5f06fd3f6c1c1b0a4e3f">fcarouge::kalman_filter::internal::symmetrize_estimate</a></div><div class="ttdeci">constexpr void symmetrize_estimate(Type &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00193">policy.hpp:193</a></div></div>
+<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (stored_floors&lt;last&gt;) {</div>
+<div class="line"><span class="lineno">  258</span>      raise_variances(p, configuration.deviations);</div>
+<div class="line"><span class="lineno">  259</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (floors_policy&lt;last&gt;) {</div>
+<div class="line"><span class="lineno">  260</span>      raise_variances(p, <span class="keyword">decltype</span>(last::value){});</div>
+<div class="line"><span class="lineno">  261</span>    }</div>
+<div class="line"><span class="lineno">  262</span>  }</div>
+<div class="line"><span class="lineno">  263</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a63eb6239e78d5f06fd3f6c1c1b0a4e3f"><div class="ttname"><a href="#a63eb6239e78d5f06fd3f6c1c1b0a4e3f">fcarouge::kalman_filter::internal::symmetrize_estimate</a></div><div class="ttdeci">constexpr void symmetrize_estimate(Type &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00195">policy.hpp:195</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00237">raise_variances()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00193">symmetrize_estimate()</a>.</p>
+<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00233">raise_variances()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00195">symmetrize_estimate()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00277">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00308">update_estimate_uncertainty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00273">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00304">update_estimate_uncertainty()</a>.</p>
 <div id="dynsection-4" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -1627,7 +1627,7 @@ template&lt;typename Type &gt; </div>
 <div class="line"><span class="lineno">   98</span>  }</div>
 <div class="line"><span class="lineno">   99</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00237">raise_variances()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00233">raise_variances()</a>.</p>
 <div id="dynsection-8" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -2108,16 +2108,16 @@ template&lt;typename Element &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00206">206</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  206</span>                                                                     {</div>
-<div class="line"><span class="lineno">  207</span>  <span class="keyword">const</span> <span class="keyword">auto</span> floor{deviation * deviation};</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span>  <span class="keywordflow">if</span> (variance &lt; floor) {</div>
-<div class="line"><span class="lineno">  210</span>    variance = floor;</div>
-<div class="line"><span class="lineno">  211</span>  }</div>
-<div class="line"><span class="lineno">  212</span>}</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00202">202</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>                                                                     {</div>
+<div class="line"><span class="lineno">  203</span>  <span class="keyword">const</span> <span class="keyword">auto</span> floor{deviation * deviation};</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>  <span class="keywordflow">if</span> (variance &lt; floor) {</div>
+<div class="line"><span class="lineno">  206</span>    variance = floor;</div>
+<div class="line"><span class="lineno">  207</span>  }</div>
+<div class="line"><span class="lineno">  208</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00218">raise_variance_at()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00237">raise_variances()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00214">raise_variance_at()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00233">raise_variances()</a>.</p>
 <div id="dynsection-12" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -2157,27 +2157,27 @@ template&lt;std::size_t Index&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00218">218</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  218</span>                                                                 {</div>
-<div class="line"><span class="lineno">  219</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> {</div>
-<div class="line"><span class="lineno">  220</span>                  p.template at&lt;Index, Index&gt;(p.template at&lt;Index, Index&gt;());</div>
-<div class="line"><span class="lineno">  221</span>                }) {</div>
-<div class="line"><span class="lineno">  222</span>    <span class="keyword">auto</span> variance{p.template at&lt;Index, Index&gt;()};</div>
-<div class="line"><span class="lineno">  223</span> </div>
-<div class="line"><span class="lineno">  224</span>    raise_variance(variance, deviation);</div>
-<div class="line"><span class="lineno">  225</span>    p.template at&lt;Index, Index&gt;(variance);</div>
-<div class="line"><span class="lineno">  226</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  227</span>    <span class="keyword">static_assert</span>(std::is_lvalue_reference_v&lt;decltype(at&lt;Index, Index&gt;(p))&gt;,</div>
-<div class="line"><span class="lineno">  228</span>                  <span class="stringliteral">&quot;The floors require assignable or settable estimate &quot;</span></div>
-<div class="line"><span class="lineno">  229</span>                  <span class="stringliteral">&quot;uncertainty elements from the linear algebra backend.&quot;</span>);</div>
-<div class="line"><span class="lineno">  230</span> </div>
-<div class="line"><span class="lineno">  231</span>    raise_variance(at&lt;Index, Index&gt;(p), deviation);</div>
-<div class="line"><span class="lineno">  232</span>  }</div>
-<div class="line"><span class="lineno">  233</span>}</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00214">214</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  214</span>                                                                 {</div>
+<div class="line"><span class="lineno">  215</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (<span class="keyword">requires</span> {</div>
+<div class="line"><span class="lineno">  216</span>                  p.template at&lt;Index, Index&gt;(p.template at&lt;Index, Index&gt;());</div>
+<div class="line"><span class="lineno">  217</span>                }) {</div>
+<div class="line"><span class="lineno">  218</span>    <span class="keyword">auto</span> variance{p.template at&lt;Index, Index&gt;()};</div>
+<div class="line"><span class="lineno">  219</span> </div>
+<div class="line"><span class="lineno">  220</span>    raise_variance(variance, deviation);</div>
+<div class="line"><span class="lineno">  221</span>    p.template at&lt;Index, Index&gt;(variance);</div>
+<div class="line"><span class="lineno">  222</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keyword">static_assert</span>(std::is_lvalue_reference_v&lt;decltype(at&lt;Index, Index&gt;(p))&gt;,</div>
+<div class="line"><span class="lineno">  224</span>                  <span class="stringliteral">&quot;The floors require assignable or settable estimate &quot;</span></div>
+<div class="line"><span class="lineno">  225</span>                  <span class="stringliteral">&quot;uncertainty elements from the linear algebra backend.&quot;</span>);</div>
+<div class="line"><span class="lineno">  226</span> </div>
+<div class="line"><span class="lineno">  227</span>    raise_variance(at&lt;Index, Index&gt;(p), deviation);</div>
+<div class="line"><span class="lineno">  228</span>  }</div>
+<div class="line"><span class="lineno">  229</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00184">at()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00206">raise_variance()</a>.</p>
+<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00184">at()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00202">raise_variance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00237">raise_variances()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00233">raise_variances()</a>.</p>
 <div id="dynsection-13" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
@@ -2224,23 +2224,23 @@ template&lt;typename Type , typename... Deviations&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00237">237</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  238</span>                                                                          {</div>
-<div class="line"><span class="lineno">  239</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (indexable&lt;Type&gt;) {</div>
-<div class="line"><span class="lineno">  240</span>    [&amp;]&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
-<div class="line"><span class="lineno">  241</span>      (raise_variance_at&lt;Indexes&gt;(p,</div>
-<div class="line"><span class="lineno">  242</span>                                  <a class="code hl_function" href="#a2d4446a89db6abd550d452ab84b34ff7">deviation_of</a>(std::get&lt;Indexes&gt;(deviations))),</div>
-<div class="line"><span class="lineno">  243</span>       ...);</div>
-<div class="line"><span class="lineno">  244</span>    }(std::index_sequence_for&lt;Deviations...&gt;{});</div>
-<div class="line"><span class="lineno">  245</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  246</span>    raise_variance(p, deviation_of(std::get&lt;0&gt;(deviations)));</div>
-<div class="line"><span class="lineno">  247</span>  }</div>
-<div class="line"><span class="lineno">  248</span>}</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00233">233</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  234</span>                                                                          {</div>
+<div class="line"><span class="lineno">  235</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (indexable&lt;Type&gt;) {</div>
+<div class="line"><span class="lineno">  236</span>    [&amp;]&lt;std::size_t... Indexes&gt;(std::index_sequence&lt;Indexes...&gt;) {</div>
+<div class="line"><span class="lineno">  237</span>      (raise_variance_at&lt;Indexes&gt;(p,</div>
+<div class="line"><span class="lineno">  238</span>                                  <a class="code hl_function" href="#a2d4446a89db6abd550d452ab84b34ff7">deviation_of</a>(std::get&lt;Indexes&gt;(deviations))),</div>
+<div class="line"><span class="lineno">  239</span>       ...);</div>
+<div class="line"><span class="lineno">  240</span>    }(std::index_sequence_for&lt;Deviations...&gt;{});</div>
+<div class="line"><span class="lineno">  241</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  242</span>    raise_variance(p, deviation_of(std::get&lt;0&gt;(deviations)));</div>
+<div class="line"><span class="lineno">  243</span>  }</div>
+<div class="line"><span class="lineno">  244</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a2d4446a89db6abd550d452ab84b34ff7"><div class="ttname"><a href="#a2d4446a89db6abd550d452ab84b34ff7">fcarouge::kalman_filter::internal::deviation_of</a></div><div class="ttdeci">constexpr auto deviation_of(const Type &amp;value) -&gt; deviation_t&lt; Type &gt;</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00092">policy.hpp:92</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00092">deviation_of()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00206">raise_variance()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00218">raise_variance_at()</a>.</p>
+<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00092">deviation_of()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00202">raise_variance()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00214">raise_variance_at()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00248">condition()</a>.</p>
 <div id="dynsection-15" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
@@ -2444,23 +2444,17 @@ template&lt;typename Type &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00193">193</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  193</span>                                                                     {</div>
-<div class="line"><span class="lineno">  194</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (indexable&lt;Type&gt;) {</div>
-<div class="line"><span class="lineno">  195</span>    <span class="keyword">using </span><a class="code hl_typedef" href="#ab06af670b0e49de4f355c7c4e195b26b">element</a> = std::remove_cvref_t&lt;decltype(at&lt;0, 0&gt;(p))&gt;;</div>
-<div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::floating_point&lt;element&gt;) {</div>
-<div class="line"><span class="lineno">  198</span>      p = Type{(p + <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(p)) * <a class="code hl_typedef" href="#ab06af670b0e49de4f355c7c4e195b26b">element</a>{0.5}};</div>
-<div class="line"><span class="lineno">  199</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  200</span>      p = Type{(p + t(p)) * 0.5};</div>
-<div class="line"><span class="lineno">  201</span>    }</div>
-<div class="line"><span class="lineno">  202</span>  }</div>
-<div class="line"><span class="lineno">  203</span>}</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00195">195</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>                                                                     {</div>
+<div class="line"><span class="lineno">  196</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (indexable&lt;Type&gt;) {</div>
+<div class="line"><span class="lineno">  197</span>    p = Type{(p + <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(p)) / 2};</div>
+<div class="line"><span class="lineno">  198</span>  }</div>
+<div class="line"><span class="lineno">  199</span>}</div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a9f313ffb99383f4cdc23963798b101f8"><div class="ttname"><a href="#a9f313ffb99383f4cdc23963798b101f8">fcarouge::kalman_filter::internal::t</a></div><div class="ttdeci">constexpr auto t(const Type &amp;value)</div><div class="ttdoc">Transpose helper function.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00478">utility.hpp:478</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="utility_8hpp_source.xhtml#l00478">t()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00248">condition()</a>.</p>
 <div id="dynsection-18" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
@@ -2511,7 +2505,7 @@ template&lt;typename Type &gt; </div>
 <div class="line"><span class="lineno">  479</span>  <span class="keywordflow">return</span> transposes&lt;Type&gt;{}(value);</div>
 <div class="line"><span class="lineno">  480</span>}</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00193">symmetrize_estimate()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00277">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00308">update_estimate_uncertainty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00195">symmetrize_estimate()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00273">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00304">update_estimate_uncertainty()</a>.</p>
 <div id="dynsection-20" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-20-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-20-summary" class="dynsummary" style="display:block;">
@@ -2595,35 +2589,35 @@ template&lt;typename... Policies&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00277">277</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  279</span>                                                          {</div>
-<div class="line"><span class="lineno">  280</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
-<div class="line"><span class="lineno">  281</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
-<div class="line"><span class="lineno">  282</span> </div>
-<div class="line"><span class="lineno">  283</span>  <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> scalar_output{indexable&lt;estimate_uncertainty&gt; &amp;&amp;</div>
-<div class="line"><span class="lineno">  284</span>                               not indexable&lt;std::remove_cvref_t&lt;<span class="keyword">decltype</span>(s)&gt;&gt;};</div>
-<div class="line"><span class="lineno">  285</span> </div>
-<div class="line"><span class="lineno">  286</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt; &amp;&amp; scalar_output) {</div>
-<div class="line"><span class="lineno">  287</span>    p = estimate_uncertainty{p - k * (h * p)};</div>
-<div class="line"><span class="lineno">  288</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  289</span>    p = estimate_uncertainty{(i - k * h) * p};</div>
-<div class="line"><span class="lineno">  290</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  291</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - k * s * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
-<div class="line"><span class="lineno">  292</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  293</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) / r * h)};</div>
-<div class="line"><span class="lineno">  294</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (scalar_output) {</div>
-<div class="line"><span class="lineno">  295</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - k * (h * p)};</div>
-<div class="line"><span class="lineno">  296</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
-<div class="line"><span class="lineno">  297</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  298</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k * h) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k * h) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
-<div class="line"><span class="lineno">  299</span>  }</div>
-<div class="line"><span class="lineno">  300</span> </div>
-<div class="line"><span class="lineno">  301</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
-<div class="line"><span class="lineno">  302</span>}</div>
-<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a5a8e6f0e735b9a2538262fbe471d59ef"><div class="ttname"><a href="#a5a8e6f0e735b9a2538262fbe471d59ef">fcarouge::kalman_filter::internal::condition</a></div><div class="ttdeci">constexpr void condition(const policies&lt; Policies... &gt; &amp;configuration, auto &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00252">policy.hpp:252</a></div></div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00273">273</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  275</span>                                                          {</div>
+<div class="line"><span class="lineno">  276</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
+<div class="line"><span class="lineno">  277</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
+<div class="line"><span class="lineno">  278</span> </div>
+<div class="line"><span class="lineno">  279</span>  <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> scalar_output{indexable&lt;estimate_uncertainty&gt; &amp;&amp;</div>
+<div class="line"><span class="lineno">  280</span>                               not indexable&lt;std::remove_cvref_t&lt;<span class="keyword">decltype</span>(s)&gt;&gt;};</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt; &amp;&amp; scalar_output) {</div>
+<div class="line"><span class="lineno">  283</span>    p = estimate_uncertainty{p - k * (h * p)};</div>
+<div class="line"><span class="lineno">  284</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  285</span>    p = estimate_uncertainty{(i - k * h) * p};</div>
+<div class="line"><span class="lineno">  286</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  287</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - k * s * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  288</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  289</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) / r * h)};</div>
+<div class="line"><span class="lineno">  290</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (scalar_output) {</div>
+<div class="line"><span class="lineno">  291</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - k * (h * p)};</div>
+<div class="line"><span class="lineno">  292</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{p - p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(h) * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  293</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  294</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k * h) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k * h) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  295</span>  }</div>
+<div class="line"><span class="lineno">  296</span> </div>
+<div class="line"><span class="lineno">  297</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
+<div class="line"><span class="lineno">  298</span>}</div>
+<div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a5a8e6f0e735b9a2538262fbe471d59ef"><div class="ttname"><a href="#a5a8e6f0e735b9a2538262fbe471d59ef">fcarouge::kalman_filter::internal::condition</a></div><div class="ttdeci">constexpr void condition(const policies&lt; Policies... &gt; &amp;configuration, auto &amp;p)</div><div class="ttdef"><b>Definition</b> <a href="policy_8hpp_source.xhtml#l00248">policy.hpp:248</a></div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a67e72364f755af0934a50f5fce6dd778"><div class="ttname"><a href="#a67e72364f755af0934a50f5fce6dd778">fcarouge::kalman_filter::internal::estimate_uncertainty</a></div><div class="ttdeci">estimate_uncertainty(Element) -&gt; estimate_uncertainty&lt; Element &gt;</div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00478">t()</a>.</p>
+<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00248">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00478">t()</a>.</p>
 <div id="dynsection-21" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-21-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-21-summary" class="dynsummary" style="display:block;">
@@ -2683,25 +2677,25 @@ template&lt;typename... Policies&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00308">308</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  310</span>                                           {</div>
-<div class="line"><span class="lineno">  311</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
-<div class="line"><span class="lineno">  312</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
-<div class="line"><span class="lineno">  313</span> </div>
-<div class="line"><span class="lineno">  314</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  315</span>    p = estimate_uncertainty{(i - k) * p};</div>
-<div class="line"><span class="lineno">  316</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  317</span>    p = estimate_uncertainty{p - k * s * t(k)};</div>
-<div class="line"><span class="lineno">  318</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
-<div class="line"><span class="lineno">  319</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + i / r)};</div>
-<div class="line"><span class="lineno">  320</span>  } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  321</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
-<div class="line"><span class="lineno">  322</span>  }</div>
-<div class="line"><span class="lineno">  323</span> </div>
-<div class="line"><span class="lineno">  324</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
-<div class="line"><span class="lineno">  325</span>}</div>
+<p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00304">304</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  306</span>                                           {</div>
+<div class="line"><span class="lineno">  307</span>  <span class="keyword">using </span>estimate_uncertainty = std::remove_cvref_t&lt;<span class="keyword">decltype</span>(p)&gt;;</div>
+<div class="line"><span class="lineno">  308</span>  <span class="keyword">using </span>kinds = policies&lt;Policies...&gt;;</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>  <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;simple_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  311</span>    p = estimate_uncertainty{(i - k) * p};</div>
+<div class="line"><span class="lineno">  312</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;symmetric_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  313</span>    p = estimate_uncertainty{p - k * s * t(k)};</div>
+<div class="line"><span class="lineno">  314</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (contains&lt;information_form_t, kinds&gt;) {</div>
+<div class="line"><span class="lineno">  315</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{i / (i / p + i / r)};</div>
+<div class="line"><span class="lineno">  316</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  317</span>    p = <a class="code hl_function" href="#a67e72364f755af0934a50f5fce6dd778">estimate_uncertainty</a>{(i - k) * p * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(i - k) + k * r * <a class="code hl_function" href="#a9f313ffb99383f4cdc23963798b101f8">t</a>(k)};</div>
+<div class="line"><span class="lineno">  318</span>  }</div>
+<div class="line"><span class="lineno">  319</span> </div>
+<div class="line"><span class="lineno">  320</span>  <a class="code hl_function" href="#a5a8e6f0e735b9a2538262fbe471d59ef">condition</a>(configuration, p);</div>
+<div class="line"><span class="lineno">  321</span>}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00252">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00478">t()</a>.</p>
+<p class="reference">References <a class="el" href="policy_8hpp_source.xhtml#l00248">condition()</a>, <a class="el" href="policy_8hpp_source.xhtml#l00167">contains</a>, and <a class="el" href="utility_8hpp_source.xhtml#l00478">t()</a>.</p>
 <div id="dynsection-22" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-22-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-22-summary" class="dynsummary" style="display:block;">
@@ -2829,7 +2823,7 @@ template&lt;typename Policy , typename Policies &gt; </div>
 <p class="definition">Definition at line <a class="el" href="policy_8hpp_source.xhtml#l00167">167</a> of file <a class="el" href="policy_8hpp_source.xhtml">policy.hpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  167</span>{<span class="keyword">false</span>};</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00277">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00308">update_estimate_uncertainty()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="policy_8hpp_source.xhtml#l00273">update_estimate_uncertainty()</a>, and <a class="el" href="policy_8hpp_source.xhtml#l00304">update_estimate_uncertainty()</a>.</p>
 
 </div>
 </div>

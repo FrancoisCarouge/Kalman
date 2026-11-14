@@ -110,7 +110,8 @@ $(function(){initNavTree('md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml',''); ini
 <div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot;</div>
 <div class="line">cmake --build &quot;build&quot; --parallel</div>
 <div class="line">sudo cmake --install &quot;build&quot;</div>
-</div><!-- fragment --><p>The standard shared CMake configuration file provides the library target to use in your own target:</p>
+</div><!-- fragment --><p>Only the <code>include/</code> folder is the library: <code>cmake --install</code> and the release packages deliver it, with its CMake package configuration, and nothing else. The <code>support/</code>, <code>sample/</code>, <code>test/</code>, and <code>benchmark/</code> folders are development examples and tooling, not part of the delivered library.</p>
+<p>The standard shared CMake configuration file provides the library target to use in your own target:</p>
 <div class="fragment"><div class="line">find_package(fcarouge-kalman)</div>
 <div class="line">target_link_libraries(your_target PRIVATE fcarouge-kalman::kalman)</div>
 </div><!-- fragment --><p>Alternatively, fetch the library directly from your project's CMake configuration:</p>
