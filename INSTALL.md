@@ -11,6 +11,8 @@ cmake --build "build" --parallel
 sudo cmake --install "build"
 ```
 
+Only the `include/` folder is the library: `cmake --install` and the release packages deliver it, with its CMake package configuration, and nothing else. The `support/`, `sample/`, `test/`, and `benchmark/` folders are development examples and tooling, not part of the delivered library.
+
 The standard shared CMake configuration file provides the library target to use in your own target:
 
 ```cmake
