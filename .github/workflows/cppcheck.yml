@@ -31,6 +31,10 @@ jobs:
           cmake -S 'cppcheck' -B 'cppcheck/build'
           cmake --build 'cppcheck/build' --parallel 4
           sudo cmake --install 'cppcheck/build' )
+    - name: 'Configure'
+      run: cmake -S . -B 'build' -D BUILD_TESTING=OFF
+    - name: 'Build: Amalgamate'
+      run: cmake --build 'build' --target amalgamate
     # cppcheck cannot evaluate the `__has_feature` compiler built-in.
     - name: Verify
       run: |
@@ -45,6 +49,7 @@ jobs:
           --suppress=unusedFunction \
           --verbose \
           -i build \
+          -I build/amalgamate/fcarouge \
           -I include \
           -I support/eigen \
           -I support/eigexed \

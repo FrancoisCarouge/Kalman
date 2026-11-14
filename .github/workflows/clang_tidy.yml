@@ -35,6 +35,8 @@ jobs:
         CXX: 'clang++-20'
         CC: 'clang-20'
       run: cmake -S . -B 'build' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+    - name: 'Build: Amalgamate'
+      run: cmake --build 'build' --target amalgamate
     - name: Verify
       run: |
         FILES=$(find . \
