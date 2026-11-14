@@ -190,15 +190,11 @@ template <std::size_t Row, std::size_t Column>
 }
 
 // Averages the estimate uncertainty with its transpose. A scalar is symmetric.
+// The halving divides by an integer, which keeps the representation of the
+// elements: a double literal would promote single precision quantities.
 template <typename Type> constexpr void symmetrize_estimate(Type &p) {
   if constexpr (indexable<Type>) {
-    using element = std::remove_cvref_t<decltype(at<0, 0>(p))>;
-
-    if constexpr (std::floating_point<element>) {
-      p = Type{(p + t(p)) * element{0.5}};
-    } else {
-      p = Type{(p + t(p)) * 0.5};
-    }
+    p = Type{(p + t(p)) / 2};
   }
 }
 
