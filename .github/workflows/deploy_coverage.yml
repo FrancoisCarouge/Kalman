@@ -32,7 +32,7 @@ jobs:
         CXXFLAGS: '-O0 -g --coverage -fno-inline'
         CC: 'gcc-15'
         CCFLAGS: '-O0 -g --coverage -fno-inline'
-      run: cmake -S . -B 'build' -D CMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+      run: cmake -S . -B 'build'
     - name: 'Build'
       run: cmake --build 'build' --verbose --parallel 4
     - name: 'Coverage: Base'

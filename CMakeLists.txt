@@ -55,7 +55,6 @@ if(PROJECT_IS_TOP_LEVEL)
   set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE.txt")
   set(CPACK_SOURCE_GENERATOR "TBZ2")
 
-  include(CheckIPOSupported)
   include(CPack)
   include(CTest)
   include(FetchContent)
