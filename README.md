@@ -34,7 +34,7 @@ std::println("{}", filter);
 
 ## Installation & Usage
 
-See [INSTALL.md](https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.md) for installation instructions.
+See [INSTALL.md](https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.md) for installation instructions. Only the `include/` folder is the library: `cmake --install` and the release packages deliver it, with its CMake package configuration, and nothing else. The `support/`, `sample/`, `test/`, and `benchmark/` folders are development examples and tooling, not part of the delivered library.
 
 ## Reference
 
@@ -68,7 +68,7 @@ The public API lives in the `fcarouge` namespace. Import it with a using-declara
 
 ### Linear Algebra Backends
 
-Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Add a backend for higher dimension filters:
+Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Add a backend for higher dimension filters. The backends below are examples, not installed: write your own for your project.
 
 | Integration | Example Backend |
 | --- | --- |
