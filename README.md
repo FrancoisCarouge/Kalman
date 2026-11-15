@@ -471,7 +471,7 @@ Need help integrating, tuning, or extending Kalman filters in your product? Comm
 
 ## License
 
-<img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
+<img align="right" width="100" src="https://opensource.org/wp-content/uploads/2006/09/OSIApproved.png" alt="Open Source Initiative Approved License">
 
 Kalman Filter is public domain:
 
