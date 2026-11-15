@@ -780,14 +780,14 @@ template <auto... Values>
 inline constexpr auto first_v{first_value<Values...>::value};
 
 template <typename Type> struct not_implemented {
+  static constexpr auto type_dependent_false{sizeof(Type) != sizeof(Type)};
+  static constexpr auto missing{type_dependent_false};
+
   template <auto Size>
   constexpr explicit not_implemented(
       [[maybe_unused]] const char (&message)[Size]) {
     // The argument message is printed in the compiler error output.
   }
-
-  static constexpr auto type_dependent_false{sizeof(Type) != sizeof(Type)};
-  static constexpr auto missing{type_dependent_false};
 
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
@@ -5651,18 +5651,6 @@ namespace kf = kalman_filter::internal;
 //! implementation?
 template <typename Filter>
 class kalman : public kf::conditional_member_types<Filter> {
-private:
-  //! @name Private Member Variables
-  //! @{
-
-  //! @brief Encapsulates the implementation details of the filter.
-  //!
-  //! @details Optionally exposes a variety of members and methods according to
-  //! the selected implementation.
-  Filter filter;
-
-  //! @}
-
 public:
   //! @name Public Member Functions
   //! @{
@@ -6066,6 +6054,18 @@ public:
   template <std::size_t Position>
     requires(kf::has_update_argument<Filter, Position>)
   constexpr auto update() const;
+  //! @}
+
+private:
+  //! @name Private Member Variables
+  //! @{
+
+  //! @brief Encapsulates the implementation details of the filter.
+  //!
+  //! @details Optionally exposes a variety of members and methods according to
+  //! the selected implementation.
+  Filter filter;
+
   //! @}
 };
 
