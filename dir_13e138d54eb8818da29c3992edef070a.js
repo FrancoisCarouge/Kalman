@@ -1,5 +1,6 @@
 var dir_13e138d54eb8818da29c3992edef070a =
 [
+    [ "amalgamate", "dir_17fe3c0cc77a147809ce78812d28f980.xhtml", "dir_17fe3c0cc77a147809ce78812d28f980" ],
     [ "assign", "dir_0e0710f50cc64881006e62ab338f5134.xhtml", "dir_0e0710f50cc64881006e62ab338f5134" ],
     [ "conditioning", "dir_13f3630dbc3b722993dd7d54105c66b6.xhtml", "dir_13f3630dbc3b722993dd7d54105c66b6" ],
     [ "constructor", "dir_38eb1dc5b1c36523e6cf628b0c17f528.xhtml", "dir_38eb1dc5b1c36523e6cf628b0c17f528" ],
@@ -10,6 +11,7 @@ var dir_13e138d54eb8818da29c3992edef070a =
     [ "freestanding", "dir_72a26bf6ebae4768851e30ada741b0a4.xhtml", "dir_72a26bf6ebae4768851e30ada741b0a4" ],
     [ "g", "dir_d1a12d779ce83c6e97b1c47ca939e3b4.xhtml", "dir_d1a12d779ce83c6e97b1c47ca939e3b4" ],
     [ "h", "dir_1e029d5dc8cac8b627f2008bcc889bcc.xhtml", "dir_1e029d5dc8cac8b627f2008bcc889bcc" ],
+    [ "install", "dir_3f95608e7abb65f9cbed73c5282f33d4.xhtml", "dir_3f95608e7abb65f9cbed73c5282f33d4" ],
     [ "k", "dir_b09006b479b1a3dd3c9aaf7bbca2ae9c.xhtml", "dir_b09006b479b1a3dd3c9aaf7bbca2ae9c" ],
     [ "member_type", "dir_fa0647c443419a54a1dcf8508b699796.xhtml", "dir_fa0647c443419a54a1dcf8508b699796" ],
     [ "one", "dir_6912f6e2588b85efd62c0d8adb1fd1c1.xhtml", "dir_6912f6e2588b85efd62c0d8adb1fd1c1" ],

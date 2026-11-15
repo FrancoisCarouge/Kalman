@@ -181,6 +181,7 @@ var menudata={children:[
 {text:"f",url:"globals_func.xhtml#index_f"},
 {text:"i",url:"globals_func.xhtml#index_i"},
 {text:"j",url:"globals_func.xhtml#index_j"},
+{text:"m",url:"globals_func.xhtml#index_m"},
 {text:"s",url:"globals_func.xhtml#index_s"}]},
 {text:"Variables",url:"globals_vars.xhtml"}]}]},
 {text:"Examples",url:"examples.xhtml"}]}

@@ -251,6 +251,9 @@ var namespacefcarouge_1_1test =
     [ "anonymous_namespace{joseph_form_1x1x0_fail.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02joseph__form__1x1x0__fail_8cpp_03.xhtml", [
       [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02joseph__form__1x1x0__fail_8cpp_03.xhtml#a6dcd460ebdb62af0e7b4cb8e32ab0e61", null ]
     ] ],
+    [ "anonymous_namespace{kalman.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman_8cpp_03.xhtml", [
+      [ "test", "namespacefcarouge_1_1test_1_1anonymous__namespace_02kalman_8cpp_03.xhtml#adda29d5aac7255385d367992ef1ab738", null ]
+    ] ],
     [ "anonymous_namespace{move_5x4x3.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02move__5x4x3_8cpp_03.xhtml", [
       [ "matrix", "namespacefcarouge_1_1test_1_1anonymous__namespace_02move__5x4x3_8cpp_03.xhtml#aacd40a9dabf7eb06eaf6bef1429d403d", null ],
       [ "vector", "namespacefcarouge_1_1test_1_1anonymous__namespace_02move__5x4x3_8cpp_03.xhtml#a0d101aaae9442bc19510da67f95b665f", null ],
