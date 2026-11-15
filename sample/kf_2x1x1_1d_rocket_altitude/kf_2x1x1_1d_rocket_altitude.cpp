@@ -97,6 +97,8 @@ using state = fcarouge::state<vector<2>>;
 //!
 //! @image html kf_2x1x1_1d_rocket_altitude.svg
 //!
+//! @include{doc} kf_2x1x1_1d_rocket_altitude_benchmark.md
+//!
 //! @example kf_2x1x1_1d_rocket_altitude.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A 2x1x1 filter, constant acceleration dynamic model, no control, step

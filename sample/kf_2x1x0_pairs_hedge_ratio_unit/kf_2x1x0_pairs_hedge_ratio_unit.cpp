@@ -103,6 +103,8 @@ using regressor =
 //!
 //! @image html kf_2x1x0_pairs_hedge_ratio_unit.svg
 //!
+//! @include{doc} kf_2x1x0_pairs_hedge_ratio_unit_benchmark.md
+//!
 //! @example kf_2x1x0_pairs_hedge_ratio_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A 2x1x0 filter, random walk dynamic model, no control, with the price of

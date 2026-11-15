@@ -80,6 +80,8 @@ using state = fcarouge::state<vector<6>>;
 //!
 //! @image html ekf_6x4x0_3d_apollo_position.svg
 //!
+//! @include{doc} ekf_6x4x0_3d_apollo_position_benchmark.md
+//!
 //! @example ekf_6x4x0_3d_apollo_position.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   kalman filter{

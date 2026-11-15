@@ -72,6 +72,8 @@ namespace {
 //!
 //! @image html kf_1x1x0_liquid_temperature.svg
 //!
+//! @include{doc} kf_1x1x0_liquid_temperature_benchmark.md
+//!
 //! @example kf_1x1x0_liquid_temperature.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A one-dimensional filter, constant system dynamic model.

@@ -222,6 +222,8 @@ const auto flow_jacobian{[](const altitude &terrain, const altitude &vehicle,
 //! @todo Support a constraint applied after each update, here keeping the
 //! terrain below the vehicle.
 //!
+//! @include{doc} ekf_1x2x0_terrain_estimation_unit_benchmark.md
+//!
 //! @example ekf_1x2x0_terrain_estimation_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   const auto time_step{0.1 * s};

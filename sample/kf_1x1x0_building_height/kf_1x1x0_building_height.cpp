@@ -66,6 +66,8 @@ namespace {
 //!
 //! @image html kf_1x1x0_building_height.svg
 //!
+//! @include{doc} kf_1x1x0_building_height_benchmark.md
+//!
 //! @example kf_1x1x0_building_height.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A one-dimensional filter, constant system dynamic model.

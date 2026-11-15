@@ -109,6 +109,8 @@ using closing_price_model =
 //!
 //! @image html kf_2x1x0_stock_price_unit.svg
 //!
+//! @include{doc} kf_2x1x0_stock_price_unit_benchmark.md
+//!
 //! @example kf_2x1x0_stock_price_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A 2x1x0 filter, local linear trend dynamic model, no control, constant

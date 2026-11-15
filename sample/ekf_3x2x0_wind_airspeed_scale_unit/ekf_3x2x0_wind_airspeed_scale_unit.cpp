@@ -325,6 +325,8 @@ const auto observation_jacobian{[](const air_data &estimate,
 //! @todo Support a constraint applied after each update, here bounding the
 //! scale factor.
 //!
+//! @include{doc} ekf_3x2x0_wind_airspeed_scale_unit_benchmark.md
+//!
 //! @example ekf_3x2x0_wind_airspeed_scale_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   const auto time_step{0.1 * s};

@@ -117,6 +117,8 @@ using location_model = matrix<double, location::row_indexes, reciprocal_motion>;
 //!
 //! @image html kf_6x2x0_2d_vehicle_position.svg
 //!
+//! @include{doc} kf_6x2x0_2d_vehicle_position_unit_benchmark.md
+//!
 //! @example kf_6x2x0_2d_vehicle_position_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A 6x2x0 filter, constant acceleration dynamic model, no control.

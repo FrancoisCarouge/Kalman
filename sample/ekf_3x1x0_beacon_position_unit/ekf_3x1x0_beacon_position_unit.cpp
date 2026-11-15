@@ -200,6 +200,8 @@ const auto beacon_range_jacobian{[](const position &point,
 //! autopilot's filter does, which caps each diagonal element of K H P at the
 //! variance it corrects.
 //!
+//! @include{doc} ekf_3x1x0_beacon_position_unit_benchmark.md
+//!
 //! @example ekf_3x1x0_beacon_position_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // The beacons, in the order of their identifiers along the N pattern.

@@ -82,6 +82,8 @@ using position = mp_units::quantity<mp_units::isq::length[m]>;
 //!
 //! @image html kf_1x1x1_1d_dog_position.svg
 //!
+//! @include{doc} kf_1x1x1_1d_dog_position_unit_benchmark.md
+//!
 //! @example kf_1x1x1_1d_dog_position_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   kalman filter{

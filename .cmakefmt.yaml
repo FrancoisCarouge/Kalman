@@ -2,6 +2,11 @@ format:
   command_case: unchanged
 
 commands:
+  bench:
+    pargs: 1
+    kwargs:
+      BACKENDS:
+        nargs: "+"
   sample:
     pargs: 1
     kwargs:
