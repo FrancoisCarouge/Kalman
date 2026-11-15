@@ -37,3 +37,4 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 add_subdirectory("footprint")
+add_subdirectory("sample")

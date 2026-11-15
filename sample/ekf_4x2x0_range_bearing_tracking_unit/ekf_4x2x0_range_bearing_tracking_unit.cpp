@@ -242,6 +242,8 @@ const auto output_model_of{[](const track &estimate) -> measurement_jacobian {
 //! @todo Support an angle difference for the innovation, so that the filter
 //! wraps the bearing itself rather than its caller.
 //!
+//! @include{doc} ekf_4x2x0_range_bearing_tracking_unit_benchmark.md
+//!
 //! @example ekf_4x2x0_range_bearing_tracking_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   const auto radius{8. * m};

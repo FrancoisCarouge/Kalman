@@ -74,6 +74,8 @@ using state = fcarouge::state<vector<8>>;
 //! @note For information, the original sample appears to saturate the velocity
 //! precision early on.
 //!
+//! @include{doc} kf_8x4x0_2d_bounding_box_benchmark.md
+//!
 //! @example kf_8x4x0_2d_bounding_box.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   const vector<4> initial_box{605.0F, 248.0F, 0.20481927710843373F, 332.0F};

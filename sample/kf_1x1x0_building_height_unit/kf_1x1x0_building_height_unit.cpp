@@ -76,6 +76,8 @@ using height = mp_units::quantity<mp_units::isq::height[m]>;
 //!
 //! @image html kf_1x1x0_building_height.svg
 //!
+//! @include{doc} kf_1x1x0_building_height_unit_benchmark.md
+//!
 //! @example kf_1x1x0_building_height_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   // A one-dimensional filter, constant system dynamic model.

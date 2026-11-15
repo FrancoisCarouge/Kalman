@@ -161,6 +161,8 @@ constexpr auto time_step{0.02 * s};
 //! @todo Support delayed measurements, with a history of the states, estimate
 //! uncertainties and prediction arguments kept by the filter.
 //!
+//! @include{doc} kf_2x1x1_delayed_target_tracking_unit_benchmark.md
+//!
 //! @example kf_2x1x1_delayed_target_tracking_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   constexpr int measurement_period{5}; // predictions

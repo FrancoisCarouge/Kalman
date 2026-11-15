@@ -355,6 +355,8 @@ const auto state_transition_of{
 //! @todo Support an output type per observation, so that the velocity and the
 //! heading can be fused at their own rates.
 //!
+//! @include{doc} ekf_9x4x0_gimbal_attitude_unit_benchmark.md
+//!
 //! @example ekf_9x4x0_gimbal_attitude_unit.cpp
 [[maybe_unused]] const auto sample{[] -> int {
   const ned_acceleration_vector gravity{Eigen::Vector3d{0., 0., 9.80665} *
