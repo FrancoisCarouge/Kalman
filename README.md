@@ -44,6 +44,12 @@ See [INSTALL.md](https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.m
 
 The library is the state estimation layer between the application and an established linear algebra backend.
 
+### Predict and Update
+
+![The predict and update loop of the filter: the prediction projects the state estimate and its uncertainty forward with the control input, growing the uncertainty, and the update corrects them with a measurement, shrinking the uncertainty. Each equation names the filter characteristic that reads or records it.](https://francoiscarouge.github.io/Kalman/kalman/loop.svg)
+
+The filter predicts the state estimate ahead in time and updates it with each measurement. Each characteristic of the equations is read or written through its accessor of the same name.
+
 ### CMake
 
 Link against the CMake target `fcarouge-kalman::kalman`.

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 530" width="880" height="530" role="img" aria-labelledby="title description" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+  <title id="title">The predict and update loop of the filter</title>
+  <desc id="description">The declaration sets the initial state estimate X and its uncertainty P. The prediction projects them forward with the control input U through the state transition F, the input control G, and the process uncertainty Q: the uncertainty grows. The update corrects them with the measurement Z through the output model H and the output uncertainty R, computing the innovation Y, its uncertainty S, and the gain K: the uncertainty shrinks. Each equation names the filter characteristic that reads or records it.</desc>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #0d1117; stroke: #3d444d; }
+      .layer { fill: #151b23; stroke: #3d444d; }
+      .ink { fill: #f0f6fc; }
+      .muted { fill: #9198a1; }
+      .link { stroke: #9198a1; }
+      .head { fill: #9198a1; }
+      .accent { fill: #238636; }
+      .bell { stroke: #3fb950; fill: #3fb950; }
+    }
+  </style>
+
+  <rect class="card" x="0.5" y="0.5" width="879" height="529" rx="10" fill="#ffffff" stroke="#d1d9e0"/>
+
+  <!-- Declaration: the initial estimate -->
+  <text class="muted" x="40" y="36" font-size="12" fill="#59636e">initial estimate X, P</text>
+  <text class="ink" x="40" y="58" font-size="13" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">kalman filter{state{...}, estimate_uncertainty{...}, ...};</text>
+  <line class="link" x1="120" y1="66" x2="120" y2="91" stroke="#59636e" stroke-width="1.5"/>
+  <polygon class="head" points="115,90 125,90 120,100" fill="#59636e"/>
+
+  <!-- Prediction -->
+  <rect class="layer" x="24" y="100" width="340" height="300" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <path class="accent" d="M24,106 a6,6 0 0 1 6,-6 h328 a6,6 0 0 1 6,6 v40 h-340 z" fill="#1a7f37"/>
+  <text x="40" y="129" font-size="17" font-weight="700" fill="#ffffff">Predict</text>
+  <text x="348" y="129" font-size="13" text-anchor="end" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">filter.predict(u)</text>
+  <text class="muted" x="40" y="172" font-size="12" fill="#59636e">Project the estimate one step ahead.</text>
+  <g class="ink" font-size="16" font-style="italic" fill="#1f2328" font-family="'Cambria Math', 'STIX Two Math', 'Times New Roman', 'DejaVu Serif', serif">
+    <text x="40" y="208">X = F X + G U</text>
+    <text x="40" y="236">P = F P Fᵀ + Q</text>
+  </g>
+  <text class="muted" x="40" y="356" font-size="11" fill="#59636e">reads</text>
+  <text class="muted" x="40" y="380" font-size="11" fill="#59636e">writes</text>
+  <g class="ink" font-size="13" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">
+    <text x="92" y="356">f() g() q()</text>
+    <text x="92" y="380">x() p() u()</text>
+  </g>
+
+  <!-- Update -->
+  <rect class="layer" x="516" y="100" width="340" height="300" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <path class="accent" d="M516,106 a6,6 0 0 1 6,-6 h328 a6,6 0 0 1 6,6 v40 h-340 z" fill="#1a7f37"/>
+  <text x="532" y="129" font-size="17" font-weight="700" fill="#ffffff">Update</text>
+  <text x="840" y="129" font-size="13" text-anchor="end" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">filter.update(z)</text>
+  <text class="muted" x="532" y="172" font-size="12" fill="#59636e">Correct the estimate with a measurement.</text>
+  <g class="ink" font-size="16" font-style="italic" fill="#1f2328" font-family="'Cambria Math', 'STIX Two Math', 'Times New Roman', 'DejaVu Serif', serif">
+    <text x="532" y="208">Y = Z − H X</text>
+    <text x="532" y="236">S = H P Hᵀ + R</text>
+    <text x="532" y="264">K = P Hᵀ S⁻¹</text>
+    <text x="532" y="292">X = X + K Y</text>
+    <text x="532" y="320">P = (I − K H) P (I − K H)ᵀ + K R Kᵀ</text>
+  </g>
+  <text class="muted" x="532" y="356" font-size="11" fill="#59636e">reads</text>
+  <text class="muted" x="532" y="380" font-size="11" fill="#59636e">writes</text>
+  <g class="ink" font-size="13" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">
+    <text x="584" y="356">h() r()</text>
+    <text x="584" y="380">x() p() z() y() s() k()</text>
+  </g>
+
+  <!-- Loop: the predicted estimate, its uncertainty grown -->
+  <text class="muted" x="440" y="128" font-size="12" text-anchor="middle" fill="#59636e">predicted X, P</text>
+  <line class="link" x1="364" y1="140" x2="507" y2="140" stroke="#59636e" stroke-width="1.5"/>
+  <polygon class="head" points="506,135 506,145 516,140" fill="#59636e"/>
+  <path class="bell" d="M380,197.8 L384,197.6 L388,197.3 L392,196.8 L396,196.0 L400,195.0 L404,193.6 L408,191.9 L412,189.7 L416,187.3 L420,184.7 L424,182.0 L428,179.6 L432,177.7 L436,176.4 L440,176.0 L444,176.4 L448,177.7 L452,179.6 L456,182.0 L460,184.7 L464,187.3 L468,189.7 L472,191.9 L476,193.6 L480,195.0 L484,196.0 L488,196.8 L492,197.3 L496,197.6 L500,197.8" stroke="#1a7f37" stroke-width="1.5" fill="#1a7f37" fill-opacity="0.15"/>
+  <text class="muted" x="440" y="216" font-size="12" text-anchor="middle" fill="#59636e">uncertainty grows</text>
+
+  <!-- Loop: the updated estimate, its uncertainty shrunk -->
+  <path class="bell" d="M410,318.0 L414,317.9 L418,317.5 L420,316.9 L422,315.7 L424,313.4 L426,309.5 L428,303.5 L430,295.3 L432,285.2 L434,274.4 L436,264.5 L438,257.5 L440,255.0 L442,257.5 L444,264.5 L446,274.4 L448,285.2 L450,295.3 L452,303.5 L454,309.5 L456,313.4 L458,315.7 L460,316.9 L462,317.5 L466,317.9 L470,318.0" stroke="#1a7f37" stroke-width="1.5" fill="#1a7f37" fill-opacity="0.15"/>
+  <text class="muted" x="440" y="336" font-size="12" text-anchor="middle" fill="#59636e">uncertainty shrinks</text>
+  <line class="link" x1="516" y1="352" x2="373" y2="352" stroke="#59636e" stroke-width="1.5"/>
+  <polygon class="head" points="374,347 374,357 364,352" fill="#59636e"/>
+  <text class="muted" x="440" y="372" font-size="12" text-anchor="middle" fill="#59636e">updated X, P</text>
+
+  <!-- Arguments: the control input and the measurement -->
+  <line class="link" x1="194" y1="440" x2="194" y2="409" stroke="#59636e" stroke-width="1.5"/>
+  <polygon class="head" points="189,410 199,410 194,400" fill="#59636e"/>
+  <text class="muted" x="194" y="458" font-size="12" text-anchor="middle" fill="#59636e">control input U</text>
+  <line class="link" x1="686" y1="440" x2="686" y2="409" stroke="#59636e" stroke-width="1.5"/>
+  <polygon class="head" points="681,410 691,410 686,400" fill="#59636e"/>
+  <text class="muted" x="686" y="458" font-size="12" text-anchor="middle" fill="#59636e">measurement Z</text>
+
+  <!-- Notes -->
+  <text class="muted" x="24" y="494" font-size="12" fill="#59636e">Predict at each time step, update at each measurement. A characteristic absent from the declaration keeps its default:</text>
+  <text class="muted" x="24" y="512" font-size="12" fill="#59636e">identity F, G, H and null Q, R. The estimate uncertainty updates in the Joseph form unless a policy selects another form.</text>
+</svg>
