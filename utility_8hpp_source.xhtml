@@ -631,14 +631,14 @@ $(function(){initNavTree('utility_8hpp_source.xhtml',''); initResizable(true); }
 <div class="line"><a id="l00756" name="l00756"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a01271fc54dbb6537b67ca8b3fb534d35">  756</a></span><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_variable" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a01271fc54dbb6537b67ca8b3fb534d35">first_v</a>{first_value&lt;<a class="code hl_variable" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a769bb512fd918dc04f97236caf382287">Values</a>...&gt;::value};</div>
 <div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span> </div>
 <div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Type&gt; <span class="keyword">struct </span>not_implemented {</div>
-<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>  <span class="keyword">template</span> &lt;auto Size&gt;</div>
-<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>  <span class="keyword">constexpr</span> <span class="keyword">explicit</span> not_implemented(</div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>      [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">char</span> (&amp;message)[Size]) {</div>
-<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>    <span class="comment">// The argument message is printed in the compiler error output.</span></div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>  }</div>
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span> </div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> type_dependent_false{<span class="keyword">sizeof</span>(Type) != <span class="keyword">sizeof</span>(Type)};</div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> missing{type_dependent_false};</div>
+<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> type_dependent_false{<span class="keyword">sizeof</span>(Type) != <span class="keyword">sizeof</span>(Type)};</div>
+<div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span>  <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">auto</span> missing{type_dependent_false};</div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span> </div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>  <span class="keyword">template</span> &lt;auto Size&gt;</div>
+<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>  <span class="keyword">constexpr</span> <span class="keyword">explicit</span> not_implemented(</div>
+<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>      [[maybe_unused]] <span class="keyword">const</span> <span class="keywordtype">char</span> (&amp;message)[Size]) {</div>
+<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span>    <span class="comment">// The argument message is printed in the compiler error output.</span></div>
+<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>  }</div>
 <div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span> </div>
 <div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>  <span class="keyword">static_assert</span>(missing, <span class="stringliteral">&quot;This type is not implemented. See compiler message.&quot;</span>);</div>
 <div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>};</div>
