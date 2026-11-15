@@ -46,11 +46,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   unset(CMAKE_CXX_STANDARD)
 endif()
 
-# The project uses no C++ module. CMake 4.5 scans every C++ 20 and later
-# target for module dependencies, and makes the `std` module available to each,
-# which costs build time.
-set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
-
 check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT _)
 
 # Interprocedural optimization defaults on for the test and sample drivers, to
