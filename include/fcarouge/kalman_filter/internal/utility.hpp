@@ -756,14 +756,14 @@ template <auto... Values>
 inline constexpr auto first_v{first_value<Values...>::value};
 
 template <typename Type> struct not_implemented {
+  static constexpr auto type_dependent_false{sizeof(Type) != sizeof(Type)};
+  static constexpr auto missing{type_dependent_false};
+
   template <auto Size>
   constexpr explicit not_implemented(
       [[maybe_unused]] const char (&message)[Size]) {
     // The argument message is printed in the compiler error output.
   }
-
-  static constexpr auto type_dependent_false{sizeof(Type) != sizeof(Type)};
-  static constexpr auto missing{type_dependent_false};
 
   static_assert(missing, "This type is not implemented. See compiler message.");
 };
