@@ -26,8 +26,6 @@ The [sample benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/be
 | Compile time (s) | Wall time to rebuild the sample's object. |
 | Flash (B) | Allocated sections of the sample's object, but zero-initialized data: code, read-only data, data. |
 | RAM (B) | Writable allocated sections of the sample's object: data, zero-initialized data. |
-| Object (B) | File size of the sample's object. |
-| Executable (B) | File size of the sample's executable. |
 
 Flash and RAM need `readelf`, found by CMake with the ELF toolchains. Measure:
 

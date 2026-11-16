@@ -89,9 +89,6 @@ if(READELF)
   endforeach()
 endif()
 
-file(SIZE "${OBJECT}" OBJECT_SIZE)
-file(SIZE "${EXECUTABLE}" EXECUTABLE_SIZE)
-
 # The run time of the filter's first prediction and update.
 execute_process(
   COMMAND "${DRIVER}"
@@ -109,8 +106,7 @@ endforeach()
 file(
   WRITE "${MEASUREMENTS}/${BACKEND}.txt"
   "${predict_TIME};${update_TIME};${predict_INSTRUCTIONS};"
-  "${update_INSTRUCTIONS};${SECONDS}.${CENTISECONDS};${FLASH};${RAM};"
-  "${OBJECT_SIZE};${EXECUTABLE_SIZE}")
+  "${update_INSTRUCTIONS};${SECONDS}.${CENTISECONDS};${FLASH};${RAM}")
 
 # The documentation: a row per metric measured, a column per backend.
 set(METRICS
@@ -120,9 +116,7 @@ set(METRICS
     "`update` instructions"
     "Compile time (s)"
     "Flash (B)"
-    "RAM (B)"
-    "Object (B)"
-    "Executable (B)")
+    "RAM (B)")
 string(REPLACE "," ";" BACKENDS "${BACKENDS}")
 set(HEADER "| Metric |")
 set(ALIGNMENT "| :-- |")
@@ -133,7 +127,7 @@ foreach(COLUMN IN LISTS BACKENDS)
     string(APPEND HEADER " ${COLUMN} |")
   endif()
   string(APPEND ALIGNMENT " --: |")
-  set(VALUES_${COLUMN} "-;-;-;-;-;-;-;-;-")
+  set(VALUES_${COLUMN} "-;-;-;-;-;-;-")
   if(EXISTS "${MEASUREMENTS}/${COLUMN}.txt")
     file(READ "${MEASUREMENTS}/${COLUMN}.txt" VALUES_${COLUMN})
   endif()

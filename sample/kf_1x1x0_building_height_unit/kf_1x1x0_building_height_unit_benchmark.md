@@ -6,5 +6,3 @@ The [benchmark](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark#
 | Compile time (s) | 2.36 |
 | Flash (B) | 32 |
 | RAM (B) | 0 |
-| Object (B) | 864 |
-| Executable (B) | 16096 |

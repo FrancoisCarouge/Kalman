@@ -129,7 +129,6 @@ function(bench NAME)
         "-DOBJECT_TARGET=${SAMPLE}_bench_object"
         "-DOBJECT=$<TARGET_OBJECTS:${SAMPLE}_bench_object>"
         "-DREADELF=${CMAKE_READELF}"
-        "-DEXECUTABLE=$<TARGET_FILE:${SAMPLE}_driver>"
         "-DDRIVER=$<TARGET_FILE:${SAMPLE}_bench_driver>"
         "-DBACKEND=${BACKEND}"
         "-DBACKENDS=${BACKENDS}"
