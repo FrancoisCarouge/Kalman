@@ -78,8 +78,8 @@ jobs:
     - name: 'Configure: Point at instrumented libc++'
       run: |
         {
-          echo "CXXFLAGS=${CXXFLAGS} -stdlib=libc++ -nostdinc++ -isystem ${HOME}/msan-libcxx/include/c++/v1 -Wno-unused-command-line-argument"
-          echo "LDFLAGS=-fsanitize=memory -stdlib=libc++ -L${HOME}/msan-libcxx/lib -Wl,-rpath,${HOME}/msan-libcxx/lib -lc++abi"
+          echo "CXXFLAGS=${CXXFLAGS} -nostdinc++ -isystem ${HOME}/msan-libcxx/include/c++/v1 -Wno-unused-command-line-argument"
+          echo "LDFLAGS=-fsanitize=memory -L${HOME}/msan-libcxx/lib -Wl,-rpath,${HOME}/msan-libcxx/lib -lc++abi"
           echo "LD_LIBRARY_PATH=${HOME}/msan-libcxx/lib"
         } >> "${GITHUB_ENV}"
     - name: 'Configure'

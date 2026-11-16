@@ -38,6 +38,13 @@ jobs:
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: 'Install: Latest CMake'
       uses: lukka/get-cmake@16e8153a8b4918849d92aad131befe67a3705daa # v4.5.0
+    - name: 'Install: libc++'
+      if: ${{ startsWith(matrix.cxx, 'clang++') && runner.os == 'Linux' }}
+      run: |
+        version="${{ matrix.cxx }}"
+        version="${version##*-}"
+        sudo apt update
+        sudo apt install -y "libc++-${version}-dev" "libc++abi-${version}-dev"
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'

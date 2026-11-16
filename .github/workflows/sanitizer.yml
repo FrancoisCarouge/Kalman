@@ -66,10 +66,10 @@ jobs:
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: 'Install: Latest CMake'
       uses: lukka/get-cmake@16e8153a8b4918849d92aad131befe67a3705daa # v4.5.0
-    - name: 'Install: LLD'
+    - name: 'Install: libc++'
       run: |
         sudo apt update
-        sudo apt install -y "lld-21"
+        sudo apt install -y "libc++-21-dev" "libc++abi-21-dev" "lld-21"
     - name: 'Configure'
       env:
         CXX: 'clang++-21'
