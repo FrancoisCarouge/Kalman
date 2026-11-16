@@ -39,10 +39,8 @@ For more information, please refer to <https://unlicense.org> */
 //! @file
 //! @brief Benchmark of a sample's filter.
 //!
-//! @details Included ahead of the unchanged sample source, it declares the
-//! `benchmark` filter decorator, and the `kalman` class template of the
-//! samples' namespace, which the sample's filter declaration then names: the
-//! library filter decorated with `benchmark`.
+//! @details Included ahead of the unchanged sample, its `kalman` shadows the
+//! library's to decorate the sample's filter with `benchmark`.
 
 #ifndef FCAROUGE_BENCHMARK_HPP
 #define FCAROUGE_BENCHMARK_HPP
@@ -50,39 +48,31 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman.hpp"
 #include "fcarouge/realtime.hpp"
 
-#include <nanobench.h>
-
-#include <format>
-#include <print>
-#include <string>
-#include <tuple>
+#include <string_view>
 #include <type_traits>
-#include <utility>
 
 namespace fcarouge::sample {
-//! @brief The benchmark measures and prints in the sample's static
-//! initialization: it opts out of the real-time verification for its lifetime.
+//! @brief Benchmark measuring and printing is not real-time safe by design.
 inline const not_realtime opt_out;
 
 namespace internal {
-//! @brief Filter decorator measuring the first prediction and the first update
-//! of the decorated filter type.
+//! @brief Filter decorator benchmarking the first prediction and update.
 //!
-//! @details A measurement repeats the call, with its arguments, on a copy of
-//! the filter, and prints a line of the method name, the median time per call
-//! in nanoseconds, its median absolute percentage error, and the median
-//! instructions per call, or `-` without hardware performance counters.
+//! @details Repeats the call on a filter copy, then prints the method, median
+//! nanoseconds, error percentage, and instructions, or `-` without counters.
 template <typename Filter> class benchmarker : public Filter {
 public:
   constexpr explicit benchmarker(Filter &&filter);
+
   constexpr void predict(const auto &...arguments)
     requires requires(Filter &decorated) { decorated.predict(arguments...); };
+
   constexpr void update(const auto &...arguments)
     requires requires(Filter &decorated) { decorated.update(arguments...); };
 
 private:
   //! @brief Measures and prints the call, repeated on the filter.
-  static void bench(const char *method, Filter filter, const auto &call);
+  static void bench(std::string_view method, Filter filter, const auto &call);
 
   //! @brief Whether the first prediction, update, of the filter type is
   //! measured.
@@ -92,89 +82,19 @@ private:
   //! @}
 };
 
-template <typename Filter>
-constexpr benchmarker<Filter>::benchmarker(Filter &&filter)
-    : Filter{std::move(filter)} {}
-
-template <typename Filter>
-constexpr void benchmarker<Filter>::predict(const auto &...arguments)
-  requires requires(Filter &decorated) { decorated.predict(arguments...); }
-{
-  if (!std::exchange(predicted, true)) {
-    bench("predict", static_cast<const Filter &>(*this),
-          [values{std::tie(arguments...)}](Filter &filter) -> void {
-            std::apply(
-                [&filter](const auto &...value) -> void {
-                  filter.predict(value...);
-                },
-                values);
-          });
-  }
-
-  Filter::predict(arguments...);
-}
-
-template <typename Filter>
-constexpr void benchmarker<Filter>::update(const auto &...arguments)
-  requires requires(Filter &decorated) { decorated.update(arguments...); }
-{
-  if (!std::exchange(updated, true)) {
-    bench("update", static_cast<const Filter &>(*this),
-          [values{std::tie(arguments...)}](Filter &filter) -> void {
-            std::apply(
-                [&filter](const auto &...value) -> void {
-                  filter.update(value...);
-                },
-                values);
-          });
-  }
-
-  Filter::update(arguments...);
-}
-
-template <typename Filter>
-void benchmarker<Filter>::bench(const char *method, Filter filter,
-                                const auto &call) {
-  using measure = ankerl::nanobench::Result::Measure;
-
-  //! @brief Nanoseconds in a second, nanobench measuring elapsed time in
-  //! seconds.
-  constexpr double nanoseconds_per_second{1e9};
-
-  //! @brief Percent in a ratio, nanobench reporting its median absolute
-  //! percentage error as a ratio.
-  constexpr double percent_per_ratio{100.};
-
-  ankerl::nanobench::Bench runner;
-  runner.output(nullptr).run(method, [&filter, &call] -> void {
-    call(filter);
-    ankerl::nanobench::doNotOptimizeAway(filter);
-  });
-
-  const auto &result{runner.results().front()};
-  std::println("{} {:.2f} {:.2f} {}", method,
-               result.median(measure::elapsed) * nanoseconds_per_second,
-               result.medianAbsolutePercentError(measure::elapsed) *
-                   percent_per_ratio,
-               result.has(measure::instructions)
-                   ? std::format("{:.0f}", result.median(measure::instructions))
-                   : std::string{"-"});
-}
 } // namespace internal
 
 struct benchmarker {};
 
-//! @brief Filter decorator measuring the first prediction and the first update.
+//! @brief Filter decorator benchmarking the first prediction and update.
 inline constexpr benchmarker benchmark;
 
 //! @note The decorated filter is a prvalue or an xvalue, as for the library's
 //! decorators.
 template <typename Filter>
   requires(std::is_class_v<Filter>)
-[[nodiscard]] constexpr auto
-operator|(Filter &&filter, [[maybe_unused]] const benchmarker &decorator) {
-  return internal::benchmarker<Filter>{std::forward<Filter>(filter)};
-}
+[[nodiscard]] constexpr auto operator|(Filter &&filter,
+                                       const benchmarker &decorator);
 
 //! @brief The library filter, decorated with `benchmark`.
 //!
@@ -188,12 +108,13 @@ public:
   //! @note Forwarding rather than inheriting the constructor avoids an MSVC
   //! internal compiler error.
   template <typename... Arguments>
-  explicit(false) kalman(Arguments... arguments)
-      : base{fcarouge::kalman<Filter>{arguments...} | benchmark} {}
+  explicit(false) kalman(Arguments... arguments);
 };
 
 template <typename... Arguments>
 kalman(Arguments... arguments) -> kalman<kf::deduce_filter<Arguments...>>;
 } // namespace fcarouge::sample
+
+#include "benchmark.tpp"
 
 #endif // FCAROUGE_BENCHMARK_HPP
