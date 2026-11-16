@@ -56,6 +56,16 @@ else()
   set(HEADER "SHELL:-include ${HEADER}")
 endif()
 
+# The standard library ignored by the integer sanitizer, when enabled.
+set(IGNORELIST "")
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang"
+   AND CMAKE_CXX_FLAGS MATCHES "-fsanitize=[^ ]*integer")
+  set(IGNORELIST
+      "-fsanitize-ignorelist=${CMAKE_CURRENT_SOURCE_DIR}/sanitizer_ignorelist.txt"
+  )
+  target_compile_options(nanobench PRIVATE ${IGNORELIST})
+endif()
+
 # Add a given sample benchmark.
 #
 # The sample is compiled unchanged into an object, measured for its compile
@@ -96,7 +106,9 @@ function(bench NAME)
       PRIVATE kalman kalman_realtime ${LIBRARY} kalman_support_options)
 
     add_executable(${SAMPLE}_bench_driver "${SOURCE}")
-    target_compile_options(${SAMPLE}_bench_driver PRIVATE ${HEADER})
+    target_compile_options(
+      ${SAMPLE}_bench_driver
+      PRIVATE ${HEADER} ${IGNORELIST})
     target_link_libraries(
       ${SAMPLE}_bench_driver
       PRIVATE
