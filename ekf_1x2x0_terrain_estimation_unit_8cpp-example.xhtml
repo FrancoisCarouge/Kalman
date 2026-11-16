@@ -123,6 +123,21 @@ $(function(){initNavTree('ekf_1x2x0_terrain_estimation_unit_8cpp-example.xhtml',
 <p class="interdd">Expose the innovation and its uncertainty before the correction, so that an observation can be rejected by its consistency test without recomputing them outside of the filter. </p>
 <p class="enddd">Support a constraint applied after each update, here keeping the terrain below the vehicle.</p>
 </dd></dl>
+<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark#samples">benchmark</a> of the sample, measured with Clang 21.1.8 <code>Release</code> on 24 core Intel(R) Core(TM) Ultra 9 275HX:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Metric   </th><th class="markdownTableHeadRight">mp_units_eigen    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><code>predict</code> time (ns)   </td><td class="markdownTableBodyRight">9.66 ± 2.25 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><code>update</code> time (ns)   </td><td class="markdownTableBodyRight">135.15 ± 1.81 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Compile time (s)   </td><td class="markdownTableBodyRight">27.27    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Flash (B)   </td><td class="markdownTableBodyRight">69026    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">RAM (B)   </td><td class="markdownTableBodyRight">60   </td></tr>
+</table>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
@@ -254,7 +269,7 @@ $(function(){initNavTree('ekf_1x2x0_terrain_estimation_unit_8cpp-example.xhtml',
 <div class="line">    <span class="keywordflow">return</span> 2. * m + (terrain_slope * speed * time);</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
-<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X: the terrain altitude, initially at the take-off point.</span></div>
 <div class="line">      state{terrain_altitude{altitude{0. * m}}},</div>
 <div class="line">      <span class="comment">// The output Z: the range [m] and the flow rate [rad.s^-1].</span></div>
@@ -307,7 +322,7 @@ $(function(){initNavTree('ekf_1x2x0_terrain_estimation_unit_8cpp-example.xhtml',
 <div class="line">                                        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;derivative,</div>
 <div class="line">                                        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;output_variance) -&gt; <span class="keywordtype">bool</span> {</div>
 <div class="line">    <span class="comment">// The one-element H P Hᵀ plus R is the innovation variance S.</span></div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> innovation_variance{(derivative * filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>() * derivative) +</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> innovation_variance{(derivative * filter.p() * derivative) +</div>
 <div class="line">                                   output_variance};</div>
 <div class="line">    <span class="keywordflow">return</span> innovation * innovation &lt; gate * gate * innovation_variance;</div>
 <div class="line">  }};</div>
@@ -319,7 +334,7 @@ $(function(){initNavTree('ekf_1x2x0_terrain_estimation_unit_8cpp-example.xhtml',
 <div class="line">    <span class="keyword">const</span> tilt_angle tilt{0.05 * rad * mp_units::si::sin(0.5 * rad / s * time)};</div>
 <div class="line">    <span class="keyword">const</span> altitude terrain{true_terrain(time)};</div>
 <div class="line"> </div>
-<div class="line">    filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
+<div class="line">    filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">predict</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Deterministic measurement noise, within one standard deviation.</span></div>
 <div class="line">    <span class="keyword">const</span> slant_range range_noise{std::sin(12.9898 * step) * range_deviation};</div>
@@ -337,7 +352,7 @@ $(function(){initNavTree('ekf_1x2x0_terrain_estimation_unit_8cpp-example.xhtml',
 <div class="line">                            flow_noise};</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Observe each available and consistent sensor.</span></div>
-<div class="line">    <span class="keyword">const</span> altitude estimate{filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;&gt;()};</div>
+<div class="line">    <span class="keyword">const</span> altitude estimate{filter.x().at&lt;&gt;()};</div>
 <div class="line">    <span class="keyword">const</span> observed sensors{</div>
 <div class="line">        .range =</div>
 <div class="line">            range_available &amp;&amp;</div>
@@ -350,22 +365,22 @@ $(function(){initNavTree('ekf_1x2x0_terrain_estimation_unit_8cpp-example.xhtml',
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Fuse the observed sensors at once, then keep the terrain below the</span></div>
 <div class="line">    <span class="comment">// vehicle.</span></div>
-<div class="line">    filter.<a id="a4" name="a4"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(vehicle, tilt, speed, sensors, range, flow);</div>
-<div class="line">    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>(terrain_altitude{</div>
-<div class="line">        std::min(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;&gt;(), vehicle - ground_clearance)});</div>
+<div class="line">    filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">update</a>(vehicle, tilt, speed, sensors, range, flow);</div>
+<div class="line">    filter.x(terrain_altitude{</div>
+<div class="line">        std::min(filter.x().at&lt;&gt;(), vehicle - ground_clearance)});</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// The flow keeps the estimate within half a meter through the dropout.</span></div>
 <div class="line">    <span class="keywordflow">if</span> (!range_available) {</div>
-<div class="line">      assert(abs(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;&gt;() - terrain) &lt; 0.5 * m &amp;&amp;</div>
+<div class="line">      assert(abs(filter.x().at&lt;&gt;() - terrain) &lt; 0.5 * m &amp;&amp;</div>
 <div class="line">             <span class="stringliteral">&quot;The optical flow alone keeps the terrain estimate.&quot;</span>);</div>
-<div class="line">      assert(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>() &lt; 0.16 * m2 &amp;&amp;</div>
+<div class="line">      assert(filter.p() &lt; 0.16 * m2 &amp;&amp;</div>
 <div class="line">             <span class="stringliteral">&quot;The optical flow bounds the terrain standard deviation within &quot;</span></div>
 <div class="line">             <span class="stringliteral">&quot;0.4 m, which the process noise alone would grow to 1.7 m.&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  assert(branch_rejected &amp;&amp; <span class="stringliteral">&quot;The short range of the branch is rejected.&quot;</span>);</div>
-<div class="line">  assert(abs(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;&gt;() - true_terrain((steps - 1) * time_step)) &lt;</div>
+<div class="line">  assert(abs(filter.x().at&lt;&gt;() - true_terrain((steps - 1) * time_step)) &lt;</div>
 <div class="line">             0.2 * m &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The range finder brings the terrain estimate back.&quot;</span>);</div>
 <div class="line"> </div>
@@ -373,13 +388,11 @@ $(function(){initNavTree('ekf_1x2x0_terrain_estimation_unit_8cpp-example.xhtml',
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a94686c386c44f80cc386c067d726833d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_a74dcc10493cec1d53b3384c273cdbac8"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">fcarouge::sample::internal::benchmarker::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_ae0f84492f4e032d1f7302a9dbbfbc6dd"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">fcarouge::sample::internal::benchmarker::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00054">benchmark.hpp:54</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a07038ffe00b7c13040684430c40ba29b"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">fcarouge::sample::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

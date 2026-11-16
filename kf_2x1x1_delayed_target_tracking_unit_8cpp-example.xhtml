@@ -122,6 +122,21 @@ $(function(){initNavTree('kf_2x1x1_delayed_target_tracking_unit_8cpp-example.xht
 <object type="image/svg+xml" data="kf_2x1x1_delayed_target_tracking_unit.svg" style="pointer-events: none;"></object>
 </div>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000033">Todo</a></b></dt><dd>Support delayed measurements, with a history of the states, estimate uncertainties and prediction arguments kept by the filter.</dd></dl>
+<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark#samples">benchmark</a> of the sample, measured with Clang 21.1.8 <code>Release</code> on 24 core Intel(R) Core(TM) Ultra 9 275HX:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Metric   </th><th class="markdownTableHeadRight">mp_units_eigen    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><code>predict</code> time (ns)   </td><td class="markdownTableBodyRight">23.62 ± 2.47 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><code>update</code> time (ns)   </td><td class="markdownTableBodyRight">33.09 ± 1.34 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Compile time (s)   </td><td class="markdownTableBodyRight">12.65    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Flash (B)   </td><td class="markdownTableBodyRight">7670    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">RAM (B)   </td><td class="markdownTableBodyRight">20   </td></tr>
+</table>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
@@ -218,7 +233,7 @@ $(function(){initNavTree('kf_2x1x1_delayed_target_tracking_unit_8cpp-example.xht
 <div class="line">  <span class="comment">// The seed of the sensor noise, from the system&#39;s entropy source: a</span></div>
 <div class="line">  <span class="comment">// blocking input-output operation, out of the real-time verification.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> seed{[] -&gt; std::random_device::result_type {</div>
-<div class="line">    <span class="keyword">const</span> not_realtime opt_out;</div>
+<div class="line">    <span class="keyword">const</span> not_realtime <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample.xhtml#a812162088bdd54dc49ac257ce6cb4fb8">opt_out</a>;</div>
 <div class="line">    <span class="keywordflow">return</span> std::random_device{}();</div>
 <div class="line">  }()};</div>
 <div class="line">  <span class="comment">// The sensor noise, a standard normal sequence. The plots are of the seed 1,</span></div>
@@ -234,7 +249,7 @@ $(function(){initNavTree('kf_2x1x1_delayed_target_tracking_unit_8cpp-example.xht
 <div class="line">  <span class="comment">// random walk.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> acceleration_variance{pow&lt;2&gt;(acceleration_deviation)};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> make_filter{[&amp;] -&gt; <span class="keyword">auto</span> {</div>
-<div class="line">    <span class="keywordflow">return</span> <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a>{</div>
+<div class="line">    <span class="keywordflow">return</span> <a id="a1" name="a1"></a><a class="code hl_function" href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">kalman</a>{</div>
 <div class="line">        <span class="comment">// The state X: the relative position [m] and velocity [m.s^-1].</span></div>
 <div class="line">        state{track{position{10. * m}, velocity{0. * m / s}}},</div>
 <div class="line">        <span class="comment">// The output Z: the measured relative position [m].</span></div>
@@ -387,8 +402,9 @@ $(function(){initNavTree('kf_2x1x1_delayed_target_tracking_unit_8cpp-example.xht
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00054">benchmark.hpp:54</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a07038ffe00b7c13040684430c40ba29b"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">fcarouge::sample::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a812162088bdd54dc49ac257ce6cb4fb8"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a812162088bdd54dc49ac257ce6cb4fb8">fcarouge::sample::opt_out</a></div><div class="ttdeci">const not_realtime opt_out</div><div class="ttdoc">Benchmark measuring and printing is not real-time safe by design.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00056">benchmark.hpp:56</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

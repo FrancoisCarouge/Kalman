@@ -176,7 +176,7 @@ template&lt;auto Policy&gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[](<span class="keywordtype">float</span> north, <span class="keywordtype">float</span> east, <span class="keywordtype">float</span> down,</div>
 <div class="line">                   <span class="keywordtype">float</span> squared_range) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line">  <span class="keyword">static</span> <a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line">  <span class="keyword">static</span> kalman filter{</div>
 <div class="line">      state{vector&lt;3&gt;{5.F, 5.F, -1.75F}},</div>
 <div class="line">      output&lt;vector&lt;1&gt;&gt;,</div>
 <div class="line">      estimate_uncertainty{25.F * matrix&lt;3, 3&gt;::identity()},</div>
@@ -207,7 +207,6 @@ template&lt;auto Policy&gt; </div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_xhtml_a7c8f9919c8c1c64d8d201f357986601f"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03.xhtml#a7c8f9919c8c1c64d8d201f357986601f">fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::east</a></div><div class="ttdeci">fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::east east</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03_xhtml_ae1c20cf1a309f0dd554ef724ec0c2b62"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x1x0__beacon__position__unit_8cpp_03.xhtml#ae1c20cf1a309f0dd554ef724ec0c2b62">fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::down</a></div><div class="ttdeci">fcarouge::sample::anonymous_namespace{ekf_3x1x0_beacon_position_unit.cpp}::down down</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03_xhtml_a3586a94458c3596c1f63221fc330e325"><div class="ttname"><a href="namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325">fcarouge::test::anonymous_namespace{traits_1x1x0.cpp}::filter</a></div><div class="ttdeci">decltype(kalman{}) filter</div><div class="ttdef"><b>Definition</b> <a href="assign_2traits__1x1x0_8cpp_source.xhtml#l00046">traits_1x1x0.cpp:46</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
 </div><!-- fragment -->
 <p>Steps a beacon position filter, observing a squared range to a beacon. </p>
 

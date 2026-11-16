@@ -123,6 +123,7 @@ var menudata={children:[
 {text:"Class Hierarchy",url:"inherits.xhtml"},
 {text:"Class Members",url:"functions.xhtml",children:[
 {text:"All",url:"functions.xhtml",children:[
+{text:"b",url:"functions.xhtml#index_b"},
 {text:"d",url:"functions.xhtml#index_d"},
 {text:"f",url:"functions.xhtml#index_f"},
 {text:"g",url:"functions.xhtml#index_g"},
@@ -142,6 +143,7 @@ var menudata={children:[
 {text:"z",url:"functions.xhtml#index_z"},
 {text:"~",url:"functions.xhtml#index__7E"}]},
 {text:"Functions",url:"functions_func.xhtml",children:[
+{text:"b",url:"functions_func.xhtml#index_b"},
 {text:"f",url:"functions_func.xhtml#index_f"},
 {text:"g",url:"functions_func.xhtml#index_g"},
 {text:"h",url:"functions_func.xhtml#index_h"},

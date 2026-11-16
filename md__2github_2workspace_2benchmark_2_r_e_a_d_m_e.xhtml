@@ -112,7 +112,30 @@ Embedded Footprint</h1>
 <div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot; --toolchain &quot;cmake/toolchain_arm_cortex_m4.cmake&quot;</div>
 <div class="line">cmake --build &quot;build&quot; --parallel</div>
 <div class="line">ctest --test-dir &quot;build&quot; --output-on-failure --parallel</div>
-</div><!-- fragment --><p>The tests write the measurements to <code>build/footprint/index.html</code>, and fail on any size change, larger or smaller, from its <code>footprint()</code> line in <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/benchmark/footprint/CMakeLists.txt">footprint/CMakeLists.txt</a>. The criteria hold for the toolchain of the continuous integration runner, <code>gcc-arm-none-eabi</code> 14.2 on Ubuntu 26.04. To accept a change, update the line, with its reason in the commit message. </p>
+</div><!-- fragment --><p>The tests write the measurements to <code>build/footprint/index.html</code>, and fail on any size change, larger or smaller, from its <code>footprint()</code> line in <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/benchmark/footprint/CMakeLists.txt">footprint/CMakeLists.txt</a>. The criteria hold for the toolchain of the continuous integration runner, <code>gcc-arm-none-eabi</code> 14.2 on Ubuntu 26.04. To accept a change, update the line, with its reason in the commit message.</p>
+<h1><a class="anchor" id="samples"></a>
+Samples</h1>
+<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/sample">sample benchmarks</a> measure each <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/sample">sample</a>, per backend, with <a href="https://github.com/martinus/nanobench">nanobench</a>. The sample compiles unchanged, with its own options, assertions and hardening included: the benchmark declares the <code>benchmark</code> filter decorator, like the library's <code>print</code>, measuring the first prediction and the first update, and the <code>kalman</code> class template of the sample's namespace, the library filter decorated with <code>benchmark</code>.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Metric   </th><th class="markdownTableHeadNone">Measure    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>predict</code>, <code>update</code> time (ns)   </td><td class="markdownTableBodyNone">Median time per call ± its median absolute percentage error, the call repeated with the sample's arguments on a copy of the filter.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>predict</code>, <code>update</code> instructions   </td><td class="markdownTableBodyNone">Median instructions per call, where the hardware performance counters are available.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Compile time (s)   </td><td class="markdownTableBodyNone">Wall time to rebuild the sample's object.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Flash (B)   </td><td class="markdownTableBodyNone">Allocated sections of the sample's object, but zero-initialized data: code, read-only data, data.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RAM (B)   </td><td class="markdownTableBodyNone">Writable allocated sections of the sample's object: data, zero-initialized data.   </td></tr>
+</table>
+<p>Flash and RAM need <code>readelf</code>, found by CMake with the ELF toolchains. Measure:</p>
+<div class="fragment"><div class="line">git clone --depth 1 &quot;https://github.com/FrancoisCarouge/kalman&quot;</div>
+<div class="line">cmake -S &quot;kalman&quot; -B &quot;build&quot; -DCMAKE_BUILD_TYPE=&quot;Release&quot; -DBUILD_BENCHMARKING=ON</div>
+<div class="line">cmake --build &quot;build&quot; --parallel</div>
+<div class="line">ctest --test-dir &quot;build&quot; --tests-regex &quot;_bench$&quot; --output-on-failure</div>
+</div><!-- fragment --><p>With a multi-configuration generator, build with <code>--config "Release"</code> and test with <code>--build-config "Release"</code>. The tests run serially, and write each sample's <code>sample/&lt;name&gt;/&lt;name&gt;_benchmark.md</code>, embedded in its documentation. Without <code>BUILD_BENCHMARKING</code>, only <code>kf_1x1x0_building_height</code> is measured, into the build tree. A new sample takes its <code>bench()</code> line, with its backends, in <a href="https://github.com/FrancoisCarouge/Kalman/blob/master/benchmark/sample/CMakeLists.txt">sample/CMakeLists.txt</a>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

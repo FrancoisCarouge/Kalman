@@ -7,7 +7,7 @@ var index =
       [ "Include", "index.xhtml#include", null ],
       [ "Namespace", "index.xhtml#namespace", null ],
       [ "Linear Algebra Backends", "index.xhtml#linear-algebra-backends-1", null ],
-      [ "Samples", "index.xhtml#samples", [
+      [ "Samples", "index.xhtml#samples-1", [
         [ "6x2 Constant Acceleration Dynamic Model Filter", "index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter", null ],
         [ "4x1 Nonlinear Dynamic Model Extended Filter", "index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter", null ]
       ] ],

@@ -41,7 +41,8 @@ var NAVTREE =
       [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
     ] ],
     [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
-      [ "Embedded Footprint", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#embedded-footprint", null ]
+      [ "Embedded Footprint", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#embedded-footprint", null ],
+      [ "Samples", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#samples", null ]
     ] ],
     [ "Changelog", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml", [
       [ "0.5.3 - 2026-03-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
@@ -151,17 +152,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1_8cpp.xhtml",
-"constructor_2copy__5x4x3_8cpp.xhtml",
-"ekf__4x2x0__range__bearing__tracking__unit_8cpp.xhtml#a8ac0f8774c3b75837ee4a1e452e5cc10",
-"input__1x1x1__fail_8cpp.xhtml#ad589356be9640df8639a4466c0b351b3",
-"md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x2x0__range__bearing__tracking__unit_8cpp_03.xhtml#a6ad0f2eda08453404e5ceb39d324f01d",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02default_8cpp_03.xhtml#af7de3ac778d209a6ac9d996c4069cbc0",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02values__5x4x0_8cpp_03.xhtml#a4b6fc1479b0df9285fd1ff81e57c696e",
-"printer_8cpp.xhtml#af8bcc841d474b4700a6bb18fc099e693",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__q__r__hh__f__tt__oo__ps_8cpp_03_1_1model.xhtml#a9ff5a9837d4f3ad58419b3ba2a3ac7c9",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__us__ps_8cpp_03_1_1model.xhtml",
-"x__z__p__q__r__hh__f__tt__oo_8hpp_source.xhtml"
+"conceptfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1has__x.xhtml",
+"ekf__3x2x0__wind__airspeed__scale__unit_8cpp_source.xhtml",
+"index.xhtml#format",
+"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03.xhtml#a6d202a022bab7ab28af08ce90820b85f",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02callable__1x1x1_8cpp_03.xhtml#a50d89c5359df91e82fbe03df73953d61",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325",
+"predict_2noise__jacobian__1x1x0_8cpp.xhtml#a75eb6e83440ac6238d3faa13e5740489",
+"structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml#a70099e42cd54c4096274bb09c7d5e6c8",
+"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo__ps_8cpp_03_1_1noise.xhtml",
+"values__2x2x0_8cpp.xhtml#a3532ab7439cc320400ecfa10aa19fdb2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

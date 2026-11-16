@@ -115,6 +115,21 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <object type="image/svg+xml" data="kf_8x4x0_2d_bounding_box.svg" style="pointer-events: none;"></object>
 </div>
 <dl class="section note"><dt>Note</dt><dd>For information, the original sample appears to saturate the velocity precision early on.</dd></dl>
+<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark#samples">benchmark</a> of the sample, measured with Clang 21.1.8 <code>Release</code> on 24 core Intel(R) Core(TM) Ultra 9 275HX:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Metric   </th><th class="markdownTableHeadRight">eigen   </th><th class="markdownTableHeadRight">eigexed    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><code>predict</code> time (ns)   </td><td class="markdownTableBodyRight">71.60 ± 4.50 %   </td><td class="markdownTableBodyRight">197.33 ± 11.51 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><code>update</code> time (ns)   </td><td class="markdownTableBodyRight">260.37 ± 1.21 %   </td><td class="markdownTableBodyRight">548.95 ± 9.81 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Compile time (s)   </td><td class="markdownTableBodyRight">9.10   </td><td class="markdownTableBodyRight">16.46    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Flash (B)   </td><td class="markdownTableBodyRight">132728   </td><td class="markdownTableBodyRight">133790    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">RAM (B)   </td><td class="markdownTableBodyRight">60   </td><td class="markdownTableBodyRight">60   </td></tr>
+</table>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
@@ -176,7 +191,7 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">float</span> delta_time{1.F};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// A 8x4x0 filter, constant velocity, linear.</span></div>
-<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The filter is initialized with the first observed output.</span></div>
 <div class="line">      <span class="comment">// Bounding box position and velocity estimated state X: [px,</span></div>
 <div class="line">      <span class="comment">// py, pa, ph, vx, vy, va, vh].</span></div>
@@ -340,25 +355,25 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <div class="line">                             {369.F, 250.5F, 0.29757785467128F, 289.F}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Now we can predict the next state based on the initialization values.</span></div>
-<div class="line">  filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
+<div class="line">  filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">predict</a>();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// And so on, run a step of the filter, updating and predicting, every frame.</span></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;measure : measured) {</div>
-<div class="line">    filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(measure);</div>
-<div class="line">    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
+<div class="line">    filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">update</a>(measure);</div>
+<div class="line">    filter.<a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">predict</a>();</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  assert(std::abs(1 - (filter.<a id="a4" name="a4"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[0] / 370.932041394761F)) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[1] / 251.173174229878F)) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[2] / 0.314757138075364F)) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[3] / 287.859996019444F)) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[4] / 1.95865368159518F)) &lt; 0.001F &amp;&amp;</div>
-<div class="line">         std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[5] / 0.229282868701086F)) &lt; 0.001F &amp;&amp;</div>
+<div class="line">  assert(std::abs(1 - (filter.x()[0] / 370.932041394761F)) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[1] / 251.173174229878F)) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[2] / 0.314757138075364F)) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[3] / 287.859996019444F)) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[4] / 1.95865368159518F)) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[5] / 0.229282868701086F)) &lt; 0.001F &amp;&amp;</div>
 <div class="line">         <span class="comment">// The precision of the velocity appears to saturate early on in the</span></div>
 <div class="line">         <span class="comment">// original example. The parameter could be scaled or larger types used</span></div>
 <div class="line">         <span class="comment">// to improve comparison accuracy.</span></div>
-<div class="line">         std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[6] / 2.46138628550094E-06F)) &lt; 0.5F &amp;&amp;</div>
-<div class="line">         std::abs(1 - (filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>()[7] / 0.81402529074969F)) &lt; 0.001F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[6] / 2.46138628550094E-06F)) &lt; 0.5F &amp;&amp;</div>
+<div class="line">         std::abs(1 - (filter.x()[7] / 0.81402529074969F)) &lt; 0.001F &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimated states expected to meet Nwojke&#39;s Deep SORT filter&#39;s &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;MOT16 sample tracker #201 dataset at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
@@ -366,13 +381,12 @@ $(function(){initNavTree('kf_8x4x0_2d_bounding_box_8cpp-example.xhtml',''); init
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_a74dcc10493cec1d53b3384c273cdbac8"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">fcarouge::sample::internal::benchmarker::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_ae0f84492f4e032d1f7302a9dbbfbc6dd"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">fcarouge::sample::internal::benchmarker::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_aba9457c1c484e37b84ea323bc31e264f"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aba9457c1c484e37b84ea323bc31e264f">fcarouge::kalman_filter::internal::make_zero</a></div><div class="ttdeci">constexpr decltype(auto) make_zero()</div><div class="ttdoc">The zero matrix built at the point of use.</div><div class="ttdef"><b>Definition</b> <a href="utility_8hpp_source.xhtml#l00915">utility.hpp:915</a></div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00054">benchmark.hpp:54</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a07038ffe00b7c13040684430c40ba29b"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">fcarouge::sample::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

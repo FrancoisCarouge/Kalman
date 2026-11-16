@@ -160,7 +160,7 @@ Linear Algebra Backends</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">mp-units   </td><td class="markdownTableBodyNone"><a href="https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units">Example backend: <code>support/mp_units</code></a>.   </td></tr>
 </table>
-<h2><a class="anchor" id="samples"></a>
+<h2><a class="anchor" id="samples-1"></a>
 Samples</h2>
 <p>Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states <em>X</em>, <em>P</em>, the processes <em>F</em>, <em>Q</em>, the measurements <em>Z</em>, <em>R</em>, the measurement function <em>H</em>, and if the system has control inputs <em>U</em>, <em>G</em>. Evaluate the performance and iterate.</p>
 <table class="markdownTable">
@@ -392,10 +392,10 @@ Modifiers</h4>
 Policies</h4>
 <p>Declare zero, one, or more policies among the characteristics of a filter, in any order, to select its update form or to condition its estimate uncertainty. A policy is part of the filter type, selected at compile-time, at no runtime cost. An omitted policy selects the default filter.</p>
 <div class="fragment"><div class="line">kalman filter{state{0., 0.}, output&lt;double&gt;, simple_form, symmetrize, floors{0.1, 0.2}};</div>
-<div class="line"><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> constant{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{0., 0.}, output&lt;double&gt;, <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a094f1c8a1191b8bdd892ac06fbc93450">floors</a>{cw&lt;0.1&gt;, cw&lt;0.2&gt;}};</div>
+<div class="line"><a class="code hl_function" href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">kalman</a> constant{<a class="code hl_typedef" href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">state</a>{0., 0.}, output&lt;double&gt;, <a class="code hl_function" href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a094f1c8a1191b8bdd892ac06fbc93450">floors</a>{cw&lt;0.1&gt;, cw&lt;0.2&gt;}};</div>
 <div class="ttc" id="anamespacefcarouge_1_1kalman__filter_1_1internal_xhtml_a094f1c8a1191b8bdd892ac06fbc93450"><div class="ttname"><a href="namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a094f1c8a1191b8bdd892ac06fbc93450">fcarouge::kalman_filter::internal::floors</a></div><div class="ttdeci">floors(Types...) -&gt; floors&lt; Types... &gt;</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03_xhtml_a531900581ead210eade89bdd8c34ca00"><div class="ttname"><a href="namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__4x1x0__thermal__soaring_8cpp_03.xhtml#a531900581ead210eade89bdd8c34ca00">fcarouge::sample::anonymous_namespace{ekf_4x1x0_thermal_soaring.cpp}::state</a></div><div class="ttdeci">fcarouge::state&lt; vector&lt; 4 &gt; &gt; state</div><div class="ttdef"><b>Definition</b> <a href="ekf__4x1x0__thermal__soaring_8cpp_source.xhtml#l00049">ekf_4x1x0_thermal_soaring.cpp:49</a></div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a07038ffe00b7c13040684430c40ba29b"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">fcarouge::sample::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
 </div><!-- fragment --><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Policy   </th><th class="markdownTableHeadNone">Definition    </th></tr>

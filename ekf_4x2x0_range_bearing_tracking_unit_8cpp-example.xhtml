@@ -120,6 +120,21 @@ $(function(){initNavTree('ekf_4x2x0_range_bearing_tracking_unit_8cpp-example.xht
 <object type="image/svg+xml" data="ekf_4x2x0_range_bearing_tracking_unit.svg" style="pointer-events: none;"></object>
 </div>
 <dl class="todo"><dt><b><a class="el" href="todo.xhtml#_todo000031">Todo</a></b></dt><dd>Support an angle difference for the innovation, so that the filter wraps the bearing itself rather than its caller.</dd></dl>
+<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark#samples">benchmark</a> of the sample, measured with Clang 21.1.8 <code>Release</code> on 24 core Intel(R) Core(TM) Ultra 9 275HX:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Metric   </th><th class="markdownTableHeadRight">mp_units_eigen    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><code>predict</code> time (ns)   </td><td class="markdownTableBodyRight">24.80 ± 1.79 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><code>update</code> time (ns)   </td><td class="markdownTableBodyRight">121.20 ± 13.78 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Compile time (s)   </td><td class="markdownTableBodyRight">14.05    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Flash (B)   </td><td class="markdownTableBodyRight">114804    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">RAM (B)   </td><td class="markdownTableBodyRight">60   </td></tr>
+</table>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
@@ -268,7 +283,7 @@ $(function(){initNavTree('ekf_4x2x0_range_bearing_tracking_unit_8cpp-example.xht
 <div class="line">  <span class="comment">// The seed of the sensor noise, from the system&#39;s entropy source: a</span></div>
 <div class="line">  <span class="comment">// blocking input-output operation, out of the real-time verification.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> seed{[] -&gt; std::random_device::result_type {</div>
-<div class="line">    <span class="keyword">const</span> not_realtime opt_out;</div>
+<div class="line">    <span class="keyword">const</span> not_realtime <a id="a0" name="a0"></a><a class="code hl_variable" href="namespacefcarouge_1_1sample.xhtml#a812162088bdd54dc49ac257ce6cb4fb8">opt_out</a>;</div>
 <div class="line">    <span class="keywordflow">return</span> std::random_device{}();</div>
 <div class="line">  }()};</div>
 <div class="line">  <span class="comment">// The sensor noise, a standard normal sequence. The plots are of the seed 1,</span></div>
@@ -278,7 +293,7 @@ $(function(){initNavTree('ekf_4x2x0_range_bearing_tracking_unit_8cpp-example.xht
 <div class="line">  std::normal_distribution distribution{0., 1.};</div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> noise{[&amp;] -&gt; <span class="keywordtype">double</span> { <span class="keywordflow">return</span> distribution(engine); }};</div>
 <div class="line"> </div>
-<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line">  <a id="a1" name="a1"></a><a class="code hl_function" href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X: the target&#39;s position, from its first observation, at</span></div>
 <div class="line">      <span class="comment">// rest.</span></div>
 <div class="line">      state{track{abscissa{radius * mp_units::si::cos(phase)},</div>
@@ -346,18 +361,18 @@ $(function(){initNavTree('ekf_4x2x0_range_bearing_tracking_unit_8cpp-example.xht
 <div class="line">                                  std::numbers::pi * rad);</div>
 <div class="line">    previous_bearing = measured_bearing;</div>
 <div class="line"> </div>
-<div class="line">    filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
+<div class="line">    filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">predict</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Unwrap the measured bearing around the predicted one, so that the</span></div>
 <div class="line">    <span class="comment">// innovation is the angle between them.</span></div>
 <div class="line">    <span class="keyword">const</span> azimuth predicted_bearing{</div>
-<div class="line">        polar(filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;()).at&lt;0&gt;()};</div>
-<div class="line">    filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(predicted_bearing +</div>
+<div class="line">        polar(filter.x().at&lt;0&gt;(), filter.x().at&lt;1&gt;()).at&lt;0&gt;()};</div>
+<div class="line">    filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">update</a>(predicted_bearing +</div>
 <div class="line">                      wrap(measured_bearing - predicted_bearing),</div>
 <div class="line">                  measured_range);</div>
 <div class="line"> </div>
-<div class="line">    squared_errors += pow&lt;2&gt;(length{filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;() - target_x}) +</div>
-<div class="line">                      pow&lt;2&gt;(length{filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;() - target_y});</div>
+<div class="line">    squared_errors += pow&lt;2&gt;(length{filter.x().at&lt;0&gt;() - target_x}) +</div>
+<div class="line">                      pow&lt;2&gt;(length{filter.x().at&lt;1&gt;() - target_y});</div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The target crossed the negative x axis four times, the measured bearing</span></div>
@@ -372,12 +387,12 @@ $(function(){initNavTree('ekf_4x2x0_range_bearing_tracking_unit_8cpp-example.xht
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_a74dcc10493cec1d53b3384c273cdbac8"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">fcarouge::sample::internal::benchmarker::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_ae0f84492f4e032d1f7302a9dbbfbc6dd"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">fcarouge::sample::internal::benchmarker::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00054">benchmark.hpp:54</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a07038ffe00b7c13040684430c40ba29b"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">fcarouge::sample::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a812162088bdd54dc49ac257ce6cb4fb8"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a812162088bdd54dc49ac257ce6cb4fb8">fcarouge::sample::opt_out</a></div><div class="ttdeci">const not_realtime opt_out</div><div class="ttdoc">Benchmark measuring and printing is not real-time safe by design.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00056">benchmark.hpp:56</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -119,6 +119,21 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="image">
 <object type="image/svg+xml" data="kf_2x1x0_stock_price_unit.svg" style="pointer-events: none;"></object>
 </div>
+<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark#samples">benchmark</a> of the sample, measured with Clang 21.1.8 <code>Release</code> on 24 core Intel(R) Core(TM) Ultra 9 275HX:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Metric   </th><th class="markdownTableHeadRight">mp_units_eigen    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><code>predict</code> time (ns)   </td><td class="markdownTableBodyRight">12.64 ± 0.94 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><code>update</code> time (ns)   </td><td class="markdownTableBodyRight">16.91 ± 3.26 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Compile time (s)   </td><td class="markdownTableBodyRight">8.67    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Flash (B)   </td><td class="markdownTableBodyRight">25512    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">RAM (B)   </td><td class="markdownTableBodyRight">12   </td></tr>
+</table>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
@@ -194,7 +209,7 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="comment">// A 2x1x0 filter, local linear trend dynamic model, no control, constant</span></div>
 <div class="line">  <span class="comment">// daily time step.</span></div>
-<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X is chosen to be the price level and slope: [μ, ν]. We don&#39;t</span></div>
 <div class="line">      <span class="comment">// know the stock price; we will set the initial level and slope to 0.</span></div>
 <div class="line">      state{trend{price{0. * USD}, price_slope{0. * USD / d}}},</div>
@@ -245,27 +260,27 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line">  <span class="comment">// Run a step of the filter, updating with the closing price of the day and</span></div>
 <div class="line">  <span class="comment">// predicting the closing price of the next day, every trading day.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](price close) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line">    filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(close);</div>
-<div class="line">    filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
+<div class="line">    filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">update</a>(close);</div>
+<div class="line">    filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">predict</a>();</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
 <div class="line">  step(100.87 * USD);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The first closing price sets the level, the slope remains unknown.</span></div>
-<div class="line">  assert(near(filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 100.77 * USD, 0.001) &amp;&amp;</div>
-<div class="line">         abs(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;()) &lt; 0.001 * USD / d &amp;&amp;</div>
+<div class="line">  assert(near(filter.x().at&lt;0&gt;(), 100.77 * USD, 0.001) &amp;&amp;</div>
+<div class="line">         abs(filter.x().at&lt;1&gt;()) &lt; 0.001 * USD / d &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  step(100.45 * USD);</div>
 <div class="line">  step(99.86 * USD);</div>
 <div class="line"> </div>
-<div class="line">  assert(near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 99.447 * USD, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), -0.4545 * USD / d, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.x().at&lt;0&gt;(), 99.447 * USD, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.x().at&lt;1&gt;(), -0.4545 * USD / d, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line">  assert(near(filter.<a id="a4" name="a4"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 0&gt;(), 2.7337 * USD2, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 1&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 0&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 1&gt;(), 0.64686 * USD2 / d / d, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.p().at&lt;0, 0&gt;(), 2.7337 * USD2, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;0, 1&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;1, 0&gt;(), 1.1372 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;1, 1&gt;(), 0.64686 * USD2 / d / d, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  step(99.32 * USD);</div>
@@ -310,16 +325,16 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line">  <span class="comment">// the next closing price below the last one, at 91.17$. The forecast</span></div>
 <div class="line">  <span class="comment">// uncertainty of the closing price is the level uncertainty plus the</span></div>
 <div class="line">  <span class="comment">// transient fluctuations: σ = √(0.948 + 1) ≈ 1.40$.</span></div>
-<div class="line">  assert(near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 91.172 * USD, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), -0.78336 * USD / d, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.x().at&lt;0&gt;(), 91.172 * USD, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.x().at&lt;1&gt;(), -0.78336 * USD / d, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line">  assert(near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 0&gt;(), 0.94782 * USD2, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 1&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 0&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 1&gt;(), 0.077913 * USD2 / d / d, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.p().at&lt;0, 0&gt;(), 0.94782 * USD2, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;0, 1&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;1, 0&gt;(), 0.13956 * USD2 / d, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;1, 1&gt;(), 0.077913 * USD2 / d / d, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line">  assert(near(filter.<a id="a5" name="a5"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a66b7fb5f4611f79fc9565a19853be657">k</a>().at&lt;0&gt;(), 0.48661 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a66b7fb5f4611f79fc9565a19853be657">k</a>().at&lt;1&gt;(), 0.071652 / d, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.k().at&lt;0&gt;(), 0.48661 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.k().at&lt;1&gt;(), 0.071652 / d, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The steady-state gain weighs the closing price about as much as the &quot;</span></div>
 <div class="line">         <span class="stringliteral">&quot;forecast.&quot;</span>);</div>
 <div class="line"> </div>
@@ -327,14 +342,11 @@ James Durbin and Siem Jan Koopman, Time Series Analysis by State Space Methods, 
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a66b7fb5f4611f79fc9565a19853be657"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a66b7fb5f4611f79fc9565a19853be657">fcarouge::kalman::k</a></div><div class="ttdeci">constexpr decltype(auto) k(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the gain matrix K.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a94686c386c44f80cc386c067d726833d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_a74dcc10493cec1d53b3384c273cdbac8"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">fcarouge::sample::internal::benchmarker::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_ae0f84492f4e032d1f7302a9dbbfbc6dd"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">fcarouge::sample::internal::benchmarker::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00054">benchmark.hpp:54</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a07038ffe00b7c13040684430c40ba29b"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">fcarouge::sample::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -93,5 +93,12 @@ var namespacefcarouge_1_1sample =
       [ "state", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__2d__bounding__box_8cpp_03.xhtml#afda1cb7a5a824a6766b80dc727d98cde", null ],
       [ "vector", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__2d__bounding__box_8cpp_03.xhtml#a43171ff6fb6c5c80e6ec8a791808b63e", null ],
       [ "sample", "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__8x4x0__2d__bounding__box_8cpp_03.xhtml#a6d5c33fae343567041fa046416e3af5f", null ]
-    ] ]
+    ] ],
+    [ "internal", "namespacefcarouge_1_1sample_1_1internal.xhtml", "namespacefcarouge_1_1sample_1_1internal" ],
+    [ "benchmarker", "structfcarouge_1_1sample_1_1benchmarker.xhtml", null ],
+    [ "kalman", "classfcarouge_1_1sample_1_1kalman.xhtml", "classfcarouge_1_1sample_1_1kalman" ],
+    [ "kalman", "namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b", null ],
+    [ "operator|", "namespacefcarouge_1_1sample.xhtml#aa7297e23814fd9ec06e9c83d20c5d97c", null ],
+    [ "benchmark", "namespacefcarouge_1_1sample.xhtml#ab1cce117cc1f10226831b55621a802af", null ],
+    [ "opt_out", "namespacefcarouge_1_1sample.xhtml#a812162088bdd54dc49ac257ce6cb4fb8", null ]
 ];

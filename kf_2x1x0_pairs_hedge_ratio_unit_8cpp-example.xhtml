@@ -116,6 +116,21 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="image">
 <object type="image/svg+xml" data="kf_2x1x0_pairs_hedge_ratio_unit.svg" style="pointer-events: none;"></object>
 </div>
+<p>The <a href="https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark#samples">benchmark</a> of the sample, measured with Clang 21.1.8 <code>Release</code> on 24 core Intel(R) Core(TM) Ultra 9 275HX:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Metric   </th><th class="markdownTableHeadRight">mp_units_eigen    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><code>predict</code> time (ns)   </td><td class="markdownTableBodyRight">12.69 ± 2.54 %    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><code>update</code> time (ns)   </td><td class="markdownTableBodyRight">16.41 ± 1.06 %    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">Compile time (s)   </td><td class="markdownTableBodyRight">8.70    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">Flash (B)   </td><td class="markdownTableBodyRight">38734    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">RAM (B)   </td><td class="markdownTableBodyRight">12   </td></tr>
+</table>
 <div class="fragment"><div class="line"><span class="comment">/*  __          _      __  __          _   _</span></div>
 <div class="line"><span class="comment">| |/ /    /\   | |    |  \/  |   /\   | \ | |</span></div>
 <div class="line"><span class="comment">| &#39; /    /  \  | |    | \  / |  /  \  |  \| |</span></div>
@@ -189,7 +204,7 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line">[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> sample{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  <span class="comment">// A 2x1x0 filter, random walk dynamic model, no control, with the price of</span></div>
 <div class="line">  <span class="comment">// the independent stock as an update argument.</span></div>
-<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">kalman</a> filter{</div>
+<div class="line">  <a id="a0" name="a0"></a><a class="code hl_function" href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">kalman</a> filter{</div>
 <div class="line">      <span class="comment">// The state X is the hedge ratio and intercept: [β, α]. As in the</span></div>
 <div class="line">      <span class="comment">// reference, we start from a null hedge ratio and intercept.</span></div>
 <div class="line">      state{regression{ratio{0. * mp_units::one}, price{0. * USD}}},</div>
@@ -237,25 +252,25 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The first day only updates the filter, as in the reference: with a null</span></div>
 <div class="line">  <span class="comment">// estimate uncertainty, the gain is null and the state remains unchanged.</span></div>
-<div class="line">  filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(20. * USD, 25. * USD);</div>
+<div class="line">  filter.<a id="a1" name="a1"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">update</a>(20. * USD, 25. * USD);</div>
 <div class="line"> </div>
-<div class="line">  assert(filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;() == 0. * mp_units::one &amp;&amp;</div>
-<div class="line">         filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;() == 0. * USD &amp;&amp; <span class="stringliteral">&quot;The state remains null.&quot;</span>);</div>
+<div class="line">  assert(filter.x().at&lt;0&gt;() == 0. * mp_units::one &amp;&amp;</div>
+<div class="line">         filter.x().at&lt;1&gt;() == 0. * USD &amp;&amp; <span class="stringliteral">&quot;The state remains null.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Then, run a step of the filter every trading day, predicting the hedge</span></div>
 <div class="line">  <span class="comment">// ratio and intercept of the day and updating them with the closing prices</span></div>
 <div class="line">  <span class="comment">// of the independent and dependent stocks of the day.</span></div>
 <div class="line">  <span class="keyword">const</span> <span class="keyword">auto</span> step{[&amp;filter](price independent, price dependent) -&gt; <span class="keywordtype">void</span> {</div>
-<div class="line">    filter.<a id="a3" name="a3"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">predict</a>();</div>
-<div class="line">    filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">update</a>(independent, dependent);</div>
+<div class="line">    filter.<a id="a2" name="a2"></a><a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">predict</a>();</div>
+<div class="line">    filter.<a class="code hl_function" href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">update</a>(independent, dependent);</div>
 <div class="line">  }};</div>
 <div class="line"> </div>
 <div class="line">  step(19.94 * USD, 24.71 * USD);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The process uncertainty accumulated over one day lets the second closing</span></div>
 <div class="line">  <span class="comment">// prices set the hedge ratio.</span></div>
-<div class="line">  assert(near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.20586 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0604744 * USD, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.x().at&lt;0&gt;(), 1.20586 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.x().at&lt;1&gt;(), 0.0604744 * USD, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  step(20.19 * USD, 24.97 * USD);</div>
@@ -267,8 +282,8 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line">  step(20.33 * USD, 25.53 * USD);</div>
 <div class="line">  step(20.46 * USD, 25.72 * USD);</div>
 <div class="line"> </div>
-<div class="line">  assert(near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.25398 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0627996 * USD, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.x().at&lt;0&gt;(), 1.25398 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.x().at&lt;1&gt;(), 0.0627996 * USD, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  step(20.32 * USD, 25.74 * USD);</div>
@@ -324,21 +339,21 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line"> </div>
 <div class="line">  <span class="comment">// The estimated hedge ratio follows the drift of the simulated one, 1.371 on</span></div>
 <div class="line">  <span class="comment">// the last day, with a slowly adapting intercept.</span></div>
-<div class="line">  assert(near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;0&gt;(), 1.38158 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">x</a>().at&lt;1&gt;(), 0.0680987 * USD, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.x().at&lt;0&gt;(), 1.38158 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.x().at&lt;1&gt;(), 0.0680987 * USD, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The state estimates expected at 0.1% accuracy.&quot;</span>);</div>
-<div class="line">  assert(near(filter.<a id="a4" name="a4"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 0&gt;(), 2.00937e-05 * mp_units::one, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;0, 1&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 0&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
-<div class="line">         near(filter.<a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">p</a>().at&lt;1, 1&gt;(), 0.00588099 * USD2, 0.001) &amp;&amp;</div>
+<div class="line">  assert(near(filter.p().at&lt;0, 0&gt;(), 2.00937e-05 * mp_units::one, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;0, 1&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;1, 0&gt;(), -0.000318419 * USD, 0.001) &amp;&amp;</div>
+<div class="line">         near(filter.p().at&lt;1, 1&gt;(), 0.00588099 * USD2, 0.001) &amp;&amp;</div>
 <div class="line">         <span class="stringliteral">&quot;The estimate uncertainty expected at 0.1% accuracy.&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// On the last day, the spread, the innovation e = 0.286$, rises above its</span></div>
 <div class="line">  <span class="comment">// standard deviation √S = 0.190$: the strategy enters a short position on</span></div>
 <div class="line">  <span class="comment">// the spread, selling the dependent stock and buying β shares of the</span></div>
 <div class="line">  <span class="comment">// independent stock.</span></div>
-<div class="line">  <span class="keyword">const</span> price spread{filter.<a id="a5" name="a5"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#aad52d4d8b58d348a0fbe34aae27ee5e3">y</a>().at&lt;&gt;()};</div>
-<div class="line">  <span class="keyword">const</span> price deviation{sqrt(filter.<a id="a6" name="a6"></a><a class="code hl_function" href="classfcarouge_1_1kalman.xhtml#a8523e6d9074c0d00621b4dea97c19cad">s</a>())};</div>
+<div class="line">  <span class="keyword">const</span> price spread{filter.y().at&lt;&gt;()};</div>
+<div class="line">  <span class="keyword">const</span> price deviation{sqrt(filter.s())};</div>
 <div class="line"> </div>
 <div class="line">  assert(near(spread, 0.286032 * USD, 0.001) &amp;&amp;</div>
 <div class="line">         near(deviation, 0.190136 * USD, 0.001) &amp;&amp; deviation &lt; spread &amp;&amp;</div>
@@ -348,15 +363,11 @@ $(function(){initNavTree('kf_2x1x0_pairs_hedge_ratio_unit_8cpp-example.xhtml',''
 <div class="line">}()};</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a72be5e8e9f3959187ca4ee7906d7e03d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a72be5e8e9f3959187ca4ee7906d7e03d">fcarouge::kalman::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div><div class="ttdoc">Produces estimates of the state variables and uncertainties.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a8523e6d9074c0d00621b4dea97c19cad"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a8523e6d9074c0d00621b4dea97c19cad">fcarouge::kalman::s</a></div><div class="ttdeci">constexpr decltype(auto) s(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the innovation uncertainty matrix S.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a94686c386c44f80cc386c067d726833d"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a94686c386c44f80cc386c067d726833d">fcarouge::kalman::p</a></div><div class="ttdeci">constexpr decltype(auto) p(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated covariance matrix P.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_aad52d4d8b58d348a0fbe34aae27ee5e3"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#aad52d4d8b58d348a0fbe34aae27ee5e3">fcarouge::kalman::y</a></div><div class="ttdeci">constexpr decltype(auto) y(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the innovation column vector Y.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_acb9134f0ff17c263fcc3fd4c79a5e461"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#acb9134f0ff17c263fcc3fd4c79a5e461">fcarouge::kalman::x</a></div><div class="ttdeci">constexpr decltype(auto) x(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the estimated state column vector X.</div></div>
-<div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_ad173b50a3c8510c5a393d265085458be"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#ad173b50a3c8510c5a393d265085458be">fcarouge::kalman::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div><div class="ttdoc">Updates the estimates with the outcome of a measurement.</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_a74dcc10493cec1d53b3384c273cdbac8"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#a74dcc10493cec1d53b3384c273cdbac8">fcarouge::sample::internal::benchmarker::update</a></div><div class="ttdeci">constexpr void update(const auto &amp;...arguments)</div></div>
+<div class="ttc" id="aclassfcarouge_1_1sample_1_1internal_1_1benchmarker_xhtml_ae0f84492f4e032d1f7302a9dbbfbc6dd"><div class="ttname"><a href="classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml#ae0f84492f4e032d1f7302a9dbbfbc6dd">fcarouge::sample::internal::benchmarker::predict</a></div><div class="ttdeci">constexpr void predict(const auto &amp;...arguments)</div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
-<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div></div>
-<div class="ttc" id="anamespacefcarouge_xhtml_aff94d4d68501e292b973188436fadba6"><div class="ttname"><a href="namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6">fcarouge::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div><div class="ttdoc">Deduces the filter type from its declared configuration.</div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml">fcarouge::sample</a></div><div class="ttdoc">Examples, tutorials, demonstrators of the library.</div><div class="ttdef"><b>Definition</b> <a href="benchmark_8hpp_source.xhtml#l00054">benchmark.hpp:54</a></div></div>
+<div class="ttc" id="anamespacefcarouge_1_1sample_xhtml_a07038ffe00b7c13040684430c40ba29b"><div class="ttname"><a href="namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b">fcarouge::sample::kalman</a></div><div class="ttdeci">kalman(Arguments... arguments) -&gt; kalman&lt; kf::deduce_filter&lt; Arguments... &gt; &gt;</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -59,7 +59,12 @@ var annotated_dup =
           [ "currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1currency.xhtml", null ],
           [ "dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml", null ],
           [ "us_dollar", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1us__dollar.xhtml", null ]
-        ] ]
+        ] ],
+        [ "internal", "namespacefcarouge_1_1sample_1_1internal.xhtml", [
+          [ "benchmarker", "classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml", "classfcarouge_1_1sample_1_1internal_1_1benchmarker" ]
+        ] ],
+        [ "benchmarker", "structfcarouge_1_1sample_1_1benchmarker.xhtml", null ],
+        [ "kalman", "classfcarouge_1_1sample_1_1kalman.xhtml", "classfcarouge_1_1sample_1_1kalman" ]
       ] ],
       [ "test", "namespacefcarouge_1_1test.xhtml", [
         [ "anonymous_namespace{absent_1x1x0.cpp}", "namespacefcarouge_1_1test_1_1anonymous__namespace_02absent__1x1x0_8cpp_03.xhtml", [

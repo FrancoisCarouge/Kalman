@@ -4,6 +4,7 @@ var hierarchy =
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_pairs_hedge_ratio_unit.cpp}::dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__pairs__hedge__ratio__unit_8cpp_03_1_1dim__currency.xhtml", null ],
       [ "fcarouge::sample::anonymous_namespace{kf_2x1x0_stock_price_unit.cpp}::dim_currency", "structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml", null ]
     ] ],
+    [ "fcarouge::sample::benchmarker", "structfcarouge_1_1sample_1_1benchmarker.xhtml", null ],
     [ "fcarouge::sample::anonymous_namespace{ekf_3x2x0_wind_airspeed_scale_unit.cpp}::body_air_velocity", "structfcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03_1_1body__air__velocity.xhtml", null ],
     [ "fcarouge::kalman_filter::internal::conditional_estimate_uncertainty< Filter >", null, [
       [ "fcarouge::kalman_filter::internal::conditional_member_types< Filter >", null, [
@@ -199,5 +200,12 @@ var hierarchy =
       [ "mp_units::component_vectors< fcarouge::sample::ned_rotation >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__rotation_01_4.xhtml", null ],
       [ "mp_units::component_vectors< fcarouge::sample::ned_velocity >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__velocity_01_4.xhtml", null ],
       [ "mp_units::component_vectors< fcarouge::sample::ned_velocity >", "structmp__units_1_1component__vectors_3_01fcarouge_1_1sample_1_1ned__velocity_01_4.xhtml", null ]
-    ] ]
+    ] ],
+    [ "Filter", null, [
+      [ "fcarouge::sample::internal::benchmarker< fcarouge::kalman< Filter > >", "classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml", [
+        [ "fcarouge::sample::kalman< Filter >", "classfcarouge_1_1sample_1_1kalman.xhtml", null ]
+      ] ],
+      [ "fcarouge::sample::internal::benchmarker< Filter >", "classfcarouge_1_1sample_1_1internal_1_1benchmarker.xhtml", null ]
+    ] ],
+    [ "static bool", "classstatic_01bool.xhtml", null ]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['main_0',['main',['../find__package_8cpp.xhtml#a8216c1645620cdb2f629cde3ac02ffef',1,'find_package.cpp']]],
-  ['make_5fone_1',['make_one',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a8c80fe5303040082902b545f76027b3b',1,'fcarouge::kalman_filter::internal']]],
-  ['make_5fzero_2',['make_zero',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#aba9457c1c484e37b84ea323bc31e264f',1,'fcarouge::kalman_filter::internal']]]
+  ['k_0',['k',['../classfcarouge_1_1kalman.xhtml#a66b7fb5f4611f79fc9565a19853be657',1,'fcarouge::kalman']]],
+  ['kalman_1',['kalman',['../classfcarouge_1_1sample_1_1kalman.xhtml#a1096a382f0da5fed8fbe357e784f8d32',1,'fcarouge::sample::kalman::kalman()'],['../classfcarouge_1_1kalman.xhtml#a97302af7221f8e1f224002863f32f2d3',1,'fcarouge::kalman::kalman(Arguments... arguments)'],['../classfcarouge_1_1kalman.xhtml#a413e9589c51e5234e547106382dd6afd',1,'fcarouge::kalman::kalman(const kalman &amp;other)=default'],['../classfcarouge_1_1kalman.xhtml#a0c2291a1d9bd4cc169f91e9b10399b38',1,'fcarouge::kalman::kalman(kalman &amp;&amp;other) noexcept=default'],['../namespacefcarouge_1_1sample.xhtml#a07038ffe00b7c13040684430c40ba29b',1,'fcarouge::sample::kalman()'],['../namespacefcarouge.xhtml#aff94d4d68501e292b973188436fadba6',1,'fcarouge::kalman()']]]
 ];
