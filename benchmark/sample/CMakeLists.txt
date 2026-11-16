@@ -48,6 +48,8 @@ FetchContent_Declare(
   FIND_PACKAGE_ARGS NAMES nanobench)
 FetchContent_MakeAvailable(nanobench)
 
+target_link_libraries(nanobench PRIVATE kalman_support_options)
+
 # The benchmark header, included ahead of the sample source.
 set(HEADER "${CMAKE_CURRENT_SOURCE_DIR}/fcarouge/benchmark.hpp")
 if(CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")

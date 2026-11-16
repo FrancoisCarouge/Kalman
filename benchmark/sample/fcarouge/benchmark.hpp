@@ -53,7 +53,7 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::sample {
 //! @brief Benchmark measuring and printing is not real-time safe by design.
-inline const not_realtime opt_out;
+const not_realtime opt_out;
 
 namespace internal {
 //! @brief Filter decorator benchmarking the first prediction and update.
