@@ -17,7 +17,7 @@ The tests write the measurements to `build/footprint/index.html`, and fail on an
 
 ## Samples
 
-The [sample benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/sample) measure each [sample](https://github.com/FrancoisCarouge/Kalman/tree/master/sample), per backend, with [nanobench](https://github.com/martinus/nanobench). The sample compiles unchanged, with its own options, assertions and hardening included: the benchmark declares the `kalman` class template of the sample's namespace, the library filter measuring its first prediction and its first update.
+The [sample benchmarks](https://github.com/FrancoisCarouge/Kalman/tree/master/benchmark/sample) measure each [sample](https://github.com/FrancoisCarouge/Kalman/tree/master/sample), per backend, with [nanobench](https://github.com/martinus/nanobench). The sample compiles unchanged, with its own options, assertions and hardening included: the benchmark declares the `benchmark` filter decorator, like the library's `print`, measuring the first prediction and the first update, and the `kalman` class template of the sample's namespace, the library filter decorated with `benchmark`.
 
 | Metric | Measure |
 | --- | --- |
