@@ -59,6 +59,7 @@ For more information, please refer to <https://unlicense.org> */
 #include <format>
 #include <print>
 #include <string>
+#include <tuple>
 #include <utility>
 
 namespace fcarouge::sample {
@@ -70,13 +71,21 @@ inline const not_realtime opt_out;
 template <typename Filter> class kalman : public fcarouge::kalman<Filter> {
 public:
   using base = fcarouge::kalman<Filter>;
-  using base::base;
+
+  //! @note Forwarding rather than inheriting the constructor avoids an MSVC
+  //! internal compiler error.
+  template <typename... Arguments>
+  explicit(false) kalman(Arguments... arguments) : base{arguments...} {}
 
   void predict(const auto &...arguments) {
     if (!std::exchange(predicted, true)) {
       bench("predict", static_cast<const base &>(*this),
-            [&arguments...](base &filter) -> void {
-              filter.predict(arguments...);
+            [values{std::tie(arguments...)}](base &filter) -> void {
+              std::apply(
+                  [&filter](const auto &...value) -> void {
+                    filter.predict(value...);
+                  },
+                  values);
             });
     }
     base::predict(arguments...);
@@ -85,8 +94,12 @@ public:
   void update(const auto &...arguments) {
     if (!std::exchange(updated, true)) {
       bench("update", static_cast<const base &>(*this),
-            [&arguments...](base &filter) -> void {
-              filter.update(arguments...);
+            [values{std::tie(arguments...)}](base &filter) -> void {
+              std::apply(
+                  [&filter](const auto &...value) -> void {
+                    filter.update(value...);
+                  },
+                  values);
             });
     }
     base::update(arguments...);

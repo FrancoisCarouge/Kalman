@@ -1,0 +1,5 @@
+# The integer sanitizer reports the standard library's well-defined unsigned
+# wraparound and conversions, reached by nanobench and by the formatting of the
+# measurements.
+[*integer*]
+src:*/include/c++/*
