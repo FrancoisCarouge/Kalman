@@ -59,13 +59,13 @@ constexpr struct ned_displacement
 //! never added to, nor substituted for, an east displacement.
 //! @{
 constexpr struct north
-    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::subkind> {
 } north;
 constexpr struct east
-    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::subkind> {
 } east;
 constexpr struct down
-    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::subkind> {
 } down;
 //! @}
 } // namespace

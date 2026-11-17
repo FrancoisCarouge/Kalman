@@ -63,25 +63,25 @@ constexpr struct ned_rotation
                               mp_units::quantity_tensor_order::vector> {
 } ned_rotation;
 constexpr struct north_angle
-    : mp_units::quantity_spec<ned_rotation, mp_units::is_kind> {
+    : mp_units::quantity_spec<ned_rotation, mp_units::subkind> {
 } north_angle;
 constexpr struct east_angle
-    : mp_units::quantity_spec<ned_rotation, mp_units::is_kind> {
+    : mp_units::quantity_spec<ned_rotation, mp_units::subkind> {
 } east_angle;
 constexpr struct down_angle
-    : mp_units::quantity_spec<ned_rotation, mp_units::is_kind> {
+    : mp_units::quantity_spec<ned_rotation, mp_units::subkind> {
 } down_angle;
 constexpr struct ned_velocity
     : mp_units::quantity_spec<mp_units::isq::velocity> {
 } ned_velocity;
 constexpr struct north_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } north_velocity;
 constexpr struct east_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } east_velocity;
 constexpr struct down_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } down_velocity;
 constexpr struct ned_acceleration
     : mp_units::quantity_spec<ned_velocity / mp_units::isq::duration> {
@@ -100,13 +100,13 @@ constexpr struct body_angular_velocity
     : mp_units::quantity_spec<body_rotation / mp_units::isq::duration> {
 } body_angular_velocity;
 constexpr struct roll_rate
-    : mp_units::quantity_spec<body_angular_velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<body_angular_velocity, mp_units::subkind> {
 } roll_rate;
 constexpr struct pitch_rate
-    : mp_units::quantity_spec<body_angular_velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<body_angular_velocity, mp_units::subkind> {
 } pitch_rate;
 constexpr struct yaw_rate
-    : mp_units::quantity_spec<body_angular_velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<body_angular_velocity, mp_units::subkind> {
 } yaw_rate;
 constexpr struct body_velocity
     : mp_units::quantity_spec<mp_units::isq::velocity> {
