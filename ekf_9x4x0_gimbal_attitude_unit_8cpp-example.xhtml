@@ -198,25 +198,25 @@ Joan Solà, Quaternion Kinematics for the Error-State Kalman Filter, 2017, <a hr
 <div class="line">                              mp_units::quantity_tensor_order::vector&gt; {</div>
 <div class="line">} ned_rotation;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>north_angle</div>
-<div class="line">    : mp_units::quantity_spec&lt;ned_rotation, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;ned_rotation, mp_units::subkind&gt; {</div>
 <div class="line">} north_angle;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>east_angle</div>
-<div class="line">    : mp_units::quantity_spec&lt;ned_rotation, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;ned_rotation, mp_units::subkind&gt; {</div>
 <div class="line">} east_angle;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>down_angle</div>
-<div class="line">    : mp_units::quantity_spec&lt;ned_rotation, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;ned_rotation, mp_units::subkind&gt; {</div>
 <div class="line">} down_angle;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>ned_velocity</div>
 <div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity&gt; {</div>
 <div class="line">} ned_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>north_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} north_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>east_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} east_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>down_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} down_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>ned_acceleration</div>
 <div class="line">    : mp_units::quantity_spec&lt;ned_velocity / mp_units::isq::duration&gt; {</div>
@@ -230,13 +230,13 @@ Joan Solà, Quaternion Kinematics for the Error-State Kalman Filter, 2017, <a hr
 <div class="line">    : mp_units::quantity_spec&lt;body_rotation / mp_units::isq::duration&gt; {</div>
 <div class="line">} body_angular_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>roll_rate</div>
-<div class="line">    : mp_units::quantity_spec&lt;body_angular_velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;body_angular_velocity, mp_units::subkind&gt; {</div>
 <div class="line">} roll_rate;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>pitch_rate</div>
-<div class="line">    : mp_units::quantity_spec&lt;body_angular_velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;body_angular_velocity, mp_units::subkind&gt; {</div>
 <div class="line">} pitch_rate;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>yaw_rate</div>
-<div class="line">    : mp_units::quantity_spec&lt;body_angular_velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;body_angular_velocity, mp_units::subkind&gt; {</div>
 <div class="line">} yaw_rate;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>body_velocity</div>
 <div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity&gt; {</div>

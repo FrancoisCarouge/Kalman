@@ -202,20 +202,20 @@ Yaakov Bar-Shalom, X. Rong Li, Thiagalingam Kirubarajan, Estimation with Applica
 <div class="line">} ned_velocity;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>north_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} north_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>east_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} east_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>down_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} down_velocity;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>forward_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} forward_velocity;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>right_velocity</div>
-<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::is_kind&gt; {</div>
+<div class="line">    : mp_units::quantity_spec&lt;mp_units::isq::velocity, mp_units::subkind&gt; {</div>
 <div class="line">} right_velocity;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>true_airspeed : mp_units::quantity_spec&lt;mp_units::isq::speed&gt; {</div>
@@ -226,12 +226,12 @@ Yaakov Bar-Shalom, X. Rong Li, Thiagalingam Kirubarajan, Estimation with Applica
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>airspeed_scale</div>
 <div class="line">    : mp_units::quantity_spec&lt;mp_units::dimensionless,</div>
 <div class="line">                              indicated_airspeed / true_airspeed,</div>
-<div class="line">                              mp_units::is_kind&gt; {</div>
+<div class="line">                              mp_units::subkind&gt; {</div>
 <div class="line">} airspeed_scale;</div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keyword">struct </span>sideslip</div>
 <div class="line">    : mp_units::quantity_spec&lt;mp_units::dimensionless,</div>
 <div class="line">                              right_velocity / forward_velocity,</div>
-<div class="line">                              mp_units::is_kind&gt; {</div>
+<div class="line">                              mp_units::subkind&gt; {</div>
 <div class="line">} sideslip;</div>
 <div class="line">} <span class="comment">// namespace</span></div>
 <div class="line">} <span class="comment">// namespace fcarouge::sample</span></div>
