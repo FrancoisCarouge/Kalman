@@ -59,10 +59,10 @@ namespace {
 //! same axis.
 //! @{
 constexpr struct x_position
-    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::subkind> {
 } x_position;
 constexpr struct y_position
-    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::displacement, mp_units::subkind> {
 } y_position;
 constexpr struct x_velocity
     : mp_units::quantity_spec<x_position / mp_units::isq::duration> {
@@ -78,10 +78,10 @@ constexpr struct y_velocity
 //! @{
 constexpr struct bearing
     : mp_units::quantity_spec<mp_units::isq::angular_measure,
-                              mp_units::is_kind> {
+                              mp_units::subkind> {
 } bearing;
 constexpr struct range
-    : mp_units::quantity_spec<mp_units::isq::distance, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::distance, mp_units::subkind> {
 } range;
 //! @}
 

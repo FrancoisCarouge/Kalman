@@ -64,13 +64,13 @@ constexpr struct ned_velocity
 //! added to, nor substituted for, an east velocity.
 //! @{
 constexpr struct north_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } north_velocity;
 constexpr struct east_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } east_velocity;
 constexpr struct down_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } down_velocity;
 //! @}
 
@@ -78,10 +78,10 @@ constexpr struct down_velocity
 //! @brief The air velocity ahead of the aircraft's nose and to its right.
 //! @{
 constexpr struct forward_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } forward_velocity;
 constexpr struct right_velocity
-    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::is_kind> {
+    : mp_units::quantity_spec<mp_units::isq::velocity, mp_units::subkind> {
 } right_velocity;
 //! @}
 
@@ -101,12 +101,12 @@ constexpr struct indicated_airspeed
 constexpr struct airspeed_scale
     : mp_units::quantity_spec<mp_units::dimensionless,
                               indicated_airspeed / true_airspeed,
-                              mp_units::is_kind> {
+                              mp_units::subkind> {
 } airspeed_scale;
 constexpr struct sideslip
     : mp_units::quantity_spec<mp_units::dimensionless,
                               right_velocity / forward_velocity,
-                              mp_units::is_kind> {
+                              mp_units::subkind> {
 } sideslip;
 //! @}
 } // namespace
