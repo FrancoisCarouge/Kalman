@@ -65,6 +65,7 @@ target_sources(
       "fcarouge/kalman_filter/internal/x_z_p_q_r_hh_ff_tt_oo.hpp"
       "fcarouge/kalman_filter/internal/x_z_p_q_r_hh_ff_us_ps.hpp"
       "fcarouge/kalman_filter/internal/x_z_p_q_r.hpp"
+      "fcarouge/kalman_filter/internal/x_z_p_q_r_tt_oo_ut.hpp"
       "fcarouge/kalman_filter/internal/x_z_p_qq_r_hh_f_tt_oo_ps.hpp"
       "fcarouge/kalman_filter/internal/x_z_p_qq_r_hh_f_tt_oo_us.hpp"
       "fcarouge/kalman_filter/internal/x_z_p_qq_r_hh_f_tt_oo.hpp"
