@@ -148,17 +148,18 @@ $(function(){initNavTree('arithmetic__uncertainty__1x1x0__fail_8cpp_source.xhtml
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02arithmetic__uncertainty__1x1x0__fail_8cpp_03.xhtml">   42</a></span><span class="keyword">namespace </span>{</div>
 <div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespacefcarouge_1_1test_1_1anonymous__namespace_02arithmetic__uncertainty__1x1x0__fail_8cpp_03.xhtml#a3e47c70c911f2a617538ee2df9c55c93">   45</a></span>[[maybe_unused]] <span class="keyword">const</span> <span class="keyword">auto</span> test{[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">// Intended: kalman filter{state{0.F}, output&lt;float&gt;,</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="comment">// Intended: [[maybe_unused]] kalman filter{state{0.F}, output&lt;float&gt;,</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="comment">// estimate_uncertainty{1.F}, output_uncertainty{1.F}};</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.F}, output&lt;float&gt;, estimate_uncertainty{1.},</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                output_uncertainty{1.F}};</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}()};</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  [[maybe_unused]] <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.F}, output&lt;float&gt;,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                 estimate_uncertainty{1.},</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                 output_uncertainty{1.F}};</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}()};</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>} <span class="comment">// namespace</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>} <span class="comment">// namespace</span></div>
 </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>} <span class="comment">// namespace fcarouge::test</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>} <span class="comment">// namespace fcarouge::test</span></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman__forward_8hpp_source.xhtml#l00049">kalman_forward.hpp:49</a></div></div>
 <div class="ttc" id="akalman_8hpp_xhtml"><div class="ttname"><a href="kalman_8hpp.xhtml">kalman.hpp</a></div><div class="ttdoc">The Kalman filter class and library top-level header.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_xhtml"><div class="ttname"><a href="namespacefcarouge_1_1test.xhtml">fcarouge::test</a></div><div class="ttdoc">Unit, integration, regression, and usage tests.</div></div>

@@ -125,7 +125,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{[] -&gt; <span class="keywordtype">int</span> {</div>
 <div class="line">  </div>
-<div class="line">  kalman filter{state{0.}, floors{0.5}, floors{cw&lt;0.5&gt;}};</div>
+<div class="line">  [[maybe_unused]] kalman filter{state{0.}, floors{0.5}, floors{cw&lt;0.5&gt;}};</div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}()}</div>
@@ -133,8 +133,8 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="floors__1x1x0__fail_8cpp_source.xhtml#l00045">45</a> of file <a class="el" href="floors__1x1x0__fail_8cpp_source.xhtml">floors_1x1x0_fail.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   45</span>                                {[] -&gt; <span class="keywordtype">int</span> {</div>
-<div class="line"><span class="lineno">   46</span>  <span class="comment">// Intended: kalman filter{state{0.}, floors{0.5}};</span></div>
-<div class="line"><span class="lineno">   47</span>  <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.}, floors{0.5}, floors{cw&lt;0.5&gt;}};</div>
+<div class="line"><span class="lineno">   46</span>  <span class="comment">// Intended: [[maybe_unused]] kalman filter{state{0.}, floors{0.5}};</span></div>
+<div class="line"><span class="lineno">   47</span>  [[maybe_unused]] <a class="code hl_class" href="classfcarouge_1_1kalman.xhtml">kalman</a> filter{state{0.}, floors{0.5}, floors{cw&lt;0.5&gt;}};</div>
 <div class="line"><span class="lineno">   48</span> </div>
 <div class="line"><span class="lineno">   49</span>  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   50</span>}()};</div>
