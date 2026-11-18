@@ -43,9 +43,10 @@ namespace {
 //! @test Verifies an unsupported declaration is rejected: a process uncertainty
 //! without estimate and output uncertainties.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, output<double>,
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, output<double>,
   // estimate_uncertainty{1.}, process_uncertainty{1.}, output_uncertainty{1.}};
-  kalman filter{state{0.}, output<double>, process_uncertainty{1.}};
+  [[maybe_unused]] kalman filter{state{0.}, output<double>,
+                                 process_uncertainty{1.}};
 
   return 0;
 }()};

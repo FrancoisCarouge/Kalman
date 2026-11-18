@@ -43,10 +43,11 @@ namespace {
 //! @test Verifies a declaration mixing arithmetic types is rejected: an
 //! estimate uncertainty type wider than the state and output type.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.F}, output<float>,
+  // Intended: [[maybe_unused]] kalman filter{state{0.F}, output<float>,
   // estimate_uncertainty{1.F}, output_uncertainty{1.F}};
-  kalman filter{state{0.F}, output<float>, estimate_uncertainty{1.},
-                output_uncertainty{1.F}};
+  [[maybe_unused]] kalman filter{state{0.F}, output<float>,
+                                 estimate_uncertainty{1.},
+                                 output_uncertainty{1.F}};
 
   return 0;
 }()};

@@ -42,8 +42,8 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies a declaration of two update forms is rejected.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, simple_form};
-  kalman filter{state{0.}, simple_form, symmetric_form};
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, simple_form};
+  [[maybe_unused]] kalman filter{state{0.}, simple_form, symmetric_form};
 
   return 0;
 }()};

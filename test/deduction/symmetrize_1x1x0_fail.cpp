@@ -42,8 +42,8 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies a declaration of the symmetrization twice is rejected.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, symmetrize};
-  kalman filter{state{0.}, symmetrize, symmetrize};
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, symmetrize};
+  [[maybe_unused]] kalman filter{state{0.}, symmetrize, symmetrize};
 
   return 0;
 }()};

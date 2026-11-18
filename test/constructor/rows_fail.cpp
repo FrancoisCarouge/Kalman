@@ -42,7 +42,7 @@ namespace fcarouge::test {
 namespace {
 //! @test Verifies the characteristic declared from a list of rows is rejected
 //! with rows of different sizes.
-// Intended: const estimate_uncertainty p0{{2., 1.}, {1., 3.}};
+// Intended: [[maybe_unused]] const estimate_uncertainty p0{{2., 1.}, {1., 3.}};
 [[maybe_unused]] const estimate_uncertainty p0{{2., 1.}, {1.}};
 } // namespace
 } // namespace fcarouge::test

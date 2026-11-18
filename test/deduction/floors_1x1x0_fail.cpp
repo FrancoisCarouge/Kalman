@@ -43,8 +43,8 @@ namespace {
 //! @test Verifies a declaration of the floors twice, of a runtime and of a
 //! constant standard deviation, is rejected.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, floors{0.5}};
-  kalman filter{state{0.}, floors{0.5}, floors{cw<0.5>}};
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, floors{0.5}};
+  [[maybe_unused]] kalman filter{state{0.}, floors{0.5}, floors{cw<0.5>}};
 
   return 0;
 }()};

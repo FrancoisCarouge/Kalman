@@ -43,8 +43,8 @@ namespace {
 //! @test Verifies floors other than one standard deviation per state are
 //! rejected.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, floors{0.5}};
-  kalman filter{state{0.}, floors{0.5, 0.5}};
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, floors{0.5}};
+  [[maybe_unused]] kalman filter{state{0.}, floors{0.5, 0.5}};
 
   return 0;
 }()};
