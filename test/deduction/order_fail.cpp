@@ -43,8 +43,8 @@ namespace {
 //! @test Verifies an out of order declaration is rejected: the output declared
 //! ahead of the state.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, output<double>};
-  kalman filter{output<double>, state{0.}};
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, output<double>};
+  [[maybe_unused]] kalman filter{output<double>, state{0.}};
 
   return 0;
 }()};

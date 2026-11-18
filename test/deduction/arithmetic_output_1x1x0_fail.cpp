@@ -43,8 +43,8 @@ namespace {
 //! @test Verifies a declaration mixing arithmetic types is rejected: an output
 //! type different from the state type.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, output<double>};
-  kalman filter{state{0.}, output<float>};
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, output<double>};
+  [[maybe_unused]] kalman filter{state{0.}, output<float>};
 
   return 0;
 }()};

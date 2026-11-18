@@ -43,8 +43,8 @@ namespace {
 //! @test Verifies a declaration of the explicit default Joseph form and of
 //! another update form is rejected.
 [[maybe_unused]] const auto test{[] -> int {
-  // Intended: kalman filter{state{0.}, simple_form};
-  kalman filter{state{0.}, joseph_form, simple_form};
+  // Intended: [[maybe_unused]] kalman filter{state{0.}, simple_form};
+  [[maybe_unused]] kalman filter{state{0.}, joseph_form, simple_form};
 
   return 0;
 }()};
