@@ -162,5 +162,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
       "/std:c++latest"
       "/UNDEBUG"
       "/utf-8"
-      "/W4")
+      "/W4"
+      "/wd4702"
+      "/WX")
 endif()
