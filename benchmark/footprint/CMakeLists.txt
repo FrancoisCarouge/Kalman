@@ -59,6 +59,11 @@ function(footprint NAME POLICY OPTIMIZATION)
   if(NOT CMAKE_CROSSCOMPILING)
     if(NOT TARGET kalman_freestanding_footprint_${NAME}_build_driver)
       build("${NAME}" BACKENDS "freestanding")
+      # The entry points' `[[gnu::flatten]]` shapes the cross-compiled image
+      # only: MSVC does not recognize it (C5030).
+      target_compile_options(
+        kalman_freestanding_footprint_${NAME}_build_driver
+        PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/wd5030>)
     endif()
     return()
   endif()
