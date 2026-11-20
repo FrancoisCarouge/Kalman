@@ -43,6 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "utility.hpp"
 
 #include <tuple>
+#include <type_traits>
 
 namespace fcarouge::kalman_filter::internal {
 // Helper template to support multiple pack deduction.
@@ -61,8 +62,13 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>,
   using estimate_uncertainty = ᴀʙᵀ<state, state>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = evaluate<quotient<state, state>>;
-  using output_model = evaluate<quotient<output, state>>;
+  // The state transition F and the output model H are of the types their
+  // callables compute, such as a matrix of a sparsity pattern, which may differ
+  // from the types of the quotients of the state and the output.
+  using state_transition = evaluate<std::remove_cvref_t<
+      std::invoke_result_t<TransitionState, const PredictionTypes &...>>>;
+  using output_model = evaluate<std::remove_cvref_t<
+      std::invoke_result_t<ObservationState, const state &>>>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function = ObservationState;
@@ -92,7 +98,10 @@ struct x_z_p_q_r_hh_ff_ps<State, Output, std::tuple<PredictionTypes...>,
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
-    const auto &i{make_one<evaluate<product<gain, output_model>>>()};
+    // The identity of the quotient of the state by the state: the product of
+    // the gain by an output model of a sparsity pattern may not store the
+    // diagonal of the identity.
+    const auto &i{make_one<evaluate<quotient<state, state>>>()};
 
     z = output{output_z, outputs_z...};
     h = observation_state_h(x);
