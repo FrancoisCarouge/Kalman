@@ -48,9 +48,9 @@ endif()
 
 check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT _)
 
-# Interprocedural optimization defaults on for the test and sample drivers, to
-# surface link-time defects, unless explicitly disabled: coverage
-# instrumentation produces no data from link-time optimized objects.
+# Interprocedural optimization defaults on for the benchmark drivers, unless
+# explicitly disabled: coverage instrumentation produces no data from link-time
+# optimized objects.
 if(DEFINED CMAKE_INTERPROCEDURAL_OPTIMIZATION
    AND NOT CMAKE_INTERPROCEDURAL_OPTIMIZATION)
   set(IPO_SUPPORTED OFF)
@@ -70,11 +70,6 @@ function(sample SAMPLE_NAME)
     target_link_libraries(
       kalman_sample_${SAMPLE_NAME}_driver
       PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
-    if(IPO_SUPPORTED)
-      set_target_properties(
-        kalman_sample_${SAMPLE_NAME}_driver
-        PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-    endif()
     separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
       NAME kalman_sample_${SAMPLE_NAME}
@@ -88,11 +83,6 @@ function(sample SAMPLE_NAME)
         kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
         PRIVATE
           kalman kalman_main kalman_linalg_${BACKEND} kalman_support_options)
-      if(IPO_SUPPORTED)
-        set_target_properties(
-          kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
-          PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-      endif()
       separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_sample_${BACKEND}_${SAMPLE_NAME}
@@ -123,11 +113,6 @@ function(pass TEST_NAME)
     target_link_libraries(
       kalman_${CALLER}_${TEST_NAME}_pass_driver
       PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
-    if(IPO_SUPPORTED)
-      set_target_properties(
-        kalman_${CALLER}_${TEST_NAME}_pass_driver
-        PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-    endif()
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
       NAME kalman_${CALLER}_${TEST_NAME}_pass
@@ -142,11 +127,6 @@ function(pass TEST_NAME)
         kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
         PRIVATE
           kalman kalman_main kalman_linalg_${BACKEND} kalman_support_options)
-      if(IPO_SUPPORTED)
-        set_target_properties(
-          kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
-          PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-      endif()
       separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
         NAME kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass
