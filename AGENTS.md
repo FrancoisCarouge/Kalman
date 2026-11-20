@@ -91,6 +91,7 @@ Tests and samples are not hand-declared per backend; CMake functions generate th
 - `build(NAME [BACKENDS ...])` — compile-time-only: an `OBJECT` library, `EXCLUDE_FROM_ALL`, with no `main` linked and nothing run; the CTest test builds the target. Use it for `static_assert`-only tests: deduced filter types, member types, member function presence, type traits. It shares the `_pass` test name suffix: `kalman_[<backend>_]<dir>_<name>_pass`.
 - `fail(NAME [BACKENDS ...])` — the same shape as `build`, but expects a **compilation failure** (`WILL_FAIL TRUE`), producing `kalman_[<backend>_]<dir>_<name>`, where the file name ends in `_fail`.
 - `sample(NAME [BACKENDS ...])` — the same shape as `pass`, producing `kalman_sample_<backend>_<name>` / `kalman_sample_<name>`.
+- `bench(NAME [BACKENDS ...])` — benchmarks the sample `NAME`, producing `kalman_sample_[<backend>_]<name>_bench`, declared in `benchmark/sample/CMakeLists.txt`, which provides its nanobench target, header, and script.
 
 The `build` and `fail` tests carry the `kalman_build_tree` CTest `RESOURCE_LOCK`: each one invokes the build tool on the shared build tree, which is not safe to run concurrently with itself, so `ctest --parallel` serializes them against each other while the `pass` tests stay parallel.
 
