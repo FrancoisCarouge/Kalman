@@ -38,4 +38,4 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("1x1")
 fail("unimplemented_fail")
-pass("2x3" BACKENDS "eigen" "eigexed")
+pass("2x3" BACKENDS "eigen" "eigexed" "sparse")

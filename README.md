@@ -78,6 +78,8 @@ Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) a
 | Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_eigen). |
 | Freestanding | [Example backend: `support/freestanding`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/freestanding). |
 | mp-units | [Example backend: `support/mp_units`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units). |
+| SparseLinearAlgebra + TypedLinearAlgebra | [Example backend: `support/sparse`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/sparse). |
+| SparseLinearAlgebra + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_sparse`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_sparse). |
 
 ### Samples
 

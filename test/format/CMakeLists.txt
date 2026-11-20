@@ -37,8 +37,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("1x1x0")
-pass("1x4x3" BACKENDS "eigen" "eigexed")
-pass("5x4x3" BACKENDS "eigen" "eigexed")
+pass("1x4x3" BACKENDS "eigen" "eigexed" "sparse")
+pass("5x4x3" BACKENDS "eigen" "eigexed" "sparse")
 pass("arguments")
 pass("callable_1x1x0")
 pass("float_1x1x1")
