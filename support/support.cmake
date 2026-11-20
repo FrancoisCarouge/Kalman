@@ -48,9 +48,9 @@ endif()
 
 check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT _)
 
-# Interprocedural optimization defaults on for the test and sample drivers, to
-# surface link-time defects, unless explicitly disabled: coverage
-# instrumentation produces no data from link-time optimized objects.
+# Interprocedural optimization defaults on for the benchmark drivers, unless
+# explicitly disabled: coverage instrumentation produces no data from link-time
+# optimized objects.
 if(DEFINED CMAKE_INTERPROCEDURAL_OPTIMIZATION
    AND NOT CMAKE_INTERPROCEDURAL_OPTIMIZATION)
   set(IPO_SUPPORTED OFF)
@@ -60,45 +60,33 @@ endif()
 #
 # * NAME The name of the sample file without extension.
 # * BACKENDS Optional list of backends to use against the sample.
-function(sample SAMPLE_NAME)
+function(sample NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 SAMPLE "" "${oneValueArgs}"
                         "${multiValueArgs}")
 
   if(NOT SAMPLE_BACKENDS)
-    add_executable(kalman_sample_${SAMPLE_NAME}_driver "${SAMPLE_NAME}.cpp")
+    add_executable(kalman_sample_${NAME}_driver "${NAME}.cpp")
     target_link_libraries(
-      kalman_sample_${SAMPLE_NAME}_driver
+      kalman_sample_${NAME}_driver
       PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
-    if(IPO_SUPPORTED)
-      set_target_properties(
-        kalman_sample_${SAMPLE_NAME}_driver
-        PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-    endif()
     separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME kalman_sample_${SAMPLE_NAME}
-      COMMAND
-        ${SAMPLE_COMMAND} $<TARGET_FILE:kalman_sample_${SAMPLE_NAME}_driver>)
+      NAME kalman_sample_${NAME}
+      COMMAND ${SAMPLE_COMMAND} $<TARGET_FILE:kalman_sample_${NAME}_driver>)
   else()
     foreach(BACKEND IN ITEMS ${SAMPLE_BACKENDS})
-      add_executable(kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
-                     "${SAMPLE_NAME}.cpp")
+      add_executable(kalman_sample_${BACKEND}_${NAME}_driver "${NAME}.cpp")
       target_link_libraries(
-        kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
+        kalman_sample_${BACKEND}_${NAME}_driver
         PRIVATE
           kalman kalman_main kalman_linalg_${BACKEND} kalman_support_options)
-      if(IPO_SUPPORTED)
-        set_target_properties(
-          kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver
-          PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-      endif()
       separate_arguments(SAMPLE_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
-        NAME kalman_sample_${BACKEND}_${SAMPLE_NAME}
+        NAME kalman_sample_${BACKEND}_${NAME}
         COMMAND
           ${SAMPLE_COMMAND}
-          $<TARGET_FILE:kalman_sample_${BACKEND}_${SAMPLE_NAME}_driver>)
+          $<TARGET_FILE:kalman_sample_${BACKEND}_${NAME}_driver>)
     endforeach()
   endif()
 endfunction(sample)
@@ -111,7 +99,7 @@ endfunction(sample)
 #
 # * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
-function(pass TEST_NAME)
+function(pass NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
@@ -119,40 +107,29 @@ function(pass TEST_NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   if(NOT TEST_BACKENDS)
-    add_executable(kalman_${CALLER}_${TEST_NAME}_pass_driver "${TEST_NAME}.cpp")
+    add_executable(kalman_${CALLER}_${NAME}_pass_driver "${NAME}.cpp")
     target_link_libraries(
-      kalman_${CALLER}_${TEST_NAME}_pass_driver
+      kalman_${CALLER}_${NAME}_pass_driver
       PRIVATE kalman kalman_main kalman_support_options kalman_unit_mp_units)
-    if(IPO_SUPPORTED)
-      set_target_properties(
-        kalman_${CALLER}_${TEST_NAME}_pass_driver
-        PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-    endif()
     separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
     add_test(
-      NAME kalman_${CALLER}_${TEST_NAME}_pass
+      NAME kalman_${CALLER}_${NAME}_pass
       COMMAND
-        ${TEST_COMMAND} $<TARGET_FILE:kalman_${CALLER}_${TEST_NAME}_pass_driver>
-    )
+        ${TEST_COMMAND} $<TARGET_FILE:kalman_${CALLER}_${NAME}_pass_driver>)
   else()
     foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
-      add_executable(kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
-                     "${TEST_NAME}.cpp")
+      add_executable(kalman_${BACKEND}_${CALLER}_${NAME}_pass_driver
+                     "${NAME}.cpp")
       target_link_libraries(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
+        kalman_${BACKEND}_${CALLER}_${NAME}_pass_driver
         PRIVATE
           kalman kalman_main kalman_linalg_${BACKEND} kalman_support_options)
-      if(IPO_SUPPORTED)
-        set_target_properties(
-          kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver
-          PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-      endif()
       separate_arguments(TEST_COMMAND UNIX_COMMAND $ENV{COMMAND})
       add_test(
-        NAME kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass
+        NAME kalman_${BACKEND}_${CALLER}_${NAME}_pass
         COMMAND
           ${TEST_COMMAND}
-          $<TARGET_FILE:kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass_driver>)
+          $<TARGET_FILE:kalman_${BACKEND}_${CALLER}_${NAME}_pass_driver>)
     endforeach()
   endif()
 endfunction(pass)
@@ -165,7 +142,7 @@ endfunction(pass)
 #
 # * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
-function(build TEST_NAME)
+function(build NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
@@ -173,17 +150,15 @@ function(build TEST_NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   if(NOT TEST_BACKENDS)
-    add_library(
-      kalman_${CALLER}_${TEST_NAME}_build_driver
-      OBJECT "${TEST_NAME}.cpp")
+    add_library(kalman_${CALLER}_${NAME}_build_driver OBJECT "${NAME}.cpp")
     target_link_libraries(
-      kalman_${CALLER}_${TEST_NAME}_build_driver
+      kalman_${CALLER}_${NAME}_build_driver
       PRIVATE kalman kalman_support_options kalman_unit_mp_units)
     set_target_properties(
-      kalman_${CALLER}_${TEST_NAME}_build_driver
+      kalman_${CALLER}_${NAME}_build_driver
       PROPERTIES EXCLUDE_FROM_ALL TRUE)
     add_test(
-      NAME kalman_${CALLER}_${TEST_NAME}_pass
+      NAME kalman_${CALLER}_${NAME}_pass
       COMMAND
         ${CMAKE_COMMAND}
         --build
@@ -191,23 +166,23 @@ function(build TEST_NAME)
         --config
         $<CONFIG>
         --target
-        kalman_${CALLER}_${TEST_NAME}_build_driver)
+        kalman_${CALLER}_${NAME}_build_driver)
     set_tests_properties(
-      kalman_${CALLER}_${TEST_NAME}_pass
+      kalman_${CALLER}_${NAME}_pass
       PROPERTIES RESOURCE_LOCK "kalman_build_tree")
   else()
     foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
       add_library(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver
-        OBJECT "${TEST_NAME}.cpp")
+        kalman_${BACKEND}_${CALLER}_${NAME}_build_driver
+        OBJECT "${NAME}.cpp")
       target_link_libraries(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver
+        kalman_${BACKEND}_${CALLER}_${NAME}_build_driver
         PRIVATE kalman kalman_linalg_${BACKEND} kalman_support_options)
       set_target_properties(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver
+        kalman_${BACKEND}_${CALLER}_${NAME}_build_driver
         PROPERTIES EXCLUDE_FROM_ALL TRUE)
       add_test(
-        NAME kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass
+        NAME kalman_${BACKEND}_${CALLER}_${NAME}_pass
         COMMAND
           ${CMAKE_COMMAND}
           --build
@@ -215,9 +190,9 @@ function(build TEST_NAME)
           --config
           $<CONFIG>
           --target
-          kalman_${BACKEND}_${CALLER}_${TEST_NAME}_build_driver)
+          kalman_${BACKEND}_${CALLER}_${NAME}_build_driver)
       set_tests_properties(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_pass
+        kalman_${BACKEND}_${CALLER}_${NAME}_pass
         PROPERTIES RESOURCE_LOCK "kalman_build_tree")
     endforeach()
   endif()
@@ -232,7 +207,7 @@ endfunction(build)
 #
 # * NAME The name of the test file without extension.
 # * BACKENDS Optional list of backends to use against the test.
-function(fail TEST_NAME)
+function(fail NAME)
   set(multiValueArgs BACKENDS)
   cmake_parse_arguments(PARSE_ARGV 0 TEST "" "${oneValueArgs}"
                         "${multiValueArgs}")
@@ -240,15 +215,15 @@ function(fail TEST_NAME)
   get_filename_component(CALLER "${CMAKE_CURRENT_SOURCE_DIR}" NAME)
 
   if(NOT TEST_BACKENDS)
-    add_library(kalman_${CALLER}_${TEST_NAME}_driver OBJECT "${TEST_NAME}.cpp")
+    add_library(kalman_${CALLER}_${NAME}_driver OBJECT "${NAME}.cpp")
     target_link_libraries(
-      kalman_${CALLER}_${TEST_NAME}_driver
+      kalman_${CALLER}_${NAME}_driver
       PRIVATE kalman kalman_support_options kalman_unit_mp_units)
     set_target_properties(
-      kalman_${CALLER}_${TEST_NAME}_driver
+      kalman_${CALLER}_${NAME}_driver
       PROPERTIES EXCLUDE_FROM_ALL TRUE)
     add_test(
-      NAME kalman_${CALLER}_${TEST_NAME}
+      NAME kalman_${CALLER}_${NAME}
       COMMAND
         ${CMAKE_COMMAND}
         --build
@@ -256,23 +231,23 @@ function(fail TEST_NAME)
         --config
         $<CONFIG>
         --target
-        kalman_${CALLER}_${TEST_NAME}_driver)
+        kalman_${CALLER}_${NAME}_driver)
     set_tests_properties(
-      kalman_${CALLER}_${TEST_NAME}
+      kalman_${CALLER}_${NAME}
       PROPERTIES RESOURCE_LOCK "kalman_build_tree" WILL_FAIL TRUE)
   else()
     foreach(BACKEND IN ITEMS ${TEST_BACKENDS})
       add_library(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver
-        OBJECT "${TEST_NAME}.cpp")
+        kalman_${BACKEND}_${CALLER}_${NAME}_driver
+        OBJECT "${NAME}.cpp")
       target_link_libraries(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+        kalman_${BACKEND}_${CALLER}_${NAME}_driver
         PRIVATE kalman kalman_linalg_${BACKEND} kalman_support_options)
       set_target_properties(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver
+        kalman_${BACKEND}_${CALLER}_${NAME}_driver
         PROPERTIES EXCLUDE_FROM_ALL TRUE)
       add_test(
-        NAME kalman_${BACKEND}_${CALLER}_${TEST_NAME}
+        NAME kalman_${BACKEND}_${CALLER}_${NAME}
         COMMAND
           ${CMAKE_COMMAND}
           --build
@@ -280,9 +255,9 @@ function(fail TEST_NAME)
           --config
           $<CONFIG>
           --target
-          kalman_${BACKEND}_${CALLER}_${TEST_NAME}_driver)
+          kalman_${BACKEND}_${CALLER}_${NAME}_driver)
       set_tests_properties(
-        kalman_${BACKEND}_${CALLER}_${TEST_NAME}
+        kalman_${BACKEND}_${CALLER}_${NAME}
         PROPERTIES RESOURCE_LOCK "kalman_build_tree" WILL_FAIL TRUE)
     endforeach()
   endif()
