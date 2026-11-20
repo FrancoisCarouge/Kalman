@@ -76,6 +76,15 @@ if(BUILD_BENCHMARKING)
   bench("ekf_4x2x0_range_bearing_tracking_unit" BACKENDS "mp_units_eigen")
   bench("ekf_6x4x0_3d_apollo_position" BACKENDS "eigen")
   bench("ekf_9x4x0_gimbal_attitude_unit" BACKENDS "mp_units_eigen")
+  bench("ekf_9x4x0_gimbal_attitude_unit_sparse" BACKENDS "mp_units_sparse")
+  # The nominal attitude and velocity of the sample are integrated with Eigen.
+  foreach(
+    TARGET IN ITEMS
+    kalman_sample_mp_units_sparse_ekf_9x4x0_gimbal_attitude_unit_sparse_bench_object
+    kalman_sample_mp_units_sparse_ekf_9x4x0_gimbal_attitude_unit_sparse_bench_driver
+  )
+    target_link_libraries(${TARGET} PRIVATE Eigen3::Eigen)
+  endforeach()
   bench("kf_1x1x0_building_height_unit")
 endif()
 
