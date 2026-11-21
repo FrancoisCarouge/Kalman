@@ -48,12 +48,29 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/eigen.hpp"
 #include "fcarouge/kalman_filter/internal/utility.hpp"
 
+#include <cstddef>
+#include <type_traits>
+
 namespace fcarouge::kalman_filter::internal {
 //! @brief Specialization of the evaluation type.
 template <eigen::is_eigen Type> struct evaluates<Type> {
   [[nodiscard]] static constexpr auto operator()() ->
       typename Type::PlainMatrix;
 };
+
+//! @brief Specialization of the lower triangular square root.
+template <eigen::is_eigen Type> struct factors<Type> {
+  [[nodiscard]] static constexpr auto operator()(const Type &value) ->
+      typename Type::PlainMatrix {
+    return typename Type::PlainMatrix{value.llt().matrixL()};
+  }
+};
+
+//! @brief Specialization of the compile-time number of rows.
+template <eigen::is_eigen Type>
+struct dimension<Type>
+    : std::integral_constant<std::size_t, static_cast<std::size_t>(
+                                              Type::RowsAtCompileTime)> {};
 } // namespace fcarouge::kalman_filter::internal
 
 #endif // FCAROUGE_KALMAN_EIGEN_HPP

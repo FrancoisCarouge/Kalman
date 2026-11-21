@@ -266,6 +266,18 @@ The characteristics are optionally present according to the filter configuration
 
 The prediction and the update take the arguments of their declared types followed by values that direct-list-initialize the input and the output, respectively.
 
+##### Unscented Filter
+
+Declare the parameters `unscented{α, β, κ}` of the scaled unscented transform after a transition and an observation function of the state, without their Jacobians, to declare an unscented filter. Its prediction and update propagate the 2n + 1 sigma points of the transform through the functions, the process and output uncertainties additive. The linear algebra backend provides the lower triangular square root of the estimate uncertainty, its Cholesky factor, and the number of states: the Eigen and the typed linear algebra backends do.
+
+```cpp
+kalman filter{state{0., 90., 1100.}, output<vector<2>>,
+              estimate_uncertainty{...}, process_uncertainty{...}, output_uncertainty{...},
+              transition{[](const vector<3> &x) -> vector<3> { ... }},
+              observation{[](const vector<3> &x) -> vector<2> { ... }},
+              unscented{0.1, 2., 0.}};
+```
+
 ##### Policies
 
 Declare zero, one, or more policies among the characteristics of a filter, in any order, to select its update form or to condition its estimate uncertainty. A policy is part of the filter type, selected at compile-time, at no runtime cost. An omitted policy selects the default filter.
@@ -281,10 +293,12 @@ kalman constant{state{0., 0.}, output<double>, floors{cw<0.1>, cw<0.2>}};
 | `information_form` | Updates the estimate uncertainty as *P = (P⁻¹ + HᵀR⁻¹H)⁻¹*. Inverts state-sized rather than output-sized matrices: cheaper only for outputs much larger than the state. Requires invertible estimate and output uncertainties. |
 | `simple_form` | Updates the estimate uncertainty as *P = (I - KH)P*, the cheapest form, evaluated at a quadratic rather than a cubic cost in the state dimension for a scalar output. Rounding loses the symmetry of the estimate uncertainty and may lose its positive semi-definiteness. |
 | `symmetric_form` | Updates the estimate uncertainty as *P = P - KSKᵀ*, symmetric in exact arithmetic. Subtracting nearly equal matrices of a precise output may lose the positive semi-definiteness of the estimate uncertainty. |
+| `redraw_sigma_points` | Draws the sigma points of the update of a sigma point filter anew from the predicted estimate and its uncertainty, the default, declared explicitly. The sigma points account for the process uncertainty and the conditioning, and a linear filter agrees with the Kalman filter, at the cost of one more square root of the estimate uncertainty per update. |
+| `reuse_sigma_points` | Observes the sigma points propagated by the prediction in the update of a sigma point filter, retained in the filter, keeping the higher moments of the predicted distribution. The sigma points account neither for the process uncertainty nor for the conditioning of the predicted estimate uncertainty, which the innovation uncertainty and the gain then omit. An update without a prediction since the last update draws them anew. |
 | `symmetrize` | Averages the estimate uncertainty with its transpose after each update and prediction, *P = (P + Pᵀ) / 2*, restoring its symmetry lost to rounding. |
 | `floors{σ...}` | Keeps each state variance at least *σ²* after each update and prediction, one standard deviation *σ* per state in its units: a runtime value, or a compile-time constant `cw<σ>` without storage. Useful when a variance would otherwise collapse, an overconfident filter ignoring new outputs, for example under model errors or for weakly observable states. |
 
-Without an update form policy, the filter updates the estimate uncertainty in the Joseph form: declaring `joseph_form` is the default filter, of the same type. The update forms agree in exact arithmetic since the filter computes the optimal gain: they trade numerical robustness for cost. A filter declares at most one update form, one symmetrization, and one floors. The symmetrization keeps the diagonal of the estimate uncertainty, which the floors change alone: their order does not matter.
+Without an update form policy, the filter updates the estimate uncertainty in the Joseph form: declaring `joseph_form` is the default filter, of the same type. The update forms agree in exact arithmetic since the filter computes the optimal gain: they trade numerical robustness for cost. A sigma point filter declares no update form: it updates the estimate uncertainty as *P = P - KSKᵀ*. Without a sigma points policy, a sigma point filter draws the sigma points of its update anew: declaring `redraw_sigma_points` is the default filter, of the same type. A sigma points policy is declared for a sigma point filter only. A filter declares at most one update form, one sigma points policy, one symmetrization, and one floors. The symmetrization keeps the diagonal of the estimate uncertainty, which the floors change alone: their order does not matter.
 
 ### Format
 

@@ -49,6 +49,9 @@ For more information, please refer to <https://unlicense.org> */
 #include "fcarouge/kalman_filter/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
 
+#include <cstddef>
+#include <functional>
+#include <tuple>
 #include <type_traits>
 
 namespace fcarouge::kalman_filter::internal {
@@ -70,6 +73,30 @@ struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
         t(value.data())};
   }
 };
+
+//! @brief Specialization of the lower triangular square root.
+//!
+//! @details The factor `L` of a covariance `A = LLᵀ`, whose element of a row
+//! and a column is the product of the row and column indexed elements: the
+//! element of a row of `L` is the indexed element of the row, its columns
+//! without dimension, the identity index, so that `LLᵀ` is indexed as `A`.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct factors<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
+  [[nodiscard]] static constexpr auto
+  operator()(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) {
+    using root = std::remove_cvref_t<decltype(cholesky(value.data()))>;
+
+    return typed_matrix<
+        root, RowIndexes,
+        tuple_n_type<std::identity, std::tuple_size_v<RowIndexes>>>{
+        cholesky(value.data())};
+  }
+};
+
+//! @brief Specialization of the compile-time number of rows.
+template <typename Matrix, typename RowIndexes, typename ColumnIndexes>
+struct dimension<typed_matrix<Matrix, RowIndexes, ColumnIndexes>>
+    : std::integral_constant<std::size_t, std::tuple_size_v<RowIndexes>> {};
 
 //! @name Algebraic Named Values
 //! @{

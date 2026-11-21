@@ -479,6 +479,33 @@ template <typename Type> constexpr auto t(const Type &value) {
   return transposes<Type>{}(value);
 }
 
+//! @brief Lower triangular square root customization point.
+//!
+//! @details The lower triangular factor `L` of a symmetric positive definite
+//! matrix `A = LLᵀ`, its Cholesky decomposition. Specialized by the linear
+//! algebra backends: the library does not factorize a matrix itself.
+template <typename Type> struct factors {
+  [[nodiscard]] static constexpr auto operator()(const Type &) {
+    return not_implemented<Type>{
+        "Implement the lower triangular square root for this type."};
+  }
+};
+
+//! @brief The lower triangular square root of a matrix.
+template <typename Type> constexpr auto cholesky(const Type &value) {
+  return factors<Type>{}(value);
+}
+
+//! @brief Number of rows customization point.
+//!
+//! @details The compile-time number of rows of a column vector type.
+//! Specialized by the linear algebra backends.
+template <typename Type> struct dimension;
+
+//! @brief The compile-time number of rows of a column vector type.
+template <typename Type>
+inline constexpr std::size_t dimension_v{dimension<Type>::value};
+
 //! @brief Unpack the first type of the type template parameter pack.
 //!
 //! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.

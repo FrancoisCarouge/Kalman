@@ -276,6 +276,22 @@ template <typename Type> struct observation {
 
 template <typename Element> observation(Element) -> observation<Element>;
 
+// The scaled unscented transform parameters: the spread alpha of the sigma
+// points about the mean, the prior knowledge beta of the distribution, two for
+// a Gaussian, and the secondary scaling kappa.
+template <typename Type> struct unscented {
+  using type = Type;
+
+  Type alpha;
+  Type beta;
+  Type kappa;
+
+  constexpr unscented(Type spread, Type prior, Type scaling)
+      : alpha{spread}, beta{prior}, kappa{scaling} {}
+};
+
+template <typename Type> unscented(Type, Type, Type) -> unscented<Type>;
+
 template <typename... Types> struct update_types_t {};
 
 template <typename... Types> inline update_types_t<Types...> update_types{};
@@ -300,6 +316,14 @@ inline constexpr symmetric_form_t symmetric_form{};
 struct information_form_t {};
 
 inline constexpr information_form_t information_form{};
+
+struct redraw_sigma_points_t {};
+
+inline constexpr redraw_sigma_points_t redraw_sigma_points{};
+
+struct reuse_sigma_points_t {};
+
+inline constexpr reuse_sigma_points_t reuse_sigma_points{};
 
 struct symmetrize_t {};
 

@@ -597,6 +597,13 @@ using kf::transition;
 //! @brief Observation function type wrapper for filter declaration support.
 using kf::observation;
 
+//! @brief Unscented transform parameters for filter declaration support.
+//!
+//! @details Declares an unscented filter, with the `alpha`, `beta`, and `kappa`
+//! parameters of the scaled unscented transform, from a transition and an
+//! observation function of the state, without their Jacobians.
+using kf::unscented;
+
 //! @brief Update types wrapper for filter declaration support.
 using kf::update_types;
 
@@ -645,6 +652,32 @@ using kf::symmetric_form;
 //! Requires invertible estimate and output uncertainties: the default null
 //! output uncertainty is not. Incompatible with another update form.
 using kf::information_form;
+
+//! @brief Redrawn sigma points policy for filter declaration support.
+//!
+//! @details The update of a sigma point filter draws its sigma points anew from
+//! the predicted estimate and its uncertainty: they account for the process
+//! uncertainty and for the conditioning of the predicted estimate uncertainty,
+//! and a linear filter agrees with the Kalman filter. The default sigma points:
+//! declaring them explicitly is the default filter, of the same type. Costs one
+//! more square root of the estimate uncertainty per update. Declared for a
+//! sigma point filter only. Incompatible with the reused sigma points.
+using kf::redraw_sigma_points;
+
+//! @brief Reused sigma points policy for filter declaration support.
+//!
+//! @details The update of a sigma point filter observes the sigma points
+//! propagated through the transition function by the prediction, retained in
+//! the filter, without a square root of the predicted estimate uncertainty. The
+//! propagated sigma points keep the higher moments of the predicted
+//! distribution, beyond its mean and covariance. They account neither for the
+//! process uncertainty, added after their propagation, nor for the conditioning
+//! of the predicted estimate uncertainty, by the symmetrization or the floors:
+//! the innovation uncertainty and the gain omit them, and a linear filter with
+//! a process uncertainty disagrees with the Kalman filter. An update without a
+//! prediction since the last update draws its sigma points anew. Declared for a
+//! sigma point filter only. Incompatible with the redrawn sigma points.
+using kf::reuse_sigma_points;
 
 //! @brief Symmetrization conditioning policy for filter declaration support.
 //!

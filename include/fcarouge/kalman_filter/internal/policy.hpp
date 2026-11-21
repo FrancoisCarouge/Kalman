@@ -55,6 +55,13 @@ concept update_form =
     std::same_as<Type, symmetric_form_t> ||
     std::same_as<Type, information_form_t>;
 
+// The sigma points of the update of a sigma point filter: drawn anew from the
+// predicted estimate and its uncertainty, by default, or reused from the
+// prediction, propagated through the transition function.
+template <typename Type>
+concept sigma_points_policy = std::same_as<Type, redraw_sigma_points_t> ||
+                              std::same_as<Type, reuse_sigma_points_t>;
+
 template <typename Type> struct is_floors_policy : std::false_type {};
 
 template <typename... Types>
@@ -99,14 +106,15 @@ template <typename Type>
 }
 
 template <typename Type>
-concept policy = update_form<Type> || std::same_as<Type, symmetrize_t> ||
-                 floors_policy<Type>;
+concept policy = update_form<Type> || sigma_points_policy<Type> ||
+                 std::same_as<Type, symmetrize_t> || floors_policy<Type>;
 
 // The policies of a filter, in their canonical order: the update form, the
-// symmetrization, then the floors. The filter holds its policies as its first
-// member, without a unique address, which stores nothing but the floors with a
-// runtime standard deviation: a policy declared or not is part of the filter
-// type, at no space cost, and its absence selects the default filter.
+// sigma points, the symmetrization, then the floors. The filter holds its
+// policies as its first member, without a unique address, which stores nothing
+// but the floors with a runtime standard deviation: a policy declared or not is
+// part of the filter type, at no space cost, and its absence selects the
+// default filter.
 template <typename... Policies> struct policies {};
 
 template <typename... Policies>
@@ -130,6 +138,14 @@ using is_other_update_form =
     std::bool_constant<update_form<Type> &&
                        not std::same_as<Type, joseph_form_t>>;
 
+template <typename Type>
+using is_sigma_points = std::bool_constant<sigma_points_policy<Type>>;
+
+// The sigma points other than the default drawn anew: declaring the default
+// explicitly is the default filter, of the same type.
+template <typename Type>
+using is_other_sigma_points = std::is_same<Type, reuse_sigma_points_t>;
+
 template <typename Type> using is_symmetrize = std::is_same<Type, symmetrize_t>;
 
 template <typename Type>
@@ -151,6 +167,7 @@ struct policies_from<std::tuple<Policies...>>
 template <typename... Arguments>
 using policies_of = policies_from<decltype(std::tuple_cat(
     std::declval<select<Arguments, is_other_update_form>>()...,
+    std::declval<select<Arguments, is_other_sigma_points>>()...,
     std::declval<select<Arguments, is_symmetrize>>()...,
     std::declval<select<Arguments, is_floors>>()...))>::type;
 

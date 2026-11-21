@@ -55,6 +55,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "x_z_p_q_r_hh_ff_tt_oo_ps.hpp"
 #include "x_z_p_q_r_hh_ff_tt_oo_us.hpp"
 #include "x_z_p_q_r_hh_ff_us_ps.hpp"
+#include "x_z_p_q_r_tt_oo_ut.hpp"
 #include "x_z_p_qq_r_hh_f_tt_oo.hpp"
 #include "x_z_p_qq_r_hh_f_tt_oo_ps.hpp"
 #include "x_z_p_qq_r_hh_f_tt_oo_us.hpp"
@@ -606,6 +607,31 @@ template <typename Filter, typename Policies> struct filter_builder {
   }
 
   template <typename X, typename Z, typename P, typename Q, typename R,
+            typename T, typename O, typename A>
+    requires requires() {
+      requires std::invocable<T, X>;
+      requires std::invocable<O, X>;
+    }
+  [[nodiscard]] static constexpr auto
+  operator()(const Policies &policies, state<X> x,
+             [[maybe_unused]] output_t<Z> z, estimate_uncertainty<P> p,
+             process_uncertainty<Q> q, output_uncertainty<R> r,
+             transition<T> ff, observation<O> hh, unscented<A> ut) {
+    using kt = x_z_p_q_r_tt_oo_ut<X, Z, T, O, A, Policies>;
+
+    return kt{policies,
+              typename kt::state{x.value},
+              internal::convert<typename kt::estimate_uncertainty>(p.value),
+              internal::convert<typename kt::process_uncertainty>(q.value),
+              internal::convert<typename kt::output_uncertainty>(r.value),
+              typename kt::transition_function{ff.value},
+              typename kt::observation_function{hh.value},
+              ut.alpha,
+              ut.beta,
+              ut.kappa};
+  }
+
+  template <typename X, typename Z, typename P, typename Q, typename R,
             typename H, typename F, typename T, typename O, typename... Us,
             typename... Ps>
     requires requires() {
@@ -1109,6 +1135,12 @@ constexpr void check_floors(std::type_identity<policies<Policies...>>) {
   }
 }
 
+// A sigma point filter: its update and prediction propagate sigma points.
+template <typename Filter>
+concept samples_sigma_points = requires {
+  { Filter::points } -> std::convertible_to<std::size_t>;
+};
+
 template <typename Filter, typename Policies, typename Characteristics>
 inline constexpr bool buildable{false};
 
@@ -1140,6 +1172,8 @@ template <typename Filter = void> struct filter_deducer {
 
     static_assert(count_of<is_update_form, Arguments...> <= 1,
                   "Declare at most one update form.");
+    static_assert(count_of<is_sigma_points, Arguments...> <= 1,
+                  "Declare the sigma points at most once.");
     static_assert(count_of<is_symmetrize, Arguments...> <= 1,
                   "Declare the symmetrization at most once.");
     static_assert(count_of<is_floors, Arguments...> <= 1,
@@ -1149,6 +1183,15 @@ template <typename Filter = void> struct filter_deducer {
         [&arguments...](const auto &...characteristics) {
           using filter = decltype(builder{}(std::declval<configuration>(),
                                             characteristics...));
+
+          static_assert(samples_sigma_points<filter> ||
+                            count_of<is_sigma_points, Arguments...> == 0,
+                        "Declare the sigma points of a sigma point filter "
+                        "only.");
+          static_assert(not samples_sigma_points<filter> ||
+                            count_of<is_update_form, Arguments...> == 0,
+                        "A sigma point filter updates the estimate uncertainty "
+                        "as P - KSKᵀ: declare no update form.");
 
           check_floors<typename filter::state>(
               std::type_identity<configuration>{});
