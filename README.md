@@ -78,6 +78,8 @@ Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) a
 | Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_eigen). |
 | Freestanding | [Example backend: `support/freestanding`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/freestanding). |
 | mp-units | [Example backend: `support/mp_units`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units). |
+| SparseLinearAlgebra + TypedLinearAlgebra | [Example backend: `support/sparse`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/sparse). |
+| SparseLinearAlgebra + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_sparse`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_sparse). |
 
 ### Samples
 
@@ -101,6 +103,7 @@ Designing a filter is as much art as science, with the following recipe. Model t
 | 6x4x0 extended filter of the 3-dimension position and velocity of the NASA Apollo lunar module abort guidance system for spacecraft rendezvous approaching the command/service module. | [Usage example: `ekf_6x4x0_3d_apollo_position.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_6x4x0_3d_apollo_position/ekf_6x4x0_3d_apollo_position.cpp). |
 | 8x4x0 constant velocity dynamic model filter of the 2-dimension position and velocity of the center, aspect ratio, and height of a bounding box. | [Usage example: `kf_8x4x0_2d_bounding_box.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp). |
 | 9x4x0 error-state extended filter of the attitude, velocity, and gyroscope bias of a camera gimbal, from its inertial sensors, a zero velocity, and a compass heading, as in the ArduPilot autopilot. | [Usage example with units: `ekf_9x4x0_gimbal_attitude_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_9x4x0_gimbal_attitude_unit/ekf_9x4x0_gimbal_attitude_unit.cpp). |
+| 104x12x0 nonlinear dynamic model extended filter of the temperature, winds, humidity, ozone, cloud water, and surface pressure of a coarse three-dimension global grid, from a sounding, surface stations, and satellite retrievals, its estimate uncertainty localized in a compile-time sparsity pattern, as in numerical weather prediction. | [Usage example with units: `ekf_104x12x0_global_weather_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_104x12x0_global_weather_unit/ekf_104x12x0_global_weather_unit.cpp). |
 
 #### 6x2 Constant Acceleration Dynamic Model Filter
 
@@ -220,11 +223,11 @@ class kalman final : public kf::conditional_member_types<Filter>
 | `innovation` | z by 1 | Type of the innovation column vector `y`. | *Y* |
 | `input_control` | x by u | Type of the control transition matrix `g`. This member type is defined only if the filter supports input control. | *G*, *B* |
 | `input` | u by 1 | Type of the control column vector `u`. This member type is defined only if the filter supports input. | *U* |
-| `output_model` | z by x | Type of the observation transition matrix `h`. This member type is defined only if the filter supports output model. | *H*, *C* |
+| `output_model` | z by x | Type of the observation transition matrix `h`. This member type is defined only if the filter supports output model. An extended filter of callable characteristics may declare it, `output_model_type<T>`, such as a matrix of a sparsity pattern, which its callable must compute exactly. | *H*, *C* |
 | `output_uncertainty` | z by z | Type of the observation, measurement noise covariance matrix `r`. | *R* |
 | `output` | z by 1 | Type of the observation column vector `z`. | *Z*, *Y*, *O* |
 | `process_uncertainty` | x by x | Type of the process noise covariance matrix `q`. | *Q* |
-| `state_transition` | x by x | Type of the state transition matrix `f`. | *F*, *Φ*, *A* |
+| `state_transition` | x by x | Type of the state transition matrix `f`. An extended filter of callable characteristics may declare it, `state_transition_type<T>`, such as a matrix of a sparsity pattern, which its callable must compute exactly. | *F*, *Φ*, *A* |
 | `state` | x by 1 | Type of the state estimate, hidden column vector `x`. | *X* |
 
 The member types are optionally present according to the filter configuration.
@@ -282,9 +285,10 @@ kalman constant{state{0., 0.}, output<double>, floors{cw<0.1>, cw<0.2>}};
 | `simple_form` | Updates the estimate uncertainty as *P = (I - KH)P*, the cheapest form, evaluated at a quadratic rather than a cubic cost in the state dimension for a scalar output. Rounding loses the symmetry of the estimate uncertainty and may lose its positive semi-definiteness. |
 | `symmetric_form` | Updates the estimate uncertainty as *P = P - KSKᵀ*, symmetric in exact arithmetic. Subtracting nearly equal matrices of a precise output may lose the positive semi-definiteness of the estimate uncertainty. |
 | `symmetrize` | Averages the estimate uncertainty with its transpose after each update and prediction, *P = (P + Pᵀ) / 2*, restoring its symmetry lost to rounding. |
+| `localize<ρ>` | Multiplies the estimate uncertainty element by element by the taper *ρ* after each prediction and update, *P = ρ ∘ P*, before the other conditioning policies: the covariance localization of the ensemble filters of numerical weather prediction. The taper is a dimensionless compile-time constant, an empty type with a static `value` member. The estimate uncertainty is of the structure of the product: a taper of a sparsity pattern stores it in that pattern. The initial estimate uncertainty, and one set through the filter, are kept as given. A positive semi-definite taper keeps the estimate uncertainty positive semi-definite. Supported by the extended filter of a state transition and an output model computed from the state, with prediction arguments. |
 | `floors{σ...}` | Keeps each state variance at least *σ²* after each update and prediction, one standard deviation *σ* per state in its units: a runtime value, or a compile-time constant `cw<σ>` without storage. Useful when a variance would otherwise collapse, an overconfident filter ignoring new outputs, for example under model errors or for weakly observable states. |
 
-Without an update form policy, the filter updates the estimate uncertainty in the Joseph form: declaring `joseph_form` is the default filter, of the same type. The update forms agree in exact arithmetic since the filter computes the optimal gain: they trade numerical robustness for cost. A filter declares at most one update form, one symmetrization, and one floors. The symmetrization keeps the diagonal of the estimate uncertainty, which the floors change alone: their order does not matter.
+Without an update form policy, the filter updates the estimate uncertainty in the Joseph form: declaring `joseph_form` is the default filter, of the same type. The update forms agree in exact arithmetic since the filter computes the optimal gain: they trade numerical robustness for cost. A filter declares at most one update form, one localization, one symmetrization, and one floors. The symmetrization keeps the diagonal of the estimate uncertainty, which the floors change alone: their order does not matter.
 
 ### Format
 
@@ -330,6 +334,7 @@ In theory there is no difference between theory and practice, while in practice 
 - A filter declaration has a single arithmetic type, so that the filter equations never narrow a result into a characteristic, at the cost of converting mixed precision values, for example a `float` measurement of a `double` state, before passing them to the filter.
 - The ergonomics and precision of the default filter takes precedence over performance.
 - The update form and the conditioning of the estimate uncertainty are compile-time policies of the filter type rather than runtime options, for no runtime cost, at the cost of a distinct filter type per combination of policies.
+- The localization of the estimate uncertainty is a policy carrying its taper as a compile-time constant, without storage, rather than a named characteristic or a runtime value: the taper selects the type of the estimate uncertainty, which a sparsity pattern makes structural, and a runtime taper of a pattern would still fix that pattern at compile time. The taper applies to the results of the predictions and updates only: the initial estimate uncertainty, and one set through the filter, are kept as the user gives them. A declaration localizing a filter that does not support the policy does not compile, rather than ignoring it.
 - The library is freestanding compatible, for embedded and bare-metal targets: it uses no hosted-only standard header, no exception, no run-time type information, and no memory allocation. The formatting and printing support, built on the hosted-only `<format>` and `<print>` headers, are omitted from a freestanding implementation rather than reimplemented. The same header serves both implementations without configuration.
 - Callable characteristics are stored by value, their types part of the deduced filter type, without type erasure, for real-time compatibility: constructing, copying, or reconfiguring a filter does not allocate memory, and the callables may be inlined. The costs are a filter type specific to its callables, a callable characteristic replaced only by a callable of the same type, and filter assignment available only for assignable callables, which a lambda expression with captures is not. Configuring a function pointer or a `std::function` restores the replacement by any compatible callable, at the cost of an indirection, and of allocations for `std::function`.
 - A characteristic is read through a constant reference from an lvalue filter, without copying it, and written only through its accessor's setting overloads, which constrain the values. Reading from an rvalue filter moves the characteristic out instead, since a reference into the filter would dangle past the full-expression.

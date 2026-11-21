@@ -40,6 +40,7 @@ if(NOT BUILD_TESTING OR CMAKE_CROSSCOMPILING)
   return()
 endif()
 
+add_subdirectory("ekf_104x12x0_global_weather_unit")
 add_subdirectory("ekf_1x2x0_terrain_estimation_unit")
 add_subdirectory("ekf_3x1x0_beacon_position_unit")
 add_subdirectory("ekf_3x2x0_wind_airspeed_scale_unit")

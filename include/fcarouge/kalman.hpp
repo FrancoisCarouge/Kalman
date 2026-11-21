@@ -609,6 +609,28 @@ using kf::state_transition;
 //! @brief Input control types wrapper for filter declaration support.
 using kf::input_control;
 
+//! @brief State transition type declaration for filter declaration support.
+//!
+//! @details The type of the state transition F computed by a callable: by
+//! default, the quotient of the state by the state. Declaring another type,
+//! such as a matrix of a sparsity pattern, keeps the products by F to its
+//! stored elements. The callable computes exactly the declared type, or the
+//! quotient without declaration: a mismatch, which would convert or narrow,
+//! does not compile. Supported by the extended filters of a callable state
+//! transition and output model with prediction arguments; another filter
+//! declared with it does not compile.
+using kf::state_transition_type;
+
+//! @brief Output model type declaration for filter declaration support.
+//!
+//! @details The type of the output model H computed by a callable: by default,
+//! the quotient of the output by the state. Declaring another type, such as a
+//! matrix of a sparsity pattern, keeps the products by H to its stored
+//! elements. The callable computes exactly the declared type, or the quotient
+//! without declaration: a mismatch, which would convert or narrow, does not
+//! compile. Supported as the state transition type declaration.
+using kf::output_model_type;
+
 //! @brief Joseph update form policy for filter declaration support.
 //!
 //! @details Updates the estimate uncertainty as `P = (I - KH)P(I - KH)ᵀ +
@@ -668,6 +690,30 @@ using kf::symmetrize;
 //! keeps its correlations, which may lose the positive semi-definiteness of the
 //! estimate uncertainty.
 using kf::floors;
+
+//! @brief Localization conditioning policy for filter declaration support.
+//!
+//! @details Multiplies the estimate uncertainty element by element by a taper
+//! after each prediction and update, before the other conditioning policies:
+//! `P = ρ ∘ P`, the Schur product, the covariance localization of the large
+//! ensemble filters of numerical weather prediction. The taper `ρ` is a
+//! dimensionless matrix, of weights decreasing to zero with the distance
+//! between the states its elements correlate: a compile-time constant of an
+//! empty type with a static value member, without storage. The estimate
+//! uncertainty is of the structure of the product, the taper's: a taper of a
+//! sparsity pattern stores the estimate uncertainty in that pattern, the
+//! correlations beyond its cutoff structural zeros, while the filter equations
+//! would otherwise fill it in. The initial estimate uncertainty, and an
+//! estimate uncertainty set through the filter, are kept as given, the choice
+//! of the user: the taper applies to the results of the predictions and
+//! updates, from which the following gains are computed. By the Schur product
+//! theorem, a positive semi-definite taper
+//! keeps the estimate uncertainty positive semi-definite; a mask of ones and
+//! zeros does not in general. The taper of a scalar estimate uncertainty is a
+//! scalar. Supported by the extended filter of a state transition and an output
+//! model computed from the state, with prediction arguments; another filter
+//! declared with the policy does not compile.
+using kf::localize;
 
 //! @brief Compile-time constant of a value for filter declaration support.
 //!

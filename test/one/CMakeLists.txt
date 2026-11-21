@@ -38,5 +38,5 @@ For more information, please refer to <https://unlicense.org> ]]
 
 build("arithmetic")
 fail("unimplemented_fail")
-pass("5x4" BACKENDS "eigen" "eigexed")
+pass("5x4" BACKENDS "eigen" "eigexed" "sparse")
 pass("default")

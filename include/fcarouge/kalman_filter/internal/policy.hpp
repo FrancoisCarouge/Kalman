@@ -98,15 +98,39 @@ template <typename Type>
   }
 }
 
-template <typename Type>
-concept policy = update_form<Type> || std::same_as<Type, symmetrize_t> ||
-                 floors_policy<Type>;
+template <typename Type> struct is_localize_policy : std::false_type {};
 
-// The policies of a filter, in their canonical order: the update form, the
-// symmetrization, then the floors. The filter holds its policies as its first
-// member, without a unique address, which stores nothing but the floors with a
-// runtime standard deviation: a policy declared or not is part of the filter
-// type, at no space cost, and its absence selects the default filter.
+template <typename Taper>
+struct is_localize_policy<localize_t<Taper>> : std::true_type {};
+
+template <typename Type>
+concept localize_policy = is_localize_policy<Type>::value;
+
+// Whether the type is a specialization of the declaration template.
+template <template <typename> typename Declaration, typename Type>
+inline constexpr bool declares{false};
+
+template <template <typename> typename Declaration, typename Type>
+inline constexpr bool declares<Declaration, Declaration<Type>>{true};
+
+// The declaration of the type of a characteristic computed by a callable. It
+// stores nothing and is carried with the policies: it selects the filter type.
+template <typename Type>
+concept type_declaration = declares<state_transition_type_t, Type> ||
+                           declares<output_model_type_t, Type>;
+
+template <typename Type>
+concept policy =
+    update_form<Type> || std::same_as<Type, symmetrize_t> ||
+    floors_policy<Type> || localize_policy<Type> || type_declaration<Type>;
+
+// The policies of a filter, in their canonical order: the declared state
+// transition type, the declared output model type, the update form, the
+// localization, the symmetrization, then the floors. The filter holds its
+// policies as its first member, without a unique address, which stores nothing
+// but the floors with a runtime standard deviation: a policy declared or not is
+// part of the filter type, at no space cost, and its absence selects the
+// default filter.
 template <typename... Policies> struct policies {};
 
 template <typename... Policies>
@@ -130,6 +154,20 @@ using is_other_update_form =
     std::bool_constant<update_form<Type> &&
                        not std::same_as<Type, joseph_form_t>>;
 
+template <typename Type>
+using is_localize = std::bool_constant<localize_policy<Type>>;
+
+template <typename Type>
+using is_state_transition_type =
+    std::bool_constant<declares<state_transition_type_t, Type>>;
+
+template <typename Type>
+using is_output_model_type =
+    std::bool_constant<declares<output_model_type_t, Type>>;
+
+template <typename Type>
+using is_type_declaration = std::bool_constant<type_declaration<Type>>;
+
 template <typename Type> using is_symmetrize = std::is_same<Type, symmetrize_t>;
 
 template <typename Type>
@@ -150,7 +188,10 @@ struct policies_from<std::tuple<Policies...>>
 // of the policies does not matter.
 template <typename... Arguments>
 using policies_of = policies_from<decltype(std::tuple_cat(
+    std::declval<select<Arguments, is_state_transition_type>>()...,
+    std::declval<select<Arguments, is_output_model_type>>()...,
     std::declval<select<Arguments, is_other_update_form>>()...,
+    std::declval<select<Arguments, is_localize>>()...,
     std::declval<select<Arguments, is_symmetrize>>()...,
     std::declval<select<Arguments, is_floors>>()...))>::type;
 
@@ -169,6 +210,92 @@ inline constexpr bool contains{false};
 template <typename Policy, typename... Policies>
 inline constexpr bool contains<Policy, policies<Policies...>>{
     (std::same_as<Policy, Policies> || ...)};
+
+// The taper of the localization policy, void without localization.
+template <typename Type> struct taper_from : std::type_identity<void> {};
+
+template <typename Taper>
+struct taper_from<localize_t<Taper>> : std::type_identity<Taper> {};
+
+template <typename Policies> struct taper_of : std::type_identity<void> {};
+
+template <typename... Policies>
+  requires(localize_policy<Policies> || ...)
+struct taper_of<policies<Policies...>>
+    : taper_from<std::tuple_element_t<
+          0, decltype(std::tuple_cat(
+                 std::declval<select<Policies, is_localize>>()...))>> {};
+
+template <typename Policies> using taper = taper_of<Policies>::type;
+
+// The estimate uncertainty of a filter of the policies: the product of the
+// taper by a matrix of the type, localized, of the taper's structure, or the
+// type itself without localization.
+template <typename Policies, typename Type> struct localized_of {
+  using type = Type;
+};
+
+template <typename Policies, typename Type>
+  requires(not std::same_as<taper<Policies>, void>)
+struct localized_of<Policies, Type> {
+  using type = evaluate<std::remove_cvref_t<decltype(schur(
+      taper<Policies>::value, std::declval<const Type &>()))>>;
+};
+
+template <typename Policies, typename Type>
+using localized = localized_of<Policies, Type>::type;
+
+// The type a declaration of the policies declares, or the default type
+// without declaration.
+template <template <typename> typename Declaration, typename Policies,
+          typename Default>
+struct declared_of : std::type_identity<Default> {};
+
+template <template <typename> typename Declaration, typename... Policies,
+          typename Default>
+  requires(declares<Declaration, Policies> || ...)
+struct declared_of<Declaration, policies<Policies...>, Default>
+    : std::type_identity<typename std::tuple_element_t<
+          0, decltype(std::tuple_cat(
+                 std::declval<std::conditional_t<
+                     declares<Declaration, Policies>, std::tuple<Policies>,
+                     std::tuple<>>>()...))>::type> {};
+
+template <template <typename> typename Declaration, typename Policies,
+          typename Default>
+using declared = declared_of<Declaration, Policies, Default>::type;
+
+// Whether the policies declare the type of a characteristic.
+template <typename Policies> inline constexpr bool declares_types{false};
+
+template <typename... Policies>
+inline constexpr bool declares_types<policies<Policies...>>{
+    (type_declaration<Policies> || ...)};
+
+// Whether the filter takes the declared types of its characteristics computed
+// by a callable.
+template <typename Filter> inline constexpr bool types_declarable{false};
+
+// Whether the filter localizes its estimate uncertainty after each prediction
+// and update, when declared with the localization policy.
+template <typename Filter> inline constexpr bool localizable{false};
+
+// The estimate uncertainty of the value: the Schur product of the taper by the
+// value, of the taper's structure, or the value converted, without
+// localization. The value is forwarded: a computed estimate uncertainty is
+// moved, not copied.
+template <typename EstimateUncertainty, typename Policies, typename Value>
+[[nodiscard]] constexpr auto estimate(const Policies &configuration,
+                                      Value &&value) -> EstimateUncertainty {
+  static_cast<void>(configuration);
+
+  if constexpr (std::same_as<taper<Policies>, void>) {
+    return EstimateUncertainty{std::forward<Value>(value)};
+  } else {
+    return EstimateUncertainty{
+        schur(taper<Policies>::value, std::forward<Value>(value))};
+  }
+}
 
 template <std::size_t Index>
 inline constexpr std::integral_constant<std::size_t, Index> position{};
@@ -280,18 +407,28 @@ update_estimate_uncertainty(const policies<Policies...> &configuration, auto &p,
                                not indexable<std::remove_cvref_t<decltype(s)>>};
 
   if constexpr (contains<simple_form_t, kinds> && scalar_output) {
-    p = estimate_uncertainty{p - k * (h * p)};
+    p = estimate<estimate_uncertainty>(configuration, p - k * (h * p));
   } else if constexpr (contains<simple_form_t, kinds>) {
-    p = estimate_uncertainty{(i - k * h) * p};
+    p = estimate<estimate_uncertainty>(configuration, (i - k * h) * p);
   } else if constexpr (contains<symmetric_form_t, kinds>) {
-    p = estimate_uncertainty{p - k * s * t(k)};
+    p = estimate<estimate_uncertainty>(configuration, p - k * s * t(k));
   } else if constexpr (contains<information_form_t, kinds>) {
-    p = estimate_uncertainty{i / (i / p + t(h) / r * h)};
-  } else if constexpr (scalar_output) {
+    p = estimate<estimate_uncertainty>(configuration,
+                                       i / (i / p + t(h) / r * h));
+  } else if constexpr (scalar_output &&
+                       std::same_as<taper<policies<Policies...>>, void>) {
     p = estimate_uncertainty{p - k * (h * p)};
     p = estimate_uncertainty{p - p * t(h) * t(k) + k * r * t(k)};
+  } else if constexpr (scalar_output) {
+    // The intermediate estimate uncertainty is not localized: the taper applies
+    // once, to the updated estimate uncertainty.
+    const auto updated{p - k * (h * p)};
+
+    p = estimate<estimate_uncertainty>(
+        configuration, updated - updated * t(h) * t(k) + k * r * t(k));
   } else {
-    p = estimate_uncertainty{(i - k * h) * p * t(i - k * h) + k * r * t(k)};
+    p = estimate<estimate_uncertainty>(
+        configuration, (i - k * h) * p * t(i - k * h) + k * r * t(k));
   }
 
   condition(configuration, p);
@@ -308,13 +445,14 @@ update_estimate_uncertainty(const policies<Policies...> &configuration, auto &p,
   using kinds = policies<Policies...>;
 
   if constexpr (contains<simple_form_t, kinds>) {
-    p = estimate_uncertainty{(i - k) * p};
+    p = estimate<estimate_uncertainty>(configuration, (i - k) * p);
   } else if constexpr (contains<symmetric_form_t, kinds>) {
-    p = estimate_uncertainty{p - k * s * t(k)};
+    p = estimate<estimate_uncertainty>(configuration, p - k * s * t(k));
   } else if constexpr (contains<information_form_t, kinds>) {
-    p = estimate_uncertainty{i / (i / p + i / r)};
+    p = estimate<estimate_uncertainty>(configuration, i / (i / p + i / r));
   } else {
-    p = estimate_uncertainty{(i - k) * p * t(i - k) + k * r * t(k)};
+    p = estimate<estimate_uncertainty>(configuration,
+                                       (i - k) * p * t(i - k) + k * r * t(k));
   }
 
   condition(configuration, p);

@@ -50,7 +50,8 @@ target_sources(
   INTERFACE
   FILE_SET "typed_linear_algebra_headers"
     TYPE "HEADERS"
-    FILES "fcarouge/kalman_typed_linear_algebra.hpp")
+    FILES "fcarouge/kalman_typed_linear_algebra.hpp"
+          "fcarouge/typed_linear_algebra_schur_product.hpp")
 target_link_libraries(
   kalman_typed_linear_algebra
   INTERFACE kalman fcarouge-typed-linear-algebra::tlinalg)

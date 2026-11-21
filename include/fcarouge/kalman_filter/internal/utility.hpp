@@ -479,6 +479,35 @@ template <typename Type> constexpr auto t(const Type &value) {
   return transposes<Type>{}(value);
 }
 
+//! @brief Linear algebra Schur product specialization point.
+//!
+//! @details The Schur product, or Hadamard product, multiplies two matrices of
+//! the same shape element by element. A type without a specialization is
+//! rejected at compile time. A linear algebra backend providing the operation
+//! specializes this template.
+template <typename Lhs, typename Rhs> struct schur_products {
+  [[nodiscard]] static constexpr auto operator()(const Lhs &, const Rhs &) {
+    return not_implemented<Rhs>{
+        "Implement the linear algebra Schur product for this type."};
+  }
+};
+
+//! @brief The Schur product of arithmetic values is their product.
+template <arithmetic Lhs, arithmetic Rhs> struct schur_products<Lhs, Rhs> {
+  [[nodiscard]] static constexpr auto operator()(const Lhs &lhs,
+                                                 const Rhs &rhs) {
+    return lhs * rhs;
+  }
+};
+
+//! @brief Schur product helper function.
+//!
+//! @details Enable readable linear algebra notation.
+template <typename Lhs, typename Rhs>
+constexpr auto schur(const Lhs &lhs, const Rhs &rhs) {
+  return schur_products<Lhs, Rhs>{}(lhs, rhs);
+}
+
 //! @brief Unpack the first type of the type template parameter pack.
 //!
 //! @details Shorthand for `std::tuple_element_t<0, std::tuple<Types...>>`.

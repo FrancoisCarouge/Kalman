@@ -44,10 +44,12 @@ For more information, please refer to <https://unlicense.org> */
 //!
 //! @details Specializes the filter's linear algebra customization points for
 //! the typed matrix, whatever its underlying matrix implementation: the
-//! evaluation, the transposition, and the named algebraic values.
+//! evaluation, the transposition, the Schur product, and the named algebraic
+//! values.
 
 #include "fcarouge/kalman_filter/internal/utility.hpp"
 #include "fcarouge/typed_linear_algebra.hpp"
+#include "fcarouge/typed_linear_algebra_schur_product.hpp"
 
 #include <type_traits>
 
@@ -68,6 +70,25 @@ struct transposes<typed_matrix<Matrix, RowIndexes, ColumnIndexes>> {
   operator()(const typed_matrix<Matrix, RowIndexes, ColumnIndexes> &value) {
     return typed_matrix<evaluate<transpose<Matrix>>, ColumnIndexes, RowIndexes>{
         t(value.data())};
+  }
+};
+
+//! @brief Specialization of the Schur products, of a dimensionless left
+//! operand, for an underlying matrix implementation providing it.
+template <typename LhsMatrix, typename LhsRowIndexes, typename LhsColumnIndexes,
+          typename RhsMatrix, typename RhsRowIndexes, typename RhsColumnIndexes>
+  requires requires(
+      const typed_matrix<LhsMatrix, LhsRowIndexes, LhsColumnIndexes> &lhs,
+      const typed_matrix<RhsMatrix, RhsRowIndexes, RhsColumnIndexes> &rhs) {
+    fcarouge::schur_product(lhs, rhs);
+  }
+struct schur_products<
+    typed_matrix<LhsMatrix, LhsRowIndexes, LhsColumnIndexes>,
+    typed_matrix<RhsMatrix, RhsRowIndexes, RhsColumnIndexes>> {
+  [[nodiscard]] static constexpr auto operator()(
+      const typed_matrix<LhsMatrix, LhsRowIndexes, LhsColumnIndexes> &lhs,
+      const typed_matrix<RhsMatrix, RhsRowIndexes, RhsColumnIndexes> &rhs) {
+    return fcarouge::schur_product(lhs, rhs);
   }
 };
 
