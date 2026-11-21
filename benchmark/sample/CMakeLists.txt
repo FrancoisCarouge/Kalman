@@ -69,6 +69,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang"
 endif()
 
 if(BUILD_BENCHMARKING)
+  bench("ekf_104x12x0_global_weather_unit" BACKENDS "mp_units_sparse")
   bench("ekf_1x2x0_terrain_estimation_unit" BACKENDS "mp_units_eigen")
   bench("ekf_3x1x0_beacon_position_unit" BACKENDS "mp_units_eigen")
   bench("ekf_3x2x0_wind_airspeed_scale_unit" BACKENDS "mp_units_eigen")

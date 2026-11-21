@@ -189,6 +189,24 @@ template <typename Type> struct output_t {
 
 template <typename Type> inline output_t<Type> output{};
 
+// The type of the state transition F a callable computes, declared rather than
+// the quotient of the state by the state, such as a matrix of a sparsity
+// pattern.
+template <typename Type> struct state_transition_type_t {
+  using type = Type;
+};
+
+template <typename Type>
+inline state_transition_type_t<Type> state_transition_type{};
+
+// The type of the output model H a callable computes, declared rather than the
+// quotient of the output by the state, such as a matrix of a sparsity pattern.
+template <typename Type> struct output_model_type_t {
+  using type = Type;
+};
+
+template <typename Type> inline output_model_type_t<Type> output_model_type{};
+
 template <typename Type> struct output_model {
   using type = Type;
 
@@ -304,6 +322,13 @@ inline constexpr information_form_t information_form{};
 struct symmetrize_t {};
 
 inline constexpr symmetrize_t symmetrize{};
+
+// The localization of the estimate uncertainty by the Schur product with a
+// taper, a compile-time constant of an empty type with a static value member:
+// the taper is part of the filter type, without storage.
+template <typename Taper> struct localize_t {};
+
+template <typename Taper> inline constexpr localize_t<Taper> localize{};
 
 // The standard deviations, in the units of the state, below which the
 // estimate uncertainty variances are raised. The values are held in a tuple

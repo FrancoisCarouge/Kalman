@@ -43,6 +43,7 @@ For more information, please refer to <https://unlicense.org> */
 #include "utility.hpp"
 
 #include <tuple>
+#include <type_traits>
 
 namespace fcarouge::kalman_filter::internal {
 // Helper template to support multiple pack deduction.
@@ -61,11 +62,20 @@ struct x_z_p_q_r_hh_ff_tt_oo_ps<State, Output, std::tuple<PredictionTypes...>,
                                 Observation, Policies> {
   using state = State;
   using output = Output;
-  using estimate_uncertainty = ᴀʙᵀ<state, state>;
+  // The estimate uncertainty is of the structure of the taper of its
+  // localization policy, such as a matrix of a sparsity pattern, which may
+  // differ from the type of the product of the state by its transpose.
+  using estimate_uncertainty = localized<Policies, ᴀʙᵀ<state, state>>;
   using process_uncertainty = ᴀʙᵀ<state, state>;
   using output_uncertainty = ᴀʙᵀ<output, output>;
-  using state_transition = evaluate<quotient<state, state>>;
-  using output_model = evaluate<quotient<output, state>>;
+  // The state transition F and the output model H are of the quotient types
+  // of the state and the output, or of their declared types, such as a matrix
+  // of a sparsity pattern. Their callables compute exactly these types: a
+  // mismatch, which would convert or narrow, does not compile.
+  using state_transition = declared<state_transition_type_t, Policies,
+                                    evaluate<quotient<state, state>>>;
+  using output_model = declared<output_model_type_t, Policies,
+                                evaluate<quotient<output, state>>>;
   using innovation = output;
   using innovation_uncertainty = output_uncertainty;
   using observation_state_function = ObservationState;
@@ -94,11 +104,30 @@ struct x_z_p_q_r_hh_ff_tt_oo_ps<State, Output, std::tuple<PredictionTypes...>,
   output z{make_zero<output>()};
   prediction_types prediction_arguments{};
 
+  static_assert(
+      std::same_as<
+          evaluate<std::remove_cvref_t<std::invoke_result_t<
+              TransitionState, const state &, const PredictionTypes &...>>>,
+          state_transition>,
+      "The state transition function computes the state transition type: "
+      "the quotient of the state by the state, or the declared "
+      "state_transition_type.");
+  static_assert(
+      std::same_as<evaluate<std::remove_cvref_t<
+                       std::invoke_result_t<ObservationState, const state &>>>,
+                   output_model>,
+      "The output model function computes the output model type: the "
+      "quotient of the output by the state, or the declared "
+      "output_model_type.");
+
   constexpr void update(const auto &output_z, const auto &...outputs_z)
     requires(
         list_initializes<output, decltype(output_z), decltype(outputs_z)...>)
   {
-    const auto &i{make_one<evaluate<product<gain, output_model>>>()};
+    // The identity of the quotient of the state by the state: the product of
+    // the gain by an output model of a sparsity pattern may not store the
+    // diagonal of the identity.
+    const auto &i{make_one<evaluate<quotient<state, state>>>()};
     z = output{output_z, outputs_z...};
     h = observation_state_h(x);
     s = innovation_uncertainty{h * p * t(h) + r};
@@ -114,10 +143,24 @@ struct x_z_p_q_r_hh_ff_tt_oo_ps<State, Output, std::tuple<PredictionTypes...>,
     prediction_arguments = {prediction_pack...};
     f = transition_state_f(x, prediction_pack...);
     x = transition(x, prediction_pack...);
-    p = estimate_uncertainty{f * p * t(f) + q};
+    p = estimate<estimate_uncertainty>(policies, f * p * t(f) + q);
     condition(policies, p);
   }
 };
+
+template <typename State, typename Output, typename... PredictionTypes,
+          typename ObservationState, typename TransitionState,
+          typename Transition, typename Observation, typename Policies>
+inline constexpr bool localizable<x_z_p_q_r_hh_ff_tt_oo_ps<
+    State, Output, std::tuple<PredictionTypes...>, ObservationState,
+    TransitionState, Transition, Observation, Policies>>{true};
+
+template <typename State, typename Output, typename... PredictionTypes,
+          typename ObservationState, typename TransitionState,
+          typename Transition, typename Observation, typename Policies>
+inline constexpr bool types_declarable<x_z_p_q_r_hh_ff_tt_oo_ps<
+    State, Output, std::tuple<PredictionTypes...>, ObservationState,
+    TransitionState, Transition, Observation, Policies>>{true};
 } // namespace fcarouge::kalman_filter::internal
 
 #endif // FCAROUGE_KALMAN_FILTER_INTERNAL_X_Z_P_Q_R_HH_FF_TT_OO_PS_HPP

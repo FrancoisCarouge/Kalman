@@ -42,13 +42,22 @@ For more information, please refer to <https://unlicense.org> */
 
 namespace fcarouge::test {
 namespace {
-//! @brief A placeholder callable: storage is the property under test.
-struct model {};
-struct jacobian {};
+//! @brief A placeholder callable: storage is the property under test. The
+//! output model and state transition callables compute the types of their
+//! characteristics, which the filter checks, declared only, for the unevaluated
+//! check.
+struct model {
+  auto operator()(const auto &...arguments) const -> double;
+};
+struct jacobian {
+  auto operator()(const auto &...arguments) const -> double;
+};
 struct propagation {};
 struct measurement {};
 struct noise {};
-struct control {};
+struct control {
+  auto operator()(const auto &...arguments) const -> double;
+};
 
 //! @brief The filter stores update arguments.
 template <typename Filter>

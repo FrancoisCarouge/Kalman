@@ -54,6 +54,8 @@ add_subdirectory("main")
 add_subdirectory("matplot")
 add_subdirectory("mp_units")
 add_subdirectory("mp_units_eigen")
+add_subdirectory("mp_units_sparse")
+add_subdirectory("sparse")
 add_subdirectory("typed")
 
 add_library(kalman_support_options INTERFACE)

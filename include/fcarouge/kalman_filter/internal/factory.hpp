@@ -1144,6 +1144,12 @@ template <typename Filter = void> struct filter_deducer {
                   "Declare the symmetrization at most once.");
     static_assert(count_of<is_floors, Arguments...> <= 1,
                   "Declare the floors at most once.");
+    static_assert(count_of<is_localize, Arguments...> <= 1,
+                  "Declare the localization at most once.");
+    static_assert(count_of<is_state_transition_type, Arguments...> <= 1,
+                  "Declare the state transition type at most once.");
+    static_assert(count_of<is_output_model_type, Arguments...> <= 1,
+                  "Declare the output model type at most once.");
 
     return std::apply(
         [&arguments...](const auto &...characteristics) {
@@ -1152,6 +1158,18 @@ template <typename Filter = void> struct filter_deducer {
 
           check_floors<typename filter::state>(
               std::type_identity<configuration>{});
+
+          static_assert(std::same_as<taper<configuration>, void> ||
+                            localizable<filter>,
+                        "The localization is supported by the extended filter "
+                        "of a state transition and an output model computed "
+                        "from the state, with prediction arguments only.");
+          static_assert(not declares_types<configuration> ||
+                            types_declarable<filter>,
+                        "The declared state transition and output model types "
+                        "are supported by the extended filters of a callable "
+                        "state transition and output model with prediction "
+                        "arguments only.");
 
           return builder{}(configure<configuration>(arguments...),
                            characteristics...);

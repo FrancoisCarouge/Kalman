@@ -37,7 +37,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <https://unlicense.org> ]]
 
 pass("floors_1x1x0")
-pass("floors_3x2x0" BACKENDS "eigen" "eigexed")
-pass("floors_unit_2x2x0" BACKENDS "mp_units_eigen")
-pass("symmetrize_3x2x0" BACKENDS "eigen" "eigexed")
-pass("symmetrize_unit_2x2x0" BACKENDS "mp_units_eigen")
+pass("floors_3x2x0" BACKENDS "eigen" "eigexed" "sparse")
+pass("floors_unit_2x2x0" BACKENDS "mp_units_eigen" "mp_units_sparse")
+pass("localize_1x1x0")
+pass("localize_3x1x0" BACKENDS "sparse")
+pass("localize_3x2x0" BACKENDS "sparse")
+pass("symmetrize_3x2x0" BACKENDS "eigen" "eigexed" "sparse")
+pass("symmetrize_unit_2x2x0" BACKENDS "mp_units_eigen" "mp_units_sparse")

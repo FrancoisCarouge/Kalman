@@ -100,7 +100,7 @@ struct element_caster<To, From> {
                   "quantity representation type to guarantee the conversion is "
                   "explicitly decided by the end-user.");
 
-    return value * To::reference;
+    return To{value, To::reference};
   }
 };
 
@@ -119,7 +119,7 @@ struct element_caster<To &, From &> {
                   "quantity representation type to guarantee the conversion is "
                   "explicitly decided by the end-user.");
 
-    return value * To::reference;
+    return To{value, To::reference};
   }
 };
 
