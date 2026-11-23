@@ -22,11 +22,25 @@ jobs:
         egress-policy: audit
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: Graphviz
+      run: |
+        sudo apt-get update
+        sudo apt-get install --yes graphviz
+    - name: Doxygen Version
+      id: doxygen
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        TAG="$(gh release view --repo doxygen/doxygen --json tagName --jq .tagName)"
+        VERSION="${TAG#Release_}"
+        echo "version=${VERSION//_/.}" >> "${GITHUB_OUTPUT}"
     - name: Doxygen
-      uses: mattnotmitt/doxygen-action@b84fe17600245bb5db3d6c247cc274ea98c15a3b # v1.12
+      uses: ssciwr/doxygen-install@fa3e94d34131d3990b6b8ba939ab982964aa3758 # v2.0.3
       with:
-        working-directory: 'documentation'
-        doxyfile-path: 'Doxyfile'
+        version: ${{ steps.doxygen.outputs.version }}
+    - name: Documentation
+      working-directory: documentation
+      run: doxygen Doxyfile
     - name: Deploy
       uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
       with:
