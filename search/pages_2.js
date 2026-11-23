@@ -1,13 +1,14 @@
 var searchData=
 [
-  ['carouge_20kalman_0',['François Carouge / Kalman',['../index.xhtml',1,'']]],
-  ['changelog_1',['Changelog',['../md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml',1,'']]],
-  ['code_20coverage_2',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]],
-  ['code_20of_20conduct_3',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['conduct_4',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['contributing_20to_20kalman_5',['Contributing to Kalman',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml',1,'']]],
-  ['contributor_20covenant_20code_20of_20conduct_6',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['contributors_7',['Contributors',['../md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml',1,'']]],
-  ['covenant_20code_20of_20conduct_8',['Contributor Covenant Code of Conduct',['../md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml',1,'']]],
-  ['coverage_9',['Unit Test Code Coverage',['../unit_test_coverage.xhtml',1,'']]]
+  ['2_200_202023_2008_2007_0',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.1.0...0.2.0&quot;&gt;0.2.0&lt;/a&gt; - 2023-08-07',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07',1,'']]],
+  ['2_202025_2005_2019_1',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2&quot;&gt;0.5.2&lt;/a&gt; - 2025-05-19',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19',1,'']]],
+  ['2022_2011_2025_2',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0&quot;&gt;0.1.0&lt;/a&gt; - 2022-11-25',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25',1,'']]],
+  ['2023_2008_2007_3',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.1.0...0.2.0&quot;&gt;0.2.0&lt;/a&gt; - 2023-08-07',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07',1,'']]],
+  ['2024_2009_2016_4',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0&quot;&gt;0.3.0&lt;/a&gt; - 2024-09-16',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16',1,'']]],
+  ['2025_2002_2028_5',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.3.0...0.4.0&quot;&gt;0.4.0&lt;/a&gt; - 2025-02-28',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28',1,'']]],
+  ['2025_2005_2002_6',['2025 05 02',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md050---2025-05-02',1,'&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.4.0...0.5.0&quot;&gt;0.5.0&lt;/a&gt; - 2025-05-02'],['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02',1,'&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1&quot;&gt;0.5.1&lt;/a&gt; - 2025-05-02']]],
+  ['2025_2005_2019_7',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2&quot;&gt;0.5.2&lt;/a&gt; - 2025-05-19',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19',1,'']]],
+  ['2026_2003_2016_8',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3&quot;&gt;0.5.3&lt;/a&gt; - 2026-03-16',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16',1,'']]],
+  ['25_9',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0&quot;&gt;0.1.0&lt;/a&gt; - 2022-11-25',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25',1,'']]],
+  ['28_10',['&lt;a href=&quot;https://github.com/FrancoisCarouge/Kalman/compare/0.3.0...0.4.0&quot;&gt;0.4.0&lt;/a&gt; - 2025-02-28',['../md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28',1,'']]]
 ];

@@ -26,93 +26,87 @@ var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
     [ "François Carouge / Kalman", "index.xhtml", "index" ],
-    [ "AGENTS.md", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml", [
-      [ "AI agent conduct", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
-      [ "Build & test", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#build--test", null ],
-      [ "Architecture", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#architecture", [
-        [ "The named-parameter, deduced-filter pattern", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#the-named-parameter-deduced-filter-pattern", null ],
-        [ "Linear algebra backends", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#linear-algebra-backends", null ],
-        [ "Test/sample generation (support/support.cmake)", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake", null ],
-        [ "Decorators", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#decorators", null ],
-        [ "Other directories", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#other-directories", null ]
+    [ "AGENTS.md", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml", [
+      [ "AI agent conduct", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
+      [ "Build &amp; test", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#build--test", null ],
+      [ "Architecture", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#architecture", [
+        [ "The named-parameter, deduced-filter pattern", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#the-named-parameter-deduced-filter-pattern", null ],
+        [ "Linear algebra backends", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#linear-algebra-backends", null ],
+        [ "Test/sample generation (<span class=\"tt\">support/support.cmake</span>)", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake", null ],
+        [ "Decorators", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#decorators", null ],
+        [ "Other directories", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#other-directories", null ]
       ] ],
-      [ "Recipe: supporting a new filter configuration", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#recipe-supporting-a-new-filter-configuration", null ],
-      [ "Completion checklist", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
-      [ "Conventions", "md__2github_2workspace_2_a_g_e_n_t_s.xhtml#conventions", null ]
+      [ "Recipe: supporting a new filter configuration", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#recipe-supporting-a-new-filter-configuration", null ],
+      [ "Completion checklist", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
+      [ "Conventions", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#conventions", null ]
     ] ],
-    [ "Benchmarks", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml", [
-      [ "Embedded Footprint", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#embedded-footprint", null ],
-      [ "Samples", "md__2github_2workspace_2benchmark_2_r_e_a_d_m_e.xhtml#samples", null ]
-    ] ],
-    [ "Changelog", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml", [
-      [ "0.5.3 - 2026-03-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
-        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
-        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build", null ],
-        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed", null ]
+    [ "Changelog", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml", [
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3\">0.5.3</a> - 2026-03-16", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build", null ],
+        [ "Fixed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#fixed", null ]
       ] ],
-      [ "0.5.2 - 2025-05-19", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-1", null ],
-        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2\">0.5.2</a> - 2025-05-19", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-1", null ],
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ]
       ] ],
-      [ "0.5.1 - 2025-05-02", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02", [
-        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-1", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1\">0.5.1</a> - 2025-05-02", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02", [
+        [ "Fixed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-1", null ]
       ] ],
-      [ "0.5.0 - 2025-05-02", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md050---2025-05-02", [
-        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-2", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.4.0...0.5.0\">0.5.0</a> - 2025-05-02", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md050---2025-05-02", [
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-2", null ]
       ] ],
-      [ "0.4.0 - 2025-02-28", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
-        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-3", null ],
-        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ],
-        [ "Fixed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-2", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.3.0...0.4.0\">0.4.0</a> - 2025-02-28", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-3", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ],
+        [ "Fixed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-2", null ]
       ] ],
-      [ "0.3.0 - 2024-09-16", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-3", null ],
-        [ "Changed", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#changed-4", null ],
-        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-2", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0\">0.3.0</a> - 2024-09-16", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-3", null ],
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-4", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-2", null ]
       ] ],
-      [ "0.2.0 - 2023-08-07", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-4", null ],
-        [ "Compiler & Build", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-3", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.1.0...0.2.0\">0.2.0</a> - 2023-08-07", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-4", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-3", null ]
       ] ],
-      [ "0.1.0 - 2022-11-25", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25", [
-        [ "Added", "md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#added-5", null ]
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0\">0.1.0</a> - 2022-11-25", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-5", null ]
       ] ]
     ] ],
-    [ "Contributor Covenant Code of Conduct", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
-      [ "Our Pledge", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge", null ],
-      [ "Our Standards", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards", null ],
-      [ "Our Responsibilities", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-responsibilities", null ],
-      [ "Scope", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope", null ],
-      [ "Enforcement", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement", null ],
-      [ "Attribution", "md__2github_2workspace_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution", null ]
+    [ "Contributor Covenant Code of Conduct", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
+      [ "Our Pledge", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-pledge", null ],
+      [ "Our Standards", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-standards", null ],
+      [ "Our Responsibilities", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#our-responsibilities", null ],
+      [ "Scope", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#scope", null ],
+      [ "Enforcement", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#enforcement", null ],
+      [ "Attribution", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml#attribution", null ]
     ] ],
-    [ "Contributing to Kalman", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
-      [ "Code of Conduct", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct", null ],
-      [ "Reporting Bugs", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs", null ],
-      [ "Requesting Features", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
-      [ "Security Policy", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ],
-      [ "Questions & Ideas", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ],
-      [ "Pre-commit Hooks", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks", null ],
-      [ "Pull Request Merge Checklist", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
+    [ "Contributing to Kalman", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml", [
+      [ "Code of Conduct", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#code-of-conduct", null ],
+      [ "Reporting Bugs", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#reporting-bugs", null ],
+      [ "Requesting Features", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#requesting-features", null ],
+      [ "Security Policy", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#security-policy", null ],
+      [ "Questions &amp; Ideas", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#questions--ideas", null ],
+      [ "Pre-commit Hooks", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pre-commit-hooks", null ],
+      [ "Pull Request Merge Checklist", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
-    [ "Contributors", "md__2github_2workspace_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
-    [ "Embedded Footprint", "footprint.xhtml", null ],
-    [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
-    [ "Installation", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml", [
-      [ "Development Build & Run", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
-        [ "Tests & Samples", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
-        [ "Benchmarks", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#benchmarks-1", null ],
-        [ "Installation Packages", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#installation-packages", [
-          [ "Linux", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#linux", null ],
-          [ "Windows", "md__2github_2workspace_2_i_n_s_t_a_l_l.xhtml#windows", null ]
+    [ "Contributors", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
+    [ "Installation", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml", [
+      [ "Development Build &amp; Run", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
+        [ "Tests &amp; Samples", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
+        [ "Benchmarks", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#benchmarks-1", null ],
+        [ "Installation Packages", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#installation-packages", [
+          [ "Linux", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#linux", null ],
+          [ "Windows", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#windows", null ]
         ] ]
       ] ]
     ] ],
-    [ "Security Policy", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml", [
-      [ "Supported Versions", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#supported-versions", null ],
-      [ "Reporting a Vulnerability", "md__2github_2workspace_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability", null ]
+    [ "Security Policy", "md__2home_2runner_2work_2_kalman_2_kalman_2_s_e_c_u_r_i_t_y.xhtml", [
+      [ "Supported Versions", "md__2home_2runner_2work_2_kalman_2_kalman_2_s_e_c_u_r_i_t_y.xhtml#supported-versions", null ],
+      [ "Reporting a Vulnerability", "md__2home_2runner_2work_2_kalman_2_kalman_2_s_e_c_u_r_i_t_y.xhtml#reporting-a-vulnerability", null ]
     ] ],
     [ "Todo List", "todo.xhtml", null ],
     [ "Test List", "test.xhtml", null ],
@@ -152,18 +146,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "1x1_8cpp.xhtml",
-"conceptfcarouge_1_1test_1_1anonymous__namespace_02set__1x1x0_8cpp_03_1_1has__x.xhtml",
-"ekf__3x2x0__wind__airspeed__scale__unit_8cpp_source.xhtml",
-"index.xhtml#format",
-"md__2github_2workspace_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02ekf__3x2x0__wind__airspeed__scale__unit_8cpp_03.xhtml#a6d202a022bab7ab28af08ce90820b85f",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02callable__1x1x1_8cpp_03.xhtml#a50d89c5359df91e82fbe03df73953d61",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02traits__1x1x0_8cpp_03.xhtml#a3586a94458c3596c1f63221fc330e325",
-"predict_2noise__jacobian__1x1x0_8cpp.xhtml#a75eb6e83440ac6238d3faa13e5740489",
-"structfcarouge_1_1test_1_1anonymous__namespace_02unrelated_8cpp_03_1_1unrelated.xhtml#a70099e42cd54c4096274bb09c7d5e6c8",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo__ps_8cpp_03_1_1noise.xhtml",
-"values__2x2x0_8cpp.xhtml#a3532ab7439cc320400ecfa10aa19fdb2"
+"declarations__1x1x1_8cpp_source.xhtml",
+"index.xhtml#sponsors",
+"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a5b14ce16dd5afa4a71e9c788cc92ae14",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a19962552a964346dd868c6b2440dba53",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02jacobian__2x1x0_8cpp_03.xhtml#a4c52cc228ecc9dd4f43e1e443f45360b",
+"namespacemembers_vars_g.xhtml",
+"structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__f__us__ps_8cpp_03_1_1noise.xhtml#aa3187c5ecf63259208b19dc9aa7495b8",
+"x__z__p__q__r__hh__ff__oo_8cpp_source.xhtml"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+const SYNCONMSG = 'click to disable panel synchronization';
+const SYNCOFFMSG = 'click to enable panel synchronization';
+const LISTOFALLMEMBERS = 'List of all members';
