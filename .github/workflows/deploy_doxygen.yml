@@ -26,18 +26,8 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install --yes graphviz
-    - name: Doxygen Version
-      id: doxygen
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: |
-        TAG="$(gh release view --repo doxygen/doxygen --json tagName --jq .tagName)"
-        VERSION="${TAG#Release_}"
-        echo "version=${VERSION//_/.}" >> "${GITHUB_OUTPUT}"
     - name: Doxygen
       uses: ssciwr/doxygen-install@fa3e94d34131d3990b6b8ba939ab982964aa3758 # v2.0.3
-      with:
-        version: ${{ steps.doxygen.outputs.version }}
     - name: Documentation
       working-directory: documentation
       run: doxygen Doxyfile
