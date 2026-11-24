@@ -22,8 +22,8 @@ jobs:
         - { os: 'ubuntu-26.04', cxx: 'clang++-21', cc: 'clang-21', generator: 'Ninja', cpack_generator: 'DEB', build_dir: 'build' }
         - { os: 'ubuntu-26.04', cxx: 'g++-14', cc: 'gcc-14', generator: 'Unix Makefiles', cpack_generator: 'DEB', build_dir: 'build' }
         - { os: 'ubuntu-26.04', cxx: 'g++-15', cc: 'gcc-15', generator: 'Unix Makefiles', cpack_generator: 'DEB', build_dir: 'build' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Debug', build_dir: 'D:\b', msvc_toolset: '14.51' }
-        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Release', build_dir: 'D:\b', msvc_toolset: '14.51' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Debug', build_dir: 'D:\b' }
+        - { os: 'windows-2025', cxx: 'cl', cc: 'cl', generator: 'Visual Studio 18 2026', cpack_generator: 'WIX', config: 'Release', build_dir: 'D:\b' }
         - { os: 'macos-26', cxx: 'clang++', cc: 'clang', generator: 'Ninja', cpack_generator: 'productbuild', build_dir: 'build' }
     name: '${{ matrix.os }} / ${{ matrix.cxx }} / ${{ matrix.generator }} / ${{ matrix.config }}'
     runs-on: '${{ matrix.os }}'
@@ -45,20 +45,11 @@ jobs:
         version="${version##*-}"
         sudo apt update
         sudo apt install -y "libc++-${version}-dev" "libc++abi-${version}-dev"
-    - name: 'Install: MSVC Toolset'
-      # MSVC 19.52 (toolset 14.52) fails to compile mp-units: pinned to the last compatible toolset.
-      if: ${{ matrix.msvc_toolset }}
-      shell: pwsh
-      run: |
-        $installer = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer"
-        $path = & "$installer\vswhere.exe" -latest -property installationPath
-        $process = Start-Process -FilePath "$installer\vs_installer.exe" -Wait -PassThru -NoNewWindow -ArgumentList 'modify', '--installPath', "`"$path`"", '--add', 'Microsoft.VisualStudio.Component.VC.${{ matrix.msvc_toolset }}.x86.x64', '--quiet', '--norestart', '--nocache'
-        exit $process.ExitCode
     - name: 'Configure'
       env:
         CXX: '${{ matrix.cxx }}'
         CC: '${{ matrix.cc }}'
-      run: cmake -S . -B '${{ matrix.build_dir }}' -G '${{ matrix.generator }}' ${{ matrix.msvc_toolset && format('-T version={0}', matrix.msvc_toolset) || '' }}
+      run: cmake -S . -B '${{ matrix.build_dir }}' -G '${{ matrix.generator }}'
     - name: 'Build'
       run: cmake --build '${{ matrix.build_dir }}' --config '${{ matrix.config }}' --verbose --parallel 4
     - name: 'Test'
