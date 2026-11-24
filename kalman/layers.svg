@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 548" width="880" height="548" role="img" aria-labelledby="title description" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, 'DejaVu Sans', sans-serif">
   <title id="title">Where Kalman sits in the technical stack</title>
-  <desc id="description">The application sits on top. Kalman is the layer directly below it. It composes a linear algebra backend, optionally strongly typed by Typed Linear Algebra, itself layered as low-level mathematics, performance primitives, and fundamentals, and it adapts strong element types. Scalar filters need no backend.</desc>
+  <desc id="description">The application sits on top. Kalman is the layer directly below it. It composes a linear algebra backend, optionally strongly typed by Typed Linear Algebra, itself layered as low-level mathematics, performance primitives such as Sparse Linear Algebra, and fundamentals, and it adapts strong element types. Scalar filters need no backend.</desc>
   <style>
     @media (prefers-color-scheme: dark) {
       .card { fill: #0d1117; stroke: #3d444d; }
@@ -53,7 +53,7 @@
   <rect class="layer" x="24" y="396" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
   <text class="ink" x="40" y="421" font-size="15" font-weight="600" fill="#1f2328">Performance primitives</text>
   <text class="muted" x="40" y="441" font-size="12" fill="#59636e">vector and matrix operations</text>
-  <text class="ink" x="608" y="431" font-size="13" text-anchor="end" fill="#1f2328">std::linalg · BLAS · NVBLAS</text>
+  <text class="ink" x="608" y="431" font-size="13" text-anchor="end" fill="#1f2328">std::linalg · BLAS · NVBLAS · Sparse Linear Algebra</text>
 
   <rect class="layer" x="24" y="464" width="600" height="60" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
   <text class="ink" x="40" y="489" font-size="15" font-weight="600" fill="#1f2328">Fundamentals</text>
