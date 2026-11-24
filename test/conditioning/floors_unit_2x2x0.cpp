@@ -85,14 +85,14 @@ using covariance = kf::ᴀʙᵀ<motion, motion>;
   constant.predict();
   mixed.predict();
 
-  assert((runtime.p().at<0, 0>() == 1. * m2));
-  assert((runtime.p().at<1, 1>() == 4. * m2 / s2));
-  assert((runtime.p().at<0, 1>() == 0.125 * m2 / s));
-  assert((runtime.p().at<1, 0>() == 0.125 * m2 / s));
-  assert((constant.p().at<0, 0>() == runtime.p().at<0, 0>()));
-  assert((constant.p().at<1, 1>() == runtime.p().at<1, 1>()));
-  assert((mixed.p().at<0, 0>() == runtime.p().at<0, 0>()));
-  assert((mixed.p().at<1, 1>() == runtime.p().at<1, 1>()));
+  assert((runtime.p().template at<0, 0>() == 1. * m2));
+  assert((runtime.p().template at<1, 1>() == 4. * m2 / s2));
+  assert((runtime.p().template at<0, 1>() == 0.125 * m2 / s));
+  assert((runtime.p().template at<1, 0>() == 0.125 * m2 / s));
+  assert((constant.p().template at<0, 0>() == runtime.p().template at<0, 0>()));
+  assert((constant.p().template at<1, 1>() == runtime.p().template at<1, 1>()));
+  assert((mixed.p().template at<0, 0>() == runtime.p().template at<0, 0>()));
+  assert((mixed.p().template at<1, 1>() == runtime.p().template at<1, 1>()));
 
   return 0;
 }()};
