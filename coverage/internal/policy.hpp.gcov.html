@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-24 08:28:48</td>
+            <td class="headerValue">2026-11-24 09:45:40</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -329,7 +329,7 @@
 <span id="L245"><span class="lineNum">     245</span>                 :             : </span>
 <span id="L246"><span class="lineNum">     246</span>                 :             : // Conditions the estimate uncertainty after an update or a prediction.</span>
 <span id="L247"><span class="lineNum">     247</span>                 :             : template &lt;typename... Policies&gt;</span>
-<span id="L248"><span class="lineNum">     248</span>                 :<span class="tlaGNC">      239061 : constexpr void condition(const policies&lt;Policies...&gt; &amp;configuration, auto &amp;p) {</span></span>
+<span id="L248"><span class="lineNum">     248</span>                 :<span class="tlaGNC">      242259 : constexpr void condition(const policies&lt;Policies...&gt; &amp;configuration, auto &amp;p) {</span></span>
 <span id="L249"><span class="lineNum">     249</span>                 :             :   if constexpr ((std::same_as&lt;Policies, symmetrize_t&gt; || ...)) {</span>
 <span id="L250"><span class="lineNum">     250</span>                 :<span class="tlaGNC">           6 :     symmetrize_estimate(p);</span></span>
 <span id="L251"><span class="lineNum">     251</span>                 :             :   }</span>
@@ -344,7 +344,7 @@
 <span id="L260"><span class="lineNum">     260</span>         [<span class="tlaGBC" title="Branch 0 was taken 3 times"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">           3 :       raise_variances(p, decltype(last::value){});</span></span>
 <span id="L261"><span class="lineNum">     261</span>                 :             :     }</span>
 <span id="L262"><span class="lineNum">     262</span>                 :             :   }</span>
-<span id="L263"><span class="lineNum">     263</span>                 :<span class="tlaGNC">      239061 : }</span></span>
+<span id="L263"><span class="lineNum">     263</span>                 :<span class="tlaGNC">      242259 : }</span></span>
 <span id="L264"><span class="lineNum">     264</span>                 :             : </span>
 <span id="L265"><span class="lineNum">     265</span>                 :             : // Updates the estimate uncertainty of a filter with an output model H, then</span>
 <span id="L266"><span class="lineNum">     266</span>                 :             : // conditions it. The forms agree in exact arithmetic, the gain being optimal.</span>
@@ -405,7 +405,7 @@
 <span id="L301"><span class="lineNum">     301</span>                 :             : // identity, then conditions it.</span>
 <span id="L302"><span class="lineNum">     302</span>                 :             : template &lt;typename... Policies&gt;</span>
 <span id="L303"><span class="lineNum">     303</span>                 :             : constexpr void</span>
-<span id="L304"><span class="lineNum">     304</span>                 :<span class="tlaGNC">      215986 : update_estimate_uncertainty(const policies&lt;Policies...&gt; &amp;configuration, auto &amp;p,</span></span>
+<span id="L304"><span class="lineNum">     304</span>                 :<span class="tlaGNC">      219184 : update_estimate_uncertainty(const policies&lt;Policies...&gt; &amp;configuration, auto &amp;p,</span></span>
 <span id="L305"><span class="lineNum">     305</span>                 :             :                             const auto &amp;i, const auto &amp;k, const auto &amp;r,</span>
 <span id="L306"><span class="lineNum">     306</span>                 :             :                             const auto &amp;s) {</span>
 <span id="L307"><span class="lineNum">     307</span>                 :             :   using estimate_uncertainty = std::remove_cvref_t&lt;decltype(p)&gt;;</span>
@@ -418,15 +418,15 @@
 <span id="L314"><span class="lineNum">     314</span>                 :             :   } else if constexpr (contains&lt;information_form_t, kinds&gt;) {</span>
 <span id="L315"><span class="lineNum">     315</span>                 :             :     p = estimate_uncertainty{i / (i / p + i / r)};</span>
 <span id="L316"><span class="lineNum">     316</span>                 :             :   } else {</span>
-<span id="L317"><span class="lineNum">     317</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">      215986 :     p = estimate_uncertainty{(i - k) * p * t(i - k) + k * r * t(k)};</span></span>
+<span id="L317"><span class="lineNum">     317</span>   [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span><span class="tlaGBC" title="Branch 2 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 3 was not taken"> - </span> :<span class="tlaGNC">      219184 :     p = estimate_uncertainty{(i - k) * p * t(i - k) + k * r * t(k)};</span></span>
 <span class="lineNum">        </span> <span class="tlaGBC" title="Branch 4 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 5 was not taken"> - </span><span class="tlaGBC" title="Branch 6 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 7 was not taken"> - </span><span class="tlaGBC" title="Branch 8 was taken 1 time"> + </span> 
 <span class="lineNum">        </span> <span class="tlaUNC" title="Branch 9 was not taken"> - </span><span class="tlaGBC" title="Branch 10 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 11 was not taken"> - </span><span class="tlaGBC" title="Branch 12 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 13 was not taken"> - </span> 
 <span class="lineNum">        </span> <span class="tlaGBC" title="Branch 14 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 15 was not taken"> - </span><span class="tlaGBC" title="Branch 16 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 17 was not taken"> - </span><span class="tlaGBC" title="Branch 18 was taken 1 time"> + </span> 
 <span class="lineNum">        </span>             <span class="tlaUNC" title="Branch 19 was not taken"> - </span>]
 <span id="L318"><span class="lineNum">     318</span>                 :             :   }</span>
 <span id="L319"><span class="lineNum">     319</span>                 :             : </span>
-<span id="L320"><span class="lineNum">     320</span>                 :<span class="tlaGNC">      215986 :   condition(configuration, p);</span></span>
-<span id="L321"><span class="lineNum">     321</span>                 :<span class="tlaGNC">      215986 : }</span></span>
+<span id="L320"><span class="lineNum">     320</span>                 :<span class="tlaGNC">      219184 :   condition(configuration, p);</span></span>
+<span id="L321"><span class="lineNum">     321</span>                 :<span class="tlaGNC">      219184 : }</span></span>
 <span id="L322"><span class="lineNum">     322</span>                 :             : } // namespace fcarouge::kalman_filter::internal</span>
 <span id="L323"><span class="lineNum">     323</span>                 :             : </span>
 <span id="L324"><span class="lineNum">     324</span>                 :             : #endif // FCAROUGE_KALMAN_FILTER_INTERNAL_POLICY_HPP</span>

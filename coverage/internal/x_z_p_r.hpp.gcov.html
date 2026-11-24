@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2026-11-24 08:28:48</td>
+            <td class="headerValue">2026-11-24 09:45:40</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
@@ -139,19 +139,19 @@
 <span id="L61"><span class="lineNum">      61</span>                 :             :   innovation_uncertainty s{make_one&lt;innovation_uncertainty&gt;()};</span>
 <span id="L62"><span class="lineNum">      62</span>                 :             :   output z{make_zero&lt;output&gt;()};</span>
 <span id="L63"><span class="lineNum">      63</span>                 :             : </span>
-<span id="L64"><span class="lineNum">      64</span>                 :<span class="tlaGNC">      215985 :   constexpr void update(const auto &amp;output_z, const auto &amp;...outputs_z)</span></span>
+<span id="L64"><span class="lineNum">      64</span>                 :<span class="tlaGNC">      219183 :   constexpr void update(const auto &amp;output_z, const auto &amp;...outputs_z)</span></span>
 <span id="L65"><span class="lineNum">      65</span>                 :             :     requires(</span>
 <span id="L66"><span class="lineNum">      66</span>                 :             :         list_initializes&lt;output, decltype(output_z), decltype(outputs_z)...&gt;)</span>
 <span id="L67"><span class="lineNum">      67</span>                 :             :   {</span>
-<span id="L68"><span class="lineNum">      68</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">      215985 :     const auto &amp;i{make_one&lt;gain&gt;()};</span></span>
+<span id="L68"><span class="lineNum">      68</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">      219183 :     const auto &amp;i{make_one&lt;gain&gt;()};</span></span>
 <span id="L69"><span class="lineNum">      69</span>                 :             : </span>
-<span id="L70"><span class="lineNum">      70</span>                 :<span class="tlaGNC">      215985 :     z = output{output_z, outputs_z...};</span></span>
-<span id="L71"><span class="lineNum">      71</span>                 :<span class="tlaGNC">      215985 :     s = p + r;</span></span>
-<span id="L72"><span class="lineNum">      72</span>                 :<span class="tlaGNC">      215985 :     k = p / s;</span></span>
-<span id="L73"><span class="lineNum">      73</span>                 :<span class="tlaGNC">      215985 :     y = z - x;</span></span>
-<span id="L74"><span class="lineNum">      74</span>                 :<span class="tlaGNC">      215985 :     x = x + k * y;</span></span>
-<span id="L75"><span class="lineNum">      75</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">      215985 :     update_estimate_uncertainty(policies, p, i, k, r, s);</span></span>
-<span id="L76"><span class="lineNum">      76</span>                 :<span class="tlaGNC">      215985 :   }</span></span>
+<span id="L70"><span class="lineNum">      70</span>                 :<span class="tlaGNC">      219183 :     z = output{output_z, outputs_z...};</span></span>
+<span id="L71"><span class="lineNum">      71</span>                 :<span class="tlaGNC">      219183 :     s = p + r;</span></span>
+<span id="L72"><span class="lineNum">      72</span>                 :<span class="tlaGNC">      219183 :     k = p / s;</span></span>
+<span id="L73"><span class="lineNum">      73</span>                 :<span class="tlaGNC">      219183 :     y = z - x;</span></span>
+<span id="L74"><span class="lineNum">      74</span>                 :<span class="tlaGNC">      219183 :     x = x + k * y;</span></span>
+<span id="L75"><span class="lineNum">      75</span>         [<span class="tlaGBC" title="Branch 0 was taken 1 time"> + </span><span class="tlaUNC" title="Branch 1 was not taken"> - </span>]:<span class="tlaGNC">      219183 :     update_estimate_uncertainty(policies, p, i, k, r, s);</span></span>
+<span id="L76"><span class="lineNum">      76</span>                 :<span class="tlaGNC">      219183 :   }</span></span>
 <span id="L77"><span class="lineNum">      77</span>                 :             : };</span>
 <span id="L78"><span class="lineNum">      78</span>                 :             : } // namespace fcarouge::kalman_filter::internal</span>
 <span id="L79"><span class="lineNum">      79</span>                 :             : </span>
