@@ -36,10 +36,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <https://unlicense.org> ]]
 
-# Measure the footprint of a step entry point image, write its documentation
-# table row, and verify it against its expected sizes.
+# Measure the footprint of an entry point image, write its documentation table
+# row, and verify it against its expected sizes.
 #
-# The entry points are flattened: their configuration object holds no other
+# The entry points are the C language linkage functions of their configuration
+# object. They are flattened: their configuration object holds no other
 # function. Their only possible callees are the leaf memory routines, the image
 # being linked without any library. The worst-case stack is the entry point
 # frame and the largest frame of the leaf routines linked in the image.
@@ -62,6 +63,14 @@ endforeach()
 math(EXPR MEASURED_FLASH "${text} + ${rodata} + ${data}")
 math(EXPR MEASURED_RAM "${data} + ${bss}")
 
+execute_process(
+  COMMAND "${NM}" --defined-only --extern-only "${ENTRY_USAGE}"
+  OUTPUT_VARIABLE ENTRY_SYMBOLS
+  COMMAND_ERROR_IS_FATAL ANY)
+string(
+  REGEX MATCHALL " T [A-Za-z][A-Za-z0-9_]*" ENTRY_POINTS "${ENTRY_SYMBOLS}")
+list(TRANSFORM ENTRY_POINTS REPLACE "^ T " "")
+
 string(REGEX REPLACE "\\.o(bj)?$" ".su" ENTRY_USAGE "${ENTRY_USAGE}")
 string(REGEX REPLACE "\\.o(bj)?$" ".su" LEAF_USAGE "${LEAF_USAGE}")
 file(STRINGS "${ENTRY_USAGE}" ENTRY_FRAMES)
@@ -75,16 +84,19 @@ endforeach()
 
 set(ENTRY_FRAME "")
 foreach(FRAME IN LISTS ENTRY_FRAMES)
-  if(NOT FRAME MATCHES "_step\\(")
+  if(NOT FRAME MATCHES " ([A-Za-z][A-Za-z0-9_]*)\\(.*\t([0-9]+)\tstatic$")
     message(FATAL_ERROR "Function not flattened in its entry point: ${FRAME}")
   endif()
-  if(FRAME MATCHES " ${POLICY}_step\\(.*\t([0-9]+)\tstatic$")
-    set(ENTRY_FRAME ${CMAKE_MATCH_1})
+  if(NOT CMAKE_MATCH_1 IN_LIST ENTRY_POINTS)
+    message(FATAL_ERROR "Function not flattened in its entry point: ${FRAME}")
+  endif()
+  if(CMAKE_MATCH_1 STREQUAL ENTRY)
+    set(ENTRY_FRAME ${CMAKE_MATCH_2})
   endif()
 endforeach()
 
 if(ENTRY_FRAME STREQUAL "")
-  message(FATAL_ERROR "No ${POLICY}_step entry point in: ${ENTRY_USAGE}")
+  message(FATAL_ERROR "No ${ENTRY} entry point in: ${ENTRY_USAGE}")
 endif()
 
 execute_process(
@@ -105,7 +117,7 @@ math(EXPR MEASURED_STACK "${ENTRY_FRAME} + ${LEAF_FRAME}")
 
 set(CELLS
     ${NAME}
-    ${POLICY}
+    ${LABEL}
     -${OPTIMIZATION}
     ${text}
     ${rodata}
@@ -122,7 +134,7 @@ foreach(METRIC IN ITEMS FLASH RAM STACK)
   if(NOT MEASURED_${METRIC} EQUAL ${METRIC})
     string(
       APPEND FAILURES
-      "\n${NAME} ${POLICY} ${OPTIMIZATION} ${METRIC} ${MEASURED_${METRIC}}, expected ${${METRIC}}"
+      "\n${NAME} ${LABEL} ${OPTIMIZATION} ${METRIC} ${MEASURED_${METRIC}}, expected ${${METRIC}}"
     )
   endif()
 endforeach()
