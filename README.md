@@ -62,6 +62,12 @@ For forward declarations only, include instead:
 #include "fcarouge/kalman_forward.hpp"
 ```
 
+### Public API
+
+![The public API of Kalman: the named arguments and policies configuring the kalman class template, its member types, characteristics, and modifiers, the print decorator, the standard formatter, and the linear algebra backend a user supplies.](https://francoiscarouge.github.io/Kalman/kalman/api.svg)
+
+Every public class, function, type, and constant of the library at a glance, with what a linear algebra backend supplies, detailed in the reference below.
+
 ### Namespace
 
 The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
