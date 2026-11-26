@@ -154,7 +154,7 @@ Include</h2>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="namespace"></a>
 Namespace</h2>
 <p>The public API lives in the <span class="tt"><a class="el" href="namespacefcarouge.xhtml" title="Francois Carouge&#39;s projects namespace.">fcarouge</a></span> namespace. Import it with a using-declaration or namespace alias as your project's style prefers.</p>
-<h2 class="doxsection"><a class="anchor" id="linear-algebra-backends-1"></a>
+<h2 class="doxsection"><a class="anchor" id="linear-algebra-backends"></a>
 Linear Algebra Backends</h2>
 <p>Filters with <span class="tt">state x output x input</span> dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Add a backend for higher dimension filters. The backends below are examples, not installed: write your own for your project.</p>
 <table class="markdownTable">
@@ -435,7 +435,7 @@ Format</h2>
 <div class="line">std::println(<span class="stringliteral">&quot;{}&quot;</span>, filter);</div>
 <div class="line"><span class="comment">// {&quot;f&quot;: 1, &quot;k&quot;: 1, &quot;p&quot;: 1, &quot;r&quot;: 0, &quot;s&quot;: 1, &quot;x&quot;: 0, &quot;y&quot;: 0, &quot;z&quot;: 0}</span></div>
 <div class="line"><span class="comment">// The characteristics are optionally present according to the filter configuration.</span></div>
-</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="decorators-1"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="decorators"></a>
 Decorators</h2>
 <p>Pipe one or more decorators to the filter declaration to attach additional responsibilities. A decorator takes ownership of the filter: decorate an existing filter by moving it, <span class="tt">std::move(filter) | print</span>.</p>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> filter{kalman{...} | print};</div>

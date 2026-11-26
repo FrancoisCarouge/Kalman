@@ -26,20 +26,6 @@ var NAVTREE =
 [
   [ "Kalman", "index.xhtml", [
     [ "François Carouge / Kalman", "index.xhtml", "index" ],
-    [ "AGENTS.md", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml", [
-      [ "AI agent conduct", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#ai-agent-conduct", null ],
-      [ "Build &amp; test", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#build--test", null ],
-      [ "Architecture", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#architecture", [
-        [ "The named-parameter, deduced-filter pattern", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#the-named-parameter-deduced-filter-pattern", null ],
-        [ "Linear algebra backends", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#linear-algebra-backends", null ],
-        [ "Test/sample generation (<span class=\"tt\">support/support.cmake</span>)", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#testsample-generation-supportsupportcmake", null ],
-        [ "Decorators", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#decorators", null ],
-        [ "Other directories", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#other-directories", null ]
-      ] ],
-      [ "Recipe: supporting a new filter configuration", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#recipe-supporting-a-new-filter-configuration", null ],
-      [ "Completion checklist", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#completion-checklist", null ],
-      [ "Conventions", "md__2home_2runner_2work_2_kalman_2_kalman_2_a_g_e_n_t_s.xhtml#conventions", null ]
-    ] ],
     [ "Changelog", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml", [
       [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3\">0.5.3</a> - 2026-03-16", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
         [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
@@ -148,13 +134,13 @@ var NAVTREEINDEX =
 "1x1_8cpp.xhtml",
 "declarations__1x1x1_8cpp_source.xhtml",
 "index.xhtml#sponsors",
-"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a5b14ce16dd5afa4a71e9c788cc92ae14",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a19962552a964346dd868c6b2440dba53",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02jacobian__2x1x0_8cpp_03.xhtml#a4c52cc228ecc9dd4f43e1e443f45360b",
-"namespacemembers_vars_g.xhtml",
-"structfcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03_1_1dim__currency.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__f__us__ps_8cpp_03_1_1noise.xhtml#aa3187c5ecf63259208b19dc9aa7495b8",
-"x__z__p__q__r__hh__ff__oo_8cpp_source.xhtml"
+"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a733841b5f7d7a3bb97d99d1d82cf696a",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#acbe2f74725263fdaf317ff186c164d51",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02kelvin__unit__2x1x0_8cpp_03.xhtml#a6a7e062a2bc366a2d29c7f8fae831dac",
+"namespacemembers_vars_v.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03_1_1measurement.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo_8cpp_03_1_1measurement.xhtml#a81117b6fa2af8410e6746dccc432dcd0",
+"x__z__p__q__r__hh__ff__tt__oo__ps_8cpp_source.xhtml"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';
