@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1444" width="880" height="1444" role="img" aria-labelledby="title description" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+  <title id="title">The public API of Kalman</title>
+  <desc id="description">The public API of the fcarouge namespace. Named arguments configure the kalman class template, whose filter type is deduced at compile time, and policies select its update form and its conditioning. The class exposes conditional member types, the characteristics x, z, u, p, q, r, f, h, g, k, y, and s, each read, set, or replaced by a callable, and the predict and update modifiers. The print decorator inherits and decorates a filter, a standard formatter specialization formats it, and a user supplied linear algebra backend provides the matrix types beyond scalar filters.</desc>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #0d1117; stroke: #3d444d; }
+      .layer { fill: #151b23; stroke: #3d444d; }
+      .rule { stroke: #3d444d; }
+      .ink { fill: #f0f6fc; }
+      .muted { fill: #9198a1; }
+      .link { stroke: #9198a1; }
+      .head { fill: #9198a1; }
+      .hollow { fill: #0d1117; stroke: #9198a1; }
+      .accent { fill: #238636; }
+    }
+  </style>
+
+  <rect class="card" x="0.5" y="0.5" width="879" height="1443" rx="10" fill="#ffffff" stroke="#d1d9e0"/>
+
+  <text class="muted" x="32" y="30" font-size="12" fill="#59636e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">namespace fcarouge</text>
+  <rect class="layer" x="32" y="44" width="400" height="326" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="32" y1="90" x2="432" y2="90" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="63" font-size="11" fill="#59636e">«aggregate class templates, variable templates»</text>
+  <text class="ink" x="44" y="83" font-size="15" font-weight="600" fill="#1f2328">Named arguments</text>
+  <text class="ink" x="44" y="109" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">state{…}</text>
+  <text class="muted" x="240" y="109" font-size="12" fill="#59636e">initial state estimate</text>
+  <text class="muted" x="420" y="109" font-size="11" text-anchor="end" fill="#59636e">X</text>
+  <text class="ink" x="44" y="127" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">estimate_uncertainty{…}</text>
+  <text class="muted" x="240" y="127" font-size="12" fill="#59636e">value</text>
+  <text class="muted" x="420" y="127" font-size="11" text-anchor="end" fill="#59636e">P</text>
+  <text class="ink" x="44" y="145" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">process_uncertainty{…}</text>
+  <text class="muted" x="240" y="145" font-size="12" fill="#59636e">value or callable</text>
+  <text class="muted" x="420" y="145" font-size="11" text-anchor="end" fill="#59636e">Q</text>
+  <text class="ink" x="44" y="163" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">output_uncertainty{…}</text>
+  <text class="muted" x="240" y="163" font-size="12" fill="#59636e">value or callable</text>
+  <text class="muted" x="420" y="163" font-size="11" text-anchor="end" fill="#59636e">R</text>
+  <text class="ink" x="44" y="181" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">state_transition{…}</text>
+  <text class="muted" x="240" y="181" font-size="12" fill="#59636e">value or callable</text>
+  <text class="muted" x="420" y="181" font-size="11" text-anchor="end" fill="#59636e">F</text>
+  <text class="ink" x="44" y="199" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">output_model{…}</text>
+  <text class="muted" x="240" y="199" font-size="12" fill="#59636e">value or callable</text>
+  <text class="muted" x="420" y="199" font-size="11" text-anchor="end" fill="#59636e">H</text>
+  <text class="ink" x="44" y="217" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">input_control{…}</text>
+  <text class="muted" x="240" y="217" font-size="12" fill="#59636e">value or callable</text>
+  <text class="muted" x="420" y="217" font-size="11" text-anchor="end" fill="#59636e">G</text>
+  <text class="ink" x="44" y="235" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">transition{callable}</text>
+  <text class="muted" x="240" y="235" font-size="12" fill="#59636e">state transition</text>
+  <text class="muted" x="420" y="235" font-size="11" text-anchor="end" fill="#59636e">f(x)</text>
+  <text class="ink" x="44" y="253" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">observation{callable}</text>
+  <text class="muted" x="240" y="253" font-size="12" fill="#59636e">observation</text>
+  <text class="muted" x="420" y="253" font-size="11" text-anchor="end" fill="#59636e">h(x)</text>
+  <text class="ink" x="44" y="271" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">output&lt;Type&gt;</text>
+  <text class="muted" x="240" y="271" font-size="12" fill="#59636e">of output_t&lt;Type&gt;</text>
+  <text class="muted" x="420" y="271" font-size="11" text-anchor="end" fill="#59636e">Z</text>
+  <text class="ink" x="44" y="289" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">input&lt;Type&gt;</text>
+  <text class="muted" x="240" y="289" font-size="12" fill="#59636e">of input_t&lt;Type&gt;</text>
+  <text class="muted" x="420" y="289" font-size="11" text-anchor="end" fill="#59636e">U</text>
+  <text class="ink" x="44" y="307" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">update_types&lt;Types...&gt;</text>
+  <text class="muted" x="240" y="307" font-size="12" fill="#59636e">update arguments</text>
+  <text class="ink" x="44" y="325" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">prediction_types&lt;Types...&gt;</text>
+  <text class="muted" x="240" y="325" font-size="12" fill="#59636e">prediction arguments</text>
+  <line class="rule" x1="32" y1="338" x2="432" y2="338" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="357" font-size="12" fill="#59636e">{…}: a value, rows {{a, b}, {c, d}}, or a callable</text>
+  <rect class="layer" x="448" y="44" width="400" height="224" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="448" y1="90" x2="848" y2="90" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="63" font-size="11" fill="#59636e">«constants, class template»</text>
+  <text class="ink" x="460" y="83" font-size="15" font-weight="600" fill="#1f2328">Policies</text>
+  <text class="muted" x="460" y="105" font-size="11" font-weight="600" fill="#59636e">update form: at most one, joseph_form by default</text>
+  <text class="ink" x="460" y="121" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">joseph_form</text>
+  <text class="muted" x="590" y="121" font-size="12" fill="#59636e">P = (I − KH)P(I − KH)ᵀ + KRKᵀ</text>
+  <text class="ink" x="460" y="139" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">simple_form</text>
+  <text class="muted" x="590" y="139" font-size="12" fill="#59636e">P = (I − KH)P</text>
+  <text class="ink" x="460" y="157" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">symmetric_form</text>
+  <text class="muted" x="590" y="157" font-size="12" fill="#59636e">P = P − KSKᵀ</text>
+  <text class="ink" x="460" y="175" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">information_form</text>
+  <text class="muted" x="590" y="175" font-size="12" fill="#59636e">P = (P⁻¹ + HᵀR⁻¹H)⁻¹</text>
+  <line class="rule" x1="448" y1="188" x2="848" y2="188" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="203" font-size="11" font-weight="600" fill="#59636e">conditioning: after each update and prediction</text>
+  <text class="ink" x="460" y="219" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">symmetrize</text>
+  <text class="muted" x="590" y="219" font-size="12" fill="#59636e">P = (P + Pᵀ) / 2</text>
+  <text class="ink" x="460" y="237" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">floors{σ...}</text>
+  <text class="muted" x="590" y="237" font-size="12" fill="#59636e">Pᵢᵢ ≥ σᵢ², one σ per state</text>
+  <text class="ink" x="460" y="255" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">cw&lt;σ&gt;</text>
+  <text class="muted" x="590" y="255" font-size="12" fill="#59636e">a compile-time σ, without storage</text>
+  <rect class="layer" x="32" y="422" width="816" height="590" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <path class="accent" d="M32 428 a6 6 0 0 1 6 -6 H842 a6 6 0 0 1 6 6 V468 H32 Z" fill="#1a7f37"/>
+  <text x="44" y="441" font-size="11" fill="#ffffff" fill-opacity="0.8">«class template» fcarouge/kalman.hpp</text>
+  <text x="44" y="461" font-size="14" font-weight="700" fill="#ffffff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">kalman&lt;Filter&gt;</text>
+  <text x="836" y="460" font-size="11" text-anchor="end" fill="#ffffff" fill-opacity="0.8">Filter: deduced from the named arguments, exposition only</text>
+  <text class="muted" x="44" y="483" font-size="11" font-weight="600" fill="#59636e">member types: present according to the filter configuration</text>
+  <text class="ink" x="44" y="499" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">state</text>
+  <text class="muted" x="234" y="499" font-size="12" fill="#59636e">x × 1</text>
+  <text class="muted" x="424" y="499" font-size="11" text-anchor="end" fill="#59636e">X</text>
+  <text class="ink" x="44" y="517" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">output</text>
+  <text class="muted" x="234" y="517" font-size="12" fill="#59636e">z × 1</text>
+  <text class="muted" x="424" y="517" font-size="11" text-anchor="end" fill="#59636e">Z</text>
+  <text class="ink" x="44" y="535" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">input</text>
+  <text class="muted" x="234" y="535" font-size="12" fill="#59636e">u × 1</text>
+  <text class="muted" x="424" y="535" font-size="11" text-anchor="end" fill="#59636e">U</text>
+  <text class="ink" x="44" y="553" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">estimate_uncertainty</text>
+  <text class="muted" x="234" y="553" font-size="12" fill="#59636e">x × x</text>
+  <text class="muted" x="424" y="553" font-size="11" text-anchor="end" fill="#59636e">P</text>
+  <text class="ink" x="44" y="571" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">process_uncertainty</text>
+  <text class="muted" x="234" y="571" font-size="12" fill="#59636e">x × x</text>
+  <text class="muted" x="424" y="571" font-size="11" text-anchor="end" fill="#59636e">Q</text>
+  <text class="ink" x="44" y="589" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">output_uncertainty</text>
+  <text class="muted" x="234" y="589" font-size="12" fill="#59636e">z × z</text>
+  <text class="muted" x="424" y="589" font-size="11" text-anchor="end" fill="#59636e">R</text>
+  <text class="ink" x="44" y="607" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">state_transition</text>
+  <text class="muted" x="234" y="607" font-size="12" fill="#59636e">x × x</text>
+  <text class="muted" x="424" y="607" font-size="11" text-anchor="end" fill="#59636e">F</text>
+  <text class="ink" x="440" y="499" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">output_model</text>
+  <text class="muted" x="630" y="499" font-size="12" fill="#59636e">z × x</text>
+  <text class="muted" x="836" y="499" font-size="11" text-anchor="end" fill="#59636e">H</text>
+  <text class="ink" x="440" y="517" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">input_control</text>
+  <text class="muted" x="630" y="517" font-size="12" fill="#59636e">x × u</text>
+  <text class="muted" x="836" y="517" font-size="11" text-anchor="end" fill="#59636e">G</text>
+  <text class="ink" x="440" y="535" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">gain</text>
+  <text class="muted" x="630" y="535" font-size="12" fill="#59636e">x × z</text>
+  <text class="muted" x="836" y="535" font-size="11" text-anchor="end" fill="#59636e">K</text>
+  <text class="ink" x="440" y="553" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">innovation</text>
+  <text class="muted" x="630" y="553" font-size="12" fill="#59636e">z × 1</text>
+  <text class="muted" x="836" y="553" font-size="11" text-anchor="end" fill="#59636e">Y</text>
+  <text class="ink" x="440" y="571" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">innovation_uncertainty</text>
+  <text class="muted" x="630" y="571" font-size="12" fill="#59636e">z × z</text>
+  <text class="muted" x="836" y="571" font-size="11" text-anchor="end" fill="#59636e">S</text>
+  <text class="ink" x="440" y="589" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">update_types</text>
+  <text class="muted" x="630" y="589" font-size="12" fill="#59636e">std::tuple</text>
+  <text class="muted" x="836" y="589" font-size="11" text-anchor="end" fill="#59636e">Us...</text>
+  <text class="ink" x="440" y="607" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">prediction_types</text>
+  <text class="muted" x="630" y="607" font-size="12" fill="#59636e">std::tuple</text>
+  <text class="muted" x="836" y="607" font-size="11" text-anchor="end" fill="#59636e">Ps...</text>
+  <line class="rule" x1="32" y1="620" x2="848" y2="620" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="635" font-size="11" font-weight="600" fill="#59636e">construction</text>
+  <text class="ink" x="44" y="651" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">kalman(Arguments... arguments)</text>
+  <text class="muted" x="444" y="651" font-size="12" fill="#59636e">from named arguments and policies, in any order</text>
+  <text class="ink" x="44" y="669" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">kalman(Arguments...) -&gt; kalman&lt;deduced&gt;</text>
+  <text class="muted" x="444" y="669" font-size="12" fill="#59636e">deduction guide: the filter type</text>
+  <text class="ink" x="44" y="687" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">kalman(const kalman &amp;), kalman(kalman &amp;&amp;)</text>
+  <text class="muted" x="444" y="687" font-size="12" fill="#59636e">copy, move</text>
+  <text class="ink" x="44" y="705" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">operator=(const kalman &amp;), operator=(kalman &amp;&amp;)</text>
+  <text class="muted" x="444" y="705" font-size="12" fill="#59636e">copy, move assignment</text>
+  <text class="ink" x="44" y="723" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">~kalman()</text>
+  <line class="rule" x1="32" y1="736" x2="848" y2="736" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="751" font-size="11" font-weight="600" fill="#59636e">characteristics: get c(), set c(values...), replace c(callable)</text>
+  <text class="ink" x="44" y="767" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">x()</text>
+  <text class="muted" x="84" y="767" font-size="12" fill="#59636e">X · state</text>
+  <text class="muted" x="424" y="767" font-size="11" text-anchor="end" fill="#59636e">get · set</text>
+  <text class="ink" x="44" y="785" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">z()</text>
+  <text class="muted" x="84" y="785" font-size="12" fill="#59636e">Z · output</text>
+  <text class="muted" x="424" y="785" font-size="11" text-anchor="end" fill="#59636e">get · set</text>
+  <text class="ink" x="44" y="803" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">u()</text>
+  <text class="muted" x="84" y="803" font-size="12" fill="#59636e">U · input</text>
+  <text class="muted" x="424" y="803" font-size="11" text-anchor="end" fill="#59636e">get · set</text>
+  <text class="ink" x="44" y="821" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">p()</text>
+  <text class="muted" x="84" y="821" font-size="12" fill="#59636e">P · estimate uncertainty</text>
+  <text class="muted" x="424" y="821" font-size="11" text-anchor="end" fill="#59636e">get · set</text>
+  <text class="ink" x="44" y="839" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">k()</text>
+  <text class="muted" x="84" y="839" font-size="12" fill="#59636e">K · gain</text>
+  <text class="muted" x="424" y="839" font-size="11" text-anchor="end" fill="#59636e">get · set</text>
+  <text class="ink" x="44" y="857" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">y()</text>
+  <text class="muted" x="84" y="857" font-size="12" fill="#59636e">Y · innovation</text>
+  <text class="muted" x="424" y="857" font-size="11" text-anchor="end" fill="#59636e">get · set</text>
+  <text class="ink" x="440" y="767" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">s()</text>
+  <text class="muted" x="480" y="767" font-size="12" fill="#59636e">S · innovation uncertainty</text>
+  <text class="muted" x="836" y="767" font-size="11" text-anchor="end" fill="#59636e">get · set</text>
+  <text class="ink" x="440" y="785" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">q()</text>
+  <text class="muted" x="480" y="785" font-size="12" fill="#59636e">Q · process uncertainty</text>
+  <text class="muted" x="836" y="785" font-size="11" text-anchor="end" fill="#59636e">get · set · callable</text>
+  <text class="ink" x="440" y="803" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">r()</text>
+  <text class="muted" x="480" y="803" font-size="12" fill="#59636e">R · output uncertainty</text>
+  <text class="muted" x="836" y="803" font-size="11" text-anchor="end" fill="#59636e">get · set · callable</text>
+  <text class="ink" x="440" y="821" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">f()</text>
+  <text class="muted" x="480" y="821" font-size="12" fill="#59636e">F · state transition</text>
+  <text class="muted" x="836" y="821" font-size="11" text-anchor="end" fill="#59636e">get · set · callable</text>
+  <text class="ink" x="440" y="839" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">h()</text>
+  <text class="muted" x="480" y="839" font-size="12" fill="#59636e">H · output model</text>
+  <text class="muted" x="836" y="839" font-size="11" text-anchor="end" fill="#59636e">get · set · callable</text>
+  <text class="ink" x="440" y="857" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">g()</text>
+  <text class="muted" x="480" y="857" font-size="12" fill="#59636e">G · input control</text>
+  <text class="muted" x="836" y="857" font-size="11" text-anchor="end" fill="#59636e">get · set · callable</text>
+  <line class="rule" x1="32" y1="870" x2="848" y2="870" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="885" font-size="11" font-weight="600" fill="#59636e">modifiers</text>
+  <text class="ink" x="44" y="901" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">predict(const auto &amp;...arguments)</text>
+  <text class="muted" x="444" y="901" font-size="12" fill="#59636e">prediction arguments, then the input values</text>
+  <text class="ink" x="44" y="919" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">update(const auto &amp;...arguments)</text>
+  <text class="muted" x="444" y="919" font-size="12" fill="#59636e">update arguments, then the output values</text>
+  <text class="ink" x="44" y="937" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">predict&lt;Position&gt;() const</text>
+  <text class="muted" x="444" y="937" font-size="12" fill="#59636e">the last prediction argument at Position</text>
+  <text class="ink" x="44" y="955" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">update&lt;Position&gt;() const</text>
+  <text class="muted" x="444" y="955" font-size="12" fill="#59636e">the last update argument at Position</text>
+  <line class="rule" x1="32" y1="968" x2="848" y2="968" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="983" font-size="11" font-weight="600" fill="#59636e">forward declaration: fcarouge/kalman_forward.hpp</text>
+  <text class="ink" x="44" y="999" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">template &lt;typename&gt; class kalman;</text>
+  <rect class="layer" x="32" y="1064" width="400" height="128" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="32" y1="1110" x2="432" y2="1110" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1083" font-size="11" fill="#59636e">«decorator constant» hosted only</text>
+  <text class="ink" x="44" y="1103" font-size="14" font-weight="700" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">print</text>
+  <text class="ink" x="44" y="1129" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">kalman{...} | print</text>
+  <text class="muted" x="254" y="1129" font-size="12" fill="#59636e">decorates a new filter</text>
+  <text class="ink" x="44" y="1147" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">std::move(filter) | print</text>
+  <text class="muted" x="254" y="1147" font-size="12" fill="#59636e">takes ownership</text>
+  <line class="rule" x1="32" y1="1160" x2="432" y2="1160" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1179" font-size="12" fill="#59636e">Forwards each member, printing the filter activity.</text>
+  <rect class="layer" x="448" y="1064" width="400" height="146" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <line class="rule" x1="448" y1="1110" x2="848" y2="1110" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="1083" font-size="11" fill="#59636e">«specialization» hosted only</text>
+  <text class="ink" x="460" y="1103" font-size="14" font-weight="700" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">std::formatter&lt;kalman&lt;Filter&gt;, Char&gt;</text>
+  <text class="ink" x="460" y="1129" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">parse(parse_context)</text>
+  <text class="ink" x="460" y="1147" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">format(filter, format_context)</text>
+  <text class="ink" x="460" y="1165" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">std::format("{}", filter)</text>
+  <line class="rule" x1="448" y1="1178" x2="848" y2="1178" stroke="#d1d9e0"/>
+  <text class="muted" x="460" y="1197" font-size="12" fill="#59636e">Its characteristics: {"f": 1, "k": 1, "p": 1, ...}</text>
+  <rect class="layer" x="32" y="1262" width="816" height="158" rx="6" fill="#f6f8fa" stroke="#d1d9e0" stroke-dasharray="4 3"/>
+  <line class="rule" x1="32" y1="1308" x2="848" y2="1308" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1281" font-size="11" fill="#59636e">«user supplied» see support/ for examples</text>
+  <text class="ink" x="44" y="1301" font-size="15" font-weight="600" fill="#1f2328">Linear algebra backend</text>
+  <text class="muted" x="44" y="1323" font-size="11" font-weight="600" fill="#59636e">matrix types of the characteristics, beyond scalar filters</text>
+  <text class="ink" x="44" y="1339" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs + rhs, lhs - rhs, -value</text>
+  <text class="muted" x="280" y="1339" font-size="12" fill="#59636e">sum, difference</text>
+  <text class="ink" x="44" y="1357" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs * rhs</text>
+  <text class="muted" x="280" y="1357" font-size="12" fill="#59636e">product</text>
+  <text class="ink" x="44" y="1375" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">lhs / rhs</text>
+  <text class="muted" x="280" y="1375" font-size="12" fill="#59636e">X solving X · rhs = lhs</text>
+  <text class="ink" x="440" y="1339" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">value.transpose()</text>
+  <text class="muted" x="676" y="1339" font-size="12" fill="#59636e">transpose</text>
+  <text class="ink" x="440" y="1357" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">Type::identity() or Identity()</text>
+  <text class="muted" x="676" y="1357" font-size="12" fill="#59636e">one</text>
+  <text class="ink" x="440" y="1375" font-size="12" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">Type::zero() or Zero()</text>
+  <text class="muted" x="676" y="1375" font-size="12" fill="#59636e">zero</text>
+  <line class="rule" x1="32" y1="1388" x2="848" y2="1388" stroke="#d1d9e0"/>
+  <text class="muted" x="44" y="1407" font-size="12" fill="#59636e">Built-in arithmetic types make 1x1x1 and 1x1x0 filters: no backend needed.</text>
+
+  <path class="link" d="M232 370 L232 413" fill="none" stroke="#59636e" stroke-width="1.5"/>
+  <path class="head" d="M232 422 L227.5 413 L236.5 413 Z" fill="#59636e"/>
+  <text class="muted" x="244" y="400" font-size="12" fill="#59636e">configure</text>
+  <path class="link" d="M648 268 L648 413" fill="none" stroke="#59636e" stroke-width="1.5"/>
+  <path class="head" d="M648 422 L643.5 413 L652.5 413 Z" fill="#59636e"/>
+  <text class="muted" x="660" y="349" font-size="12" fill="#59636e">select at compile time</text>
+  <path class="link" d="M232 1064 L232 1024" fill="none" stroke="#59636e" stroke-width="1.5"/>
+  <path class="hollow" d="M232 1012 L238 1024 L226 1024 Z" fill="#ffffff" stroke="#59636e" stroke-width="1.5"/>
+  <text class="muted" x="244" y="1042" font-size="12" fill="#59636e">inherits, decorates</text>
+  <path class="link" d="M648 1064 L648 1021" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M648 1012 L652.5 1021 L643.5 1021 Z" fill="#59636e"/>
+  <text class="muted" x="660" y="1042" font-size="12" fill="#59636e">formats</text>
+  <path class="link" d="M440 1262 L440 1021" fill="none" stroke="#59636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path class="head" d="M440 1012 L444.5 1021 L435.5 1021 Z" fill="#59636e"/>
+  <text class="muted" x="452" y="1240" font-size="12" fill="#59636e">provides the matrix types</text>
+</svg>
