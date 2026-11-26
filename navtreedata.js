@@ -80,6 +80,8 @@ var NAVTREE =
       [ "Pull Request Merge Checklist", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_i_n_g.xhtml#pull-request-merge-checklist", null ]
     ] ],
     [ "Contributors", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_n_t_r_i_b_u_t_o_r_s.xhtml", null ],
+    [ "Embedded Footprint", "footprint.xhtml", null ],
+    [ "Unit Test Code Coverage", "unit_test_coverage.xhtml", null ],
     [ "Installation", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml", [
       [ "Development Build &amp; Run", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#development-build--run", [
         [ "Tests &amp; Samples", "md__2home_2runner_2work_2_kalman_2_kalman_2_i_n_s_t_a_l_l.xhtml#tests--samples", null ],
@@ -133,14 +135,14 @@ var NAVTREEINDEX =
 [
 "1x1_8cpp.xhtml",
 "declarations__1x1x1_8cpp_source.xhtml",
-"index.xhtml#sponsors",
-"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a733841b5f7d7a3bb97d99d1d82cf696a",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#acbe2f74725263fdaf317ff186c164d51",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kelvin__unit__2x1x0_8cpp_03.xhtml#a6a7e062a2bc366a2d29c7f8fae831dac",
-"namespacemembers_vars_v.xhtml",
+"index.xhtml#selected-tradeoffs",
+"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a718f6b9e0b7b69f49f852ef68a10f004",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ab5267f8f5cb9dc80370c387ad4121f3c",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02kelvin__unit__2x1x0_8cpp_03.xhtml#a112fd2ea5144640697fbc7b052d2fbfd",
+"namespacemembers_vars_u.xhtml",
 "structfcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03_1_1measurement.xhtml",
 "structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo_8cpp_03_1_1measurement.xhtml#a81117b6fa2af8410e6746dccc432dcd0",
-"x__z__p__q__r__hh__ff__tt__oo__ps_8cpp_source.xhtml"
+"x__z__p__q__r__hh__ff__tt__oo_8hpp_source.xhtml"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

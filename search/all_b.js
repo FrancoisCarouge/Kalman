@@ -15,7 +15,7 @@ var searchData=
   ['ekf_5f9x4x0_2ecpp_12',['ekf_9x4x0.cpp',['../ekf__9x4x0_8cpp.xhtml',1,'']]],
   ['ekf_5f9x4x0_5fgimbal_5fattitude_5funit_2ecpp_13',['ekf_9x4x0_gimbal_attitude_unit.cpp',['../ekf__9x4x0__gimbal__attitude__unit_8cpp.xhtml',1,'']]],
   ['element_14',['element',['../namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#ab06af670b0e49de4f355c7c4e195b26b',1,'fcarouge::kalman_filter::internal']]],
-  ['embedded_20footprint_15',['Embedded Footprint',['../dir_44cec6e3ea30e076b9313c4641539d9f.xhtml#embedded-footprint',1,'']]],
+  ['embedded_20footprint_15',['Embedded Footprint',['../footprint.xhtml',1,'Embedded Footprint'],['../dir_44cec6e3ea30e076b9313c4641539d9f.xhtml#embedded-footprint',1,'Embedded Footprint']]],
   ['empty_5farguments_2ecpp_16',['empty_arguments.cpp',['../empty__arguments_8cpp.xhtml',1,'']]],
   ['empty_5farguments_5f1x1x1_2ecpp_17',['empty_arguments_1x1x1.cpp',['../empty__arguments__1x1x1_8cpp.xhtml',1,'']]],
   ['empty_5farguments_5fcallable_5f1x1x1_2ecpp_18',['empty_arguments_callable_1x1x1.cpp',['../empty__arguments__callable__1x1x1_8cpp.xhtml',1,'']]],
