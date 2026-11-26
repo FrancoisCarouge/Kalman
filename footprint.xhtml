@@ -123,6 +123,14 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('footprint.xhtm
   width="100%"
   height="2000px"
   style="border:none;"
+  onload="
+    const frame = this;
+    const page = frame.contentDocument.documentElement;
+    const fit = () => {
+      frame.style.height = `${Math.ceil(page.getBoundingClientRect().height)}px`;
+    };
+    new frame.contentWindow.ResizeObserver(fit).observe(page);
+  "
   ></iframe>
  </p>
 </div></div><!-- contents -->
