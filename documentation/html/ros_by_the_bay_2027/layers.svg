@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 696" width="880" height="696" role="img" aria-labelledby="title description" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, 'DejaVu Sans', sans-serif">
+  <title id="title">Where Kalman, Typed Linear Algebra, and Sparse Linear Algebra sit in the technical stack</title>
+  <desc id="description">The application sits on top, beside the ROS 2 robotics middleware. Kalman is the layer below them. It composes a linear algebra backend, optionally strongly typed by Typed Linear Algebra, layered as low-level mathematics and performance primitives, among them Sparse Linear Algebra, over fundamentals and the platform, and it adapts strong element types such as mp-units. Scalar filters need no backend.</desc>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #0d1117; stroke: #3d444d; }
+      .layer { fill: #151b23; stroke: #3d444d; }
+      .focus { fill: #0d1117; stroke: #f0f6fc; }
+      .ink { fill: #f0f6fc; }
+      .muted { fill: #9198a1; }
+    }
+  </style>
+
+  <rect class="card" x="0.5" y="0.5" width="879" height="695" rx="10" fill="#ffffff" stroke="#d1d9e0"/>
+
+  <!-- Application -->
+  <rect class="layer" x="24" y="24" width="600" height="116" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="49" font-size="15" font-weight="600" fill="#1f2328">Application</text>
+  <text class="muted" x="136" y="49" font-size="12" fill="#59636e">domain-specific estimation</text>
+  <text class="ink" x="40" y="73" font-size="13" fill="#1f2328">guidance, navigation, and control · aerospace · robotics · sensor fusion</text>
+  <text class="ink" x="40" y="91" font-size="13" fill="#1f2328">tracking · signal processing · biomedical signals · computer vision</text>
+  <text class="ink" x="40" y="109" font-size="13" fill="#1f2328">process control · structural monitoring · data assimilation</text>
+  <text class="ink" x="40" y="127" font-size="13" fill="#1f2328">weather and ocean prediction · forecasting · econometrics</text>
+
+  <!-- ROS 2 -->
+  <rect class="layer" x="640" y="24" width="216" height="116" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="656" y="49" font-size="15" font-weight="600" fill="#1f2328">ROS 2</text>
+  <text class="muted" x="656" y="69" font-size="12" fill="#59636e">robotics middleware</text>
+  <text class="ink" x="656" y="93" font-size="13" fill="#1f2328">rclcpp · executors</text>
+  <text class="ink" x="656" y="111" font-size="13" fill="#1f2328">nodes · topics · services</text>
+  <text class="ink" x="656" y="129" font-size="13" fill="#1f2328">tf2 · geometry_msgs</text>
+
+  <!-- Kalman -->
+  <rect class="focus" x="25.5" y="153.5" width="829" height="97" rx="6" fill="#ffffff" stroke="#1f2328" stroke-width="3"/>
+  <text class="ink" x="40" y="183" font-size="19" font-weight="700" fill="#1f2328">Kalman</text>
+  <text class="ink" x="40" y="209" font-size="13" fill="#1f2328">Recursive state estimation: predict and update the state and its uncertainty.</text>
+  <text class="ink" x="40" y="231" font-size="13" fill="#1f2328">Named arguments configure the filter. Its type is deduced at compile time.</text>
+  <text class="muted" x="840" y="179" font-size="11" text-anchor="end" fill="#59636e">prediction</text>
+  <text class="ink" x="840" y="197" font-size="13" text-anchor="end" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">filter.predict(u)</text>
+  <text class="muted" x="840" y="219" font-size="11" text-anchor="end" fill="#59636e">update</text>
+  <text class="ink" x="840" y="237" font-size="13" text-anchor="end" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">filter.update(z)</text>
+
+  <!-- Typed Linear Algebra -->
+  <rect class="focus" x="25.5" y="265.5" width="597" height="77" rx="6" fill="#ffffff" stroke="#1f2328" stroke-width="3"/>
+  <text class="ink" x="40" y="292" font-size="17" font-weight="700" fill="#1f2328">Typed Linear Algebra</text>
+  <text class="ink" x="40" y="313" font-size="13" fill="#1f2328">Optional strongly-typed matrix elements: units, axes, frames.</text>
+  <text class="ink" x="40" y="331" font-size="13" fill="#1f2328">A mismatch is a compile error. The backend still does the arithmetic.</text>
+  <text class="ink" x="608" y="292" font-size="13" text-anchor="end" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">x * transposed(x)</text>
+
+  <!-- Linear algebra backends -->
+  <rect class="layer" x="24" y="356" width="280" height="76" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="381" font-size="15" font-weight="600" fill="#1f2328">Low-level mathematics</text>
+  <text class="muted" x="40" y="400" font-size="12" fill="#59636e">linear systems, least squares, eigenvalues</text>
+  <text class="ink" x="40" y="420" font-size="13" fill="#1f2328">Eigen · Armadillo · LAPACK</text>
+
+  <rect class="layer" x="24" y="444" width="280" height="76" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="469" font-size="15" font-weight="600" fill="#1f2328">Performance primitives</text>
+  <text class="muted" x="40" y="488" font-size="12" fill="#59636e">vector and matrix operations</text>
+  <text class="ink" x="40" y="508" font-size="13" fill="#1f2328">std::linalg · BLAS · NVBLAS</text>
+
+  <!-- Sparse Linear Algebra -->
+  <rect class="focus" x="317.5" y="357.5" width="305" height="161" rx="6" fill="#ffffff" stroke="#1f2328" stroke-width="3"/>
+  <text class="ink" x="332" y="386" font-size="17" font-weight="700" fill="#1f2328">Sparse Linear Algebra</text>
+  <text class="ink" x="332" y="412" font-size="13" fill="#1f2328">Compile-time sparsity patterns.</text>
+  <text class="ink" x="332" y="432" font-size="13" fill="#1f2328">Structural zeros are neither stored</text>
+  <text class="ink" x="332" y="450" font-size="13" fill="#1f2328">nor computed.</text>
+  <text class="ink" x="332" y="470" font-size="13" fill="#1f2328">No dependency, no allocation.</text>
+  <text class="ink" x="332" y="500" font-size="13" fill="#1f2328" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace">f * p * transposed(f)</text>
+
+  <!-- Strong element types -->
+  <rect class="layer" x="640" y="264" width="216" height="256" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="656" y="289" font-size="15" font-weight="600" fill="#1f2328">Strong types</text>
+  <text class="muted" x="656" y="309" font-size="12" fill="#59636e">units, quantities, time</text>
+  <text class="ink" x="656" y="341" font-size="13" fill="#1f2328">Au</text>
+  <rect class="focus" x="649.5" y="355.5" width="197" height="35" rx="6" fill="#ffffff" stroke="#1f2328" stroke-width="3"/>
+  <text class="ink" x="664" y="379" font-size="17" font-weight="700" fill="#1f2328">mp-units</text>
+  <text class="ink" x="656" y="417" font-size="13" fill="#1f2328">nholthaus/units</text>
+  <text class="ink" x="656" y="443" font-size="13" fill="#1f2328">std::chrono</text>
+  <text class="ink" x="656" y="469" font-size="13" fill="#1f2328">built-in types</text>
+  <text class="muted" x="656" y="489" font-size="12" fill="#59636e">double · float · int</text>
+
+  <!-- Foundations -->
+  <rect class="layer" x="24" y="532" width="832" height="64" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="559" font-size="15" font-weight="600" fill="#1f2328">Fundamentals</text>
+  <text class="muted" x="40" y="579" font-size="12" fill="#59636e">multidimensional arrays, iteration</text>
+  <text class="ink" x="840" y="569" font-size="13" text-anchor="end" fill="#1f2328">std::array · std::mdspan · Boost.Multi · Kokkos · std::simd</text>
+
+  <rect class="layer" x="24" y="608" width="832" height="64" rx="6" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text class="ink" x="40" y="635" font-size="15" font-weight="600" fill="#1f2328">Platform</text>
+  <text class="muted" x="40" y="655" font-size="12" fill="#59636e">hosted or freestanding, real-time</text>
+  <text class="ink" x="840" y="645" font-size="13" text-anchor="end" fill="#1f2328">microcontrollers · desktops · servers</text>
+</svg>
