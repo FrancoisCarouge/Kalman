@@ -1,10 +1,10 @@
 var NAVTREEINDEX2 =
 {
-"index.xhtml#samples-1":[0,1,6],
-"index.xhtml#selected-tradeoffs":[0,2,1],
-"index.xhtml#sponsors":[0,2,9],
-"index.xhtml#template-parameters":[0,1,7,1],
-"index.xhtml#third-party-acknowledgement":[0,2,7],
+"index.xhtml#samples-1":[0,1],
+"index.xhtml#selected-tradeoffs":[0,3,1],
+"index.xhtml#sponsors":[0,3,9],
+"index.xhtml#template-parameters":[0,2,6,1],
+"index.xhtml#third-party-acknowledgement":[0,3,7],
 "information__1x1x0_8cpp.xhtml":[14,0,5,25,13],
 "information__1x1x0_8cpp_source.xhtml":[14,0,5,25,13],
 "input__1x1x1__fail_8cpp.xhtml":[14,0,5,16,25],

@@ -1,6 +1,10 @@
 var index =
 [
     [ "Installation &amp; Usage", "index.xhtml#installation--usage", null ],
+    [ "Samples", "index.xhtml#samples-1", [
+      [ "6x2 Constant Acceleration Dynamic Model Filter", "index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter", null ],
+      [ "4x1 Nonlinear Dynamic Model Extended Filter", "index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter", null ]
+    ] ],
     [ "Reference", "index.xhtml#reference", [
       [ "Layers", "index.xhtml#layers", null ],
       [ "CMake", "index.xhtml#cmake", null ],
@@ -8,10 +12,6 @@ var index =
       [ "Public API", "index.xhtml#public-api", null ],
       [ "Namespace", "index.xhtml#namespace", null ],
       [ "Linear Algebra Backends", "index.xhtml#linear-algebra-backends", null ],
-      [ "Samples", "index.xhtml#samples-1", [
-        [ "6x2 Constant Acceleration Dynamic Model Filter", "index.xhtml#autotoc_md6x2-constant-acceleration-dynamic-model-filter", null ],
-        [ "4x1 Nonlinear Dynamic Model Extended Filter", "index.xhtml#autotoc_md4x1-nonlinear-dynamic-model-extended-filter", null ]
-      ] ],
       [ "Class Kalman", "index.xhtml#class-kalman", [
         [ "Declaration", "index.xhtml#declaration", null ],
         [ "Template Parameters", "index.xhtml#template-parameters", null ],
