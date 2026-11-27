@@ -375,7 +375,7 @@ Characteristics</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">h</span>  </td><td class="markdownTableBodyNone">Manages the observation transition matrix <em>H</em>. Gets or sets the value. Configures the callable object of expression <span class="tt">output_model(const state &amp;, const UpdateTypes &amp;...)</span>, of the type configured at construction, to compute the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else. This member function is defined only if the filter supports output model.  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">k</span>  </td><td class="markdownTableBodyNone">Manages the gain matrix <em>K</em>. Gets the value last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else.  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">k</span>  </td><td class="markdownTableBodyNone">Manages the gain matrix <em>K</em>. Gets or sets the value, last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else.  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">p</span>  </td><td class="markdownTableBodyNone">Manages the estimated covariance matrix <em>P</em>. Gets or sets the value. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else.  </td></tr>
 <tr class="markdownTableRowEven">
@@ -383,15 +383,15 @@ Characteristics</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">r</span>  </td><td class="markdownTableBodyNone">Manages the observation, measurement noise covariance matrix <em>R</em> from the measurement noise <em>v</em> expected value <em>E[vvᵀ]</em> and its variance <em>σ²</em> found by measuring, tuning, educated guesses of the noise. Gets or sets the value. Configures the callable object of expression <span class="tt">output_uncertainty(const state &amp;, const output &amp;, const UpdateTypes &amp;...)</span>, of the type configured at construction, to compute the value. The default value is the null matrix.  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">s</span>  </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix <em>S</em>. Gets the value last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else.  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">s</span>  </td><td class="markdownTableBodyNone">Manages the innovation uncertainty matrix <em>S</em>. Gets or sets the value, last computed during the update. The default value is the matrix with all its diagonal elements equal to ones, and zeroes everywhere else.  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">u</span>  </td><td class="markdownTableBodyNone">Manages the control column vector <em>U</em>. Gets the value last used in prediction. This member function is defined only if the filter supports input.  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">u</span>  </td><td class="markdownTableBodyNone">Manages the control column vector <em>U</em>. Gets or sets the value, last used in prediction. This member function is defined only if the filter supports input.  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">x</span>  </td><td class="markdownTableBodyNone">Manages the state estimate column vector <em>X</em>. Gets or sets the value. The default value is the null column vector.  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">y</span>  </td><td class="markdownTableBodyNone">Manages the innovation column vector <em>Y</em>. Gets the value last computed during the update. The default value is the null column vector.  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">y</span>  </td><td class="markdownTableBodyNone">Manages the innovation column vector <em>Y</em>. Gets or sets the value, last computed during the update. The default value is the null column vector.  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">z</span>  </td><td class="markdownTableBodyNone">Manages the observation column vector <em>Z</em>. Gets the value last used during the update. The default value is the null column vector.  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">z</span>  </td><td class="markdownTableBodyNone">Manages the observation column vector <em>Z</em>. Gets or sets the value, last used during the update. The default value is the null column vector.  </td></tr>
 </table>
 <p>The characteristics are optionally present according to the filter configuration. A characteristic is set from values that direct-list-initialize it, without narrowing of the characteristic nor of its elements, through a modifiable filter, or replaced by a callable of its configured type. A characteristic is read as a constant reference from an lvalue filter, valid for the lifetime of the filter and reflecting its later changes, and as a moved value from an rvalue filter.</p>
 <h4 class="doxsection"><a class="anchor" id="modifiers"></a>
