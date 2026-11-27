@@ -36,56 +36,7 @@ std::println("{}", filter);
 
 See [INSTALL.md](https://github.com/FrancoisCarouge/Kalman/blob/master/INSTALL.md) for installation instructions. Only the `include/` folder is the library: `cmake --install` and the release packages deliver it, with its CMake package configuration, and nothing else. The `support/`, `sample/`, `test/`, and `benchmark/` folders are development examples and tooling, not part of the delivered library.
 
-## Reference
-
-### Layers
-
-![Where Kalman sits in the technical stack: below the application, composing an optionally typed linear algebra backend and adapting strong element types.](https://francoiscarouge.github.io/Kalman/kalman/layers.svg)
-
-The library is the state estimation layer between the application and an established linear algebra backend.
-
-### CMake
-
-Link against the CMake target `fcarouge-kalman::kalman`.
-
-### Include
-
-Include the library header in your sources:
-
-```cpp
-#include "fcarouge/kalman.hpp"
-```
-
-For forward declarations only, include instead:
-
-```cpp
-#include "fcarouge/kalman_forward.hpp"
-```
-
-### Public API
-
-![The public API of Kalman: the named arguments and policies configuring the kalman class template, its member types, characteristics, and modifiers, the print decorator, the standard formatter, and the linear algebra backend a user supplies.](https://francoiscarouge.github.io/Kalman/kalman/api.svg)
-
-Every public class, function, type, and constant of the library at a glance, with what a linear algebra backend supplies, detailed in the reference below.
-
-### Namespace
-
-The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
-
-### Linear Algebra Backends
-
-Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Add a backend for higher dimension filters. The backends below are examples, not installed: write your own for your project.
-
-| Integration | Example Backend |
-| --- | --- |
-| Built-in Types | No backend needed. |
-| Eigen | [Example backend: `support/eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen). |
-| Eigen + TypedLinearAlgebra | [Example backend: `support/eigexed`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigexed). |
-| Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_eigen). |
-| Freestanding | [Example backend: `support/freestanding`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/freestanding). |
-| mp-units | [Example backend: `support/mp_units`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units). |
-
-### Samples
+## Samples
 
 Designing a filter is as much art as science, with the following recipe. Model the real world in state-space notation. Then, compute and select the fundamental matrices, select the states *X*, *P*, the processes *F*, *Q*, the measurements *Z*, *R*, the measurement function *H*, and if the system has control inputs *U*, *G*. Evaluate the performance and iterate.
 
@@ -108,7 +59,7 @@ Designing a filter is as much art as science, with the following recipe. Model t
 | 8x4x0 constant velocity dynamic model filter of the 2-dimension position and velocity of the center, aspect ratio, and height of a bounding box. | [Usage example: `kf_8x4x0_2d_bounding_box.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_8x4x0_2d_bounding_box/kf_8x4x0_2d_bounding_box.cpp). |
 | 9x4x0 error-state extended filter of the attitude, velocity, and gyroscope bias of a camera gimbal, from its inertial sensors, a zero velocity, and a compass heading, as in the ArduPilot autopilot. | [Usage example with units: `ekf_9x4x0_gimbal_attitude_unit.cpp`](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_9x4x0_gimbal_attitude_unit/ekf_9x4x0_gimbal_attitude_unit.cpp). |
 
-#### 6x2 Constant Acceleration Dynamic Model Filter
+### 6x2 Constant Acceleration Dynamic Model Filter
 
 Example from the [2-dimension vehicle location, velocity, and acceleration vehicle estimation](https://francoiscarouge.github.io/Kalman/kf_6x2x0_2d_vehicle_position_8cpp-example.xhtml) sample. Six estimated states and two observed outputs filter.
 
@@ -145,7 +96,7 @@ filter.update(-393.66, 300.4);
 
 [full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/kf_6x2x0_2d_vehicle_position/kf_6x2x0_2d_vehicle_position.cpp)
 
-#### 4x1 Nonlinear Dynamic Model Extended Filter
+### 4x1 Nonlinear Dynamic Model Extended Filter
 
 Example from the [thermal, current of warm air, strength, radius, and location estimation](https://francoiscarouge.github.io/Kalman/ekf_4x1x0_thermal_soaring_8cpp-example.xhtml) sample. Four estimated states and one observed output extended filter with two additional prediction arguments and two additional update arguments.
 
@@ -198,6 +149,55 @@ filter.update(position_x, position_y, variometer);
 ```
 
 [full sample code](https://github.com/FrancoisCarouge/Kalman/tree/master/sample/ekf_4x1x0_thermal_soaring/ekf_4x1x0_thermal_soaring.cpp)
+
+## Reference
+
+### Layers
+
+![Where Kalman sits in the technical stack: below the application, composing an optionally typed linear algebra backend and adapting strong element types.](https://francoiscarouge.github.io/Kalman/kalman/layers.svg)
+
+The library is the state estimation layer between the application and an established linear algebra backend.
+
+### CMake
+
+Link against the CMake target `fcarouge-kalman::kalman`.
+
+### Include
+
+Include the library header in your sources:
+
+```cpp
+#include "fcarouge/kalman.hpp"
+```
+
+For forward declarations only, include instead:
+
+```cpp
+#include "fcarouge/kalman_forward.hpp"
+```
+
+### Public API
+
+![The public API of Kalman: the named arguments and policies configuring the kalman class template, its member types, characteristics, and modifiers, the print decorator, the standard formatter, and the linear algebra backend a user supplies.](https://francoiscarouge.github.io/Kalman/kalman/api.svg)
+
+Every public class, function, type, and constant of the library at a glance, with what a linear algebra backend supplies, detailed in the reference below.
+
+### Namespace
+
+The public API lives in the `fcarouge` namespace. Import it with a using-declaration or namespace alias as your project's style prefers.
+
+### Linear Algebra Backends
+
+Filters with `state x output x input` dimensions as 1x1x1 and 1x1x0 (no input) are supported through vanilla C++. Add a backend for higher dimension filters. The backends below are examples, not installed: write your own for your project.
+
+| Integration | Example Backend |
+| --- | --- |
+| Built-in Types | No backend needed. |
+| Eigen | [Example backend: `support/eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigen). |
+| Eigen + TypedLinearAlgebra | [Example backend: `support/eigexed`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/eigexed). |
+| Eigen + TypedLinearAlgebra + mp-units | [Example backend: `support/mp_units_eigen`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units_eigen). |
+| Freestanding | [Example backend: `support/freestanding`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/freestanding). |
+| mp-units | [Example backend: `support/mp_units`](https://github.com/FrancoisCarouge/Kalman/tree/master/support/mp_units). |
 
 ### Class Kalman
 
