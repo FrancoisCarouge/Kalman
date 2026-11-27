@@ -1,8 +1,9 @@
 var NAVTREEINDEX2 =
 {
+"index.xhtml#samples-1":[0,1,6],
 "index.xhtml#selected-tradeoffs":[0,2,1],
 "index.xhtml#sponsors":[0,2,9],
-"index.xhtml#template-parameters":[0,1,6,1],
+"index.xhtml#template-parameters":[0,1,7,1],
 "index.xhtml#third-party-acknowledgement":[0,2,7],
 "information__1x1x0_8cpp.xhtml":[14,0,5,25,13],
 "information__1x1x0_8cpp_source.xhtml":[14,0,5,25,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a651b7b063d496faeaad8f0894b151f1c":[11,0,0,1,0,17],
 "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a67e72364f755af0934a50f5fce6dd778":[11,0,0,1,0,33],
 "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a68c19516ddbc8022ae8b875eff32d8bb":[11,0,0,1,0,79],
-"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a6a8169d577453ea86462601b78b99b8f":[11,0,0,1,0,10],
-"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a707e960d17d3197e85cbdc4b8be06aa1":[11,0,0,1,0,80]
+"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a6a8169d577453ea86462601b78b99b8f":[11,0,0,1,0,10]
 };

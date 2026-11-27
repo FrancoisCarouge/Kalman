@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a707e960d17d3197e85cbdc4b8be06aa1":[11,0,0,1,0,80],
 "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a718f6b9e0b7b69f49f852ef68a10f004":[11,0,0,1,0,3],
 "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a733841b5f7d7a3bb97d99d1d82cf696a":[11,0,0,1,0,62],
 "namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a74b8b218b0b00f9976f9d9b62d675ede":[11,0,0,1,0,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a676bc9f79c26574f36517994d2f42c33":[11,0,0,2,14,15],
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a89d2602be481264283df3853a7858ee0":[11,0,0,2,14,8],
 "namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aa5216a64e49528f9f743f2c222104a81":[11,0,0,2,14,5],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aabf83d5b59010c1ee6d41c6f8b771211":[11,0,0,2,14,11],
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ab0e5050f843bb054518ea2ad713fecaa":[11,0,0,2,14,4]
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#aabf83d5b59010c1ee6d41c6f8b771211":[11,0,0,2,14,11]
 };

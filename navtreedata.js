@@ -135,14 +135,14 @@ var NAVTREEINDEX =
 [
 "1x1_8cpp.xhtml",
 "declarations__1x1x1_8cpp_source.xhtml",
-"index.xhtml#selected-tradeoffs",
-"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a718f6b9e0b7b69f49f852ef68a10f004",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ab5267f8f5cb9dc80370c387ad4121f3c",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kelvin__unit__2x1x0_8cpp_03.xhtml#a112fd2ea5144640697fbc7b052d2fbfd",
-"namespacemembers_vars_u.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03_1_1measurement.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo_8cpp_03_1_1measurement.xhtml#a81117b6fa2af8410e6746dccc432dcd0",
-"x__z__p__q__r__hh__ff__tt__oo_8hpp_source.xhtml"
+"index.xhtml#samples-1",
+"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a707e960d17d3197e85cbdc4b8be06aa1",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ab0e5050f843bb054518ea2ad713fecaa",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02kelvin__unit__2x1x0_8cpp_03.xhtml",
+"namespacemembers_vars_t.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03_1_1jacobian.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo_8cpp_03_1_1measurement.xhtml",
+"x__z__p__q__r__hh__ff__tt__oo_8hpp.xhtml"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';
