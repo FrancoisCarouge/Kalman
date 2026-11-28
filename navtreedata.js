@@ -27,39 +27,46 @@ var NAVTREE =
   [ "Kalman", "index.xhtml", [
     [ "François Carouge / Kalman", "index.xhtml", "index" ],
     [ "Changelog", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml", [
-      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3\">0.5.3</a> - 2026-03-16", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
+      [ "[0.6.0] - 2026-11-27", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md060---2026-11-27", [
         [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added", null ],
         [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed", null ],
+        [ "Removed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#removed", null ],
         [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build", null ],
         [ "Fixed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#fixed", null ]
       ] ],
-      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2\">0.5.2</a> - 2025-05-19", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19", [
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3\">0.5.3</a> - 2026-03-16", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md053---2026-03-16", [
         [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-1", null ],
-        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ]
-      ] ],
-      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1\">0.5.1</a> - 2025-05-02", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02", [
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-1", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ],
         [ "Fixed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-1", null ]
       ] ],
-      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.4.0...0.5.0\">0.5.0</a> - 2025-05-02", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md050---2025-05-02", [
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2\">0.5.2</a> - 2025-05-19", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md052---2025-05-19", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
         [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-2", null ]
       ] ],
-      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.3.0...0.4.0\">0.4.0</a> - 2025-02-28", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28", [
-        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-2", null ],
-        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-3", null ],
-        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-1", null ],
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1\">0.5.1</a> - 2025-05-02", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md051---2025-05-02", [
         [ "Fixed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-2", null ]
       ] ],
-      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0\">0.3.0</a> - 2024-09-16", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16", [
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.4.0...0.5.0\">0.5.0</a> - 2025-05-02", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md050---2025-05-02", [
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-3", null ]
+      ] ],
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.3.0...0.4.0\">0.4.0</a> - 2025-02-28", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md040---2025-02-28", [
         [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-3", null ],
         [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-4", null ],
-        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-2", null ]
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-2", null ],
+        [ "Fixed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#fixed-3", null ]
       ] ],
-      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.1.0...0.2.0\">0.2.0</a> - 2023-08-07", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07", [
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.2.0...0.3.0\">0.3.0</a> - 2024-09-16", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md030---2024-09-16", [
         [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-4", null ],
+        [ "Changed", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#changed-5", null ],
         [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-3", null ]
       ] ],
+      [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/compare/0.1.0...0.2.0\">0.2.0</a> - 2023-08-07", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md020---2023-08-07", [
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-5", null ],
+        [ "Compiler &amp; Build", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#compiler--build-4", null ]
+      ] ],
       [ "<a href=\"https://github.com/FrancoisCarouge/Kalman/releases/tag/0.1.0\">0.1.0</a> - 2022-11-25", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#autotoc_md010---2022-11-25", [
-        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-5", null ]
+        [ "Added", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_h_a_n_g_e_l_o_g.xhtml#added-6", null ]
       ] ]
     ] ],
     [ "Contributor Covenant Code of Conduct", "md__2home_2runner_2work_2_kalman_2_kalman_2_c_o_d_e___o_f___c_o_n_d_u_c_t.xhtml", [
@@ -136,13 +143,13 @@ var NAVTREEINDEX =
 "1x1_8cpp.xhtml",
 "declarations__1x1x1_8cpp_source.xhtml",
 "index.xhtml#samples-1",
-"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a707e960d17d3197e85cbdc4b8be06aa1",
-"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#ab0e5050f843bb054518ea2ad713fecaa",
-"namespacefcarouge_1_1test_1_1anonymous__namespace_02kelvin__unit__2x1x0_8cpp_03.xhtml",
-"namespacemembers_vars_t.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02empty__arguments_8cpp_03_1_1jacobian.xhtml",
-"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__ff__tt__oo_8cpp_03_1_1measurement.xhtml",
-"x__z__p__q__r__hh__ff__tt__oo_8hpp.xhtml"
+"namespacefcarouge_1_1kalman__filter_1_1internal.xhtml#a626060d9ae2238162bde5a22618152b0",
+"namespacefcarouge_1_1sample_1_1anonymous__namespace_02kf__2x1x0__stock__price__unit_8cpp_03.xhtml#a4ae1f36cbdffd9bfb09ce267dc662d13",
+"namespacefcarouge_1_1test_1_1anonymous__namespace_02joseph__3x1x0_8cpp_03.xhtml#a3c3d137dda2516f6065d0bdfbaeac71e",
+"namespacemembers_vars_n.xhtml",
+"structfcarouge_1_1sample_1_1benchmarker.xhtml",
+"structfcarouge_1_1test_1_1anonymous__namespace_02x__z__p__qq__r__hh__f__us__ps_8cpp_03_1_1propagation.xhtml#a646c0c4a05bcbe78c1b67fe95ef03e57",
+"x__z__p__q__r__hh__ff__ps_8cpp.xhtml"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

@@ -29,7 +29,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Kalman<span id="projectnumber">&#160;0.5.4</span>
+   <div id="projectname">Kalman<span id="projectnumber">&#160;0.6.0</span>
    </div>
    <div id="projectbrief">Kalman Filter</div>
   </td>
@@ -188,11 +188,11 @@ Variables</h2></td></tr>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml">fcarouge::kalman</a></div><div class="ttdoc">A generic Kalman filter.</div><div class="ttdef"><b>Definition</b> <a href="kalman_8hpp_source.xhtml#l00146">kalman.hpp:146</a></div></div>
 <div class="ttc" id="aclassfcarouge_1_1kalman_xhtml_a5c7f467599b520cd42163869b30e5241"><div class="ttname"><a href="classfcarouge_1_1kalman.xhtml#a5c7f467599b520cd42163869b30e5241">fcarouge::kalman::f</a></div><div class="ttdeci">constexpr decltype(auto) f(this auto &amp;&amp;self, const auto &amp;...values)</div><div class="ttdoc">Read, write the state transition matrix F.</div></div>
 <div class="ttc" id="anamespacefcarouge_1_1test_1_1anonymous__namespace_021x1x0_8cpp_03_xhtml_a899c0a281837d69e555d06d54fccab94"><div class="ttname"><a href="#a899c0a281837d69e555d06d54fccab94">fcarouge::test::anonymous_namespace{1x1x0.cpp}::filter</a></div><div class="ttdeci">decltype(kalman{}) filter</div><div class="ttdef"><b>Definition</b> <a href="member__type_21x1x0_8cpp_source.xhtml#l00069">1x1x0.cpp:69</a></div></div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000082">Test</a></b></dt><dd>Verifies the state transition matrix F management overloads for the default filter type. </dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.xhtml#_test000083">Test</a></b></dt><dd>Verifies the state transition matrix F management overloads for the default filter type. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000088">Test</a></b></dt><dd>Verifies formatting filters for single-dimension filters without input control or additional arguments. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000136">Test</a></b></dt><dd>Verifies the prediction of the filter with a process uncertainty: the state is kept, the estimate uncertainty grows by the process uncertainty. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000172">Test</a></b></dt><dd>Verifies the printer decorator for single-dimension filters. </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000178">Test</a></b></dt><dd>Verifies printing the default filter compiles. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000171">Test</a></b></dt><dd>Verifies the printer decorator for single-dimension filters. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.xhtml#_test000177">Test</a></b></dt><dd>Verifies printing the default filter compiles. </dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.xhtml#_test000197">Test</a></b></dt><dd>Verifies the update of the minimal filter against its equations: S = P + R, K = P.S⁻¹, Y = Z - X, X = X + K.Y, and the Joseph form P = (I - K).P.(I - K)ᵀ + K.R.Kᵀ. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="f_21x1x0_8cpp_source.xhtml#l00047">47</a> of file <a class="el" href="f_21x1x0_8cpp_source.xhtml">1x1x0.cpp</a>.</p>
