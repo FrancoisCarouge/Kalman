@@ -9,12 +9,13 @@ All notable changes to Kalman are documented here. The format follows [Keep a Ch
 - Compile-time update and conditioning policies: `joseph_form` (the default), `information_form`, `simple_form`, `symmetric_form`, `symmetrize`, and `floors{σ...}`.
 - More filter forms, including an extended filter whose state transition takes the prediction arguments.
 - Setting the `q`, `r`, `f`, `h`, and `g` characteristics from several values.
-- Freestanding, real-time, and allocation-free support; `freestanding`, `eigexed`, `mp_units`, and `mp_units_eigen` backends; a single-header amalgamation.
+- Freestanding, real-time, and allocation-free support; `freestanding`, `eigexed`, and `mp_units_eigen` backends; a single-header amalgamation.
 - Samples: stock price, pairs hedge ratio, beacon position, gimbal attitude, terrain estimation, range-bearing tracking, delayed target tracking, and wind airspeed scale, with situational diagrams and plots.
 - Sample benchmarks with nanobench, and an embedded Arm Cortex-M4 footprint page and gate.
 
 ### Changed
 
+- Requires C++26, up from C++23, and CMake 4.3, up from 3.15.
 - Constrained constructor, `update`, `predict`, and member argument and value types; narrowing element values, lvalue `print` operands, and transposes of types without an implementation are rejected.
 - The filter honors its declared output type and uncertainty; getters return without a copy.
 - Uniform initialization, internal namespace scoping, and backend supports converged with TypedLinearAlgebra.
@@ -23,6 +24,7 @@ All notable changes to Kalman are documented here. The format follows [Keep a Ch
 ### Removed
 
 - The naive, naixed, lazy, and generator experimental backends.
+- The `eigen_typed` and `quantity` backends, replaced by `eigexed` and `mp_units_eigen`.
 
 ### Compiler & Build
 
