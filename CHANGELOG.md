@@ -145,6 +145,7 @@ All notable changes to Kalman are documented here. The format follows [Keep a Ch
 
 - Initial release: a generalized, customizable Kalman filter supporting state, output, and input dimensions, extended filters, and additional prediction and update arguments.
 
+[0.6.0]: https://github.com/FrancoisCarouge/Kalman/compare/0.5.3...0.6.0
 [0.5.3]: https://github.com/FrancoisCarouge/Kalman/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/FrancoisCarouge/Kalman/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/FrancoisCarouge/Kalman/compare/0.5.0...0.5.1
