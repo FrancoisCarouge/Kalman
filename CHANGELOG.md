@@ -2,6 +2,37 @@
 
 All notable changes to Kalman are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/).
 
+## [0.6.0] - 2026-11-27
+
+### Added
+
+- Compile-time update and conditioning policies: `joseph_form` (the default), `information_form`, `simple_form`, `symmetric_form`, `symmetrize`, and `floors{σ...}`.
+- More filter forms, including an extended filter whose state transition takes the prediction arguments.
+- Setting the `q`, `r`, `f`, `h`, and `g` characteristics from several values.
+- Freestanding, real-time, and allocation-free support; `freestanding`, `eigexed`, `mp_units`, and `mp_units_eigen` backends; a single-header amalgamation.
+- Samples: stock price, pairs hedge ratio, beacon position, gimbal attitude, terrain estimation, range-bearing tracking, delayed target tracking, and wind airspeed scale, with situational diagrams and plots.
+- Sample benchmarks with nanobench, and an embedded Arm Cortex-M4 footprint page and gate.
+
+### Changed
+
+- Constrained constructor, `update`, `predict`, and member argument and value types; narrowing element values, lvalue `print` operands, and transposes of types without an implementation are rejected.
+- The filter honors its declared output type and uncertainty; getters return without a copy.
+- Uniform initialization, internal namespace scoping, and backend supports converged with TypedLinearAlgebra.
+- Documentation restructured, with layer, public API, and sample diagrams.
+
+### Removed
+
+- The naive, naixed, lazy, and generator experimental backends.
+
+### Compiler & Build
+
+- Conversion, old-style cast, cast-qual, and null-dereference warnings; MSVC `/permissive-` and warnings as errors.
+- Real-time sanitizer and Coverity workflows; full line and function coverage required; installed package and amalgamated header tests.
+
+### Fixed
+
+- The optimization filter, dangling internal data, the static initialization order of the ones and zeroes, and mp-units compatibility with MSVC.
+
 ## [0.5.3] - 2026-03-16
 
 ### Added
